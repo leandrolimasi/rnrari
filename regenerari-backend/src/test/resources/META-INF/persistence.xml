@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="jcompany-persistence-unit" transaction-type="JTA">
+
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+		<properties>
+			<property name="eclipselink.target-database" value="Derby" />
+
+			<property name="eclipselink.logging.logger" value="DefaultLogger" />
+			<property name="eclipselink.logging.level" value="ALL" />
+			<property name="eclipselink.logging.level.sql" value="ALL" />
+			<property name="eclipselink.logging.parameters" value="true" />
+			<property name="eclipselink.logging.timestamp" value="true" />
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:target/databases/derby;create=true" />
+
+		</properties>
+
+	</persistence-unit>
+
+
+</persistence>

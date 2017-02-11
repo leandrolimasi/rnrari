@@ -1,0 +1,9 @@
+/target/
+.settings/
+*.classpath
+*.idea
+*.iml
+/.apt_generated/
+/bin/
+/.externalToolBuilders/
+/.factorypath
