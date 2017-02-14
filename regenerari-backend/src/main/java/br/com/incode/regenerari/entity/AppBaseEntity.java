@@ -3,6 +3,7 @@ package br.com.incode.regenerari.entity;
 import com.powerlogic.jcompany.core.model.entity.PlcBaseEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -10,14 +11,21 @@ import java.util.Date;
  */
 @MappedSuperclass
 public abstract class AppBaseEntity extends PlcBaseEntity<Long> {
+
     @Version
     @Column(name = "versao")
+    @NotNull
     private Integer versao = new Integer(0);
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_ult_alteracao")
+    @NotNull
     private Date dataUltimaAlteracao;
+
+    @NotNull
     @Column(name = "usu_ult_alteracao")
     private String usuarioUltimaAlteracao;
+
     /**
      * @return the versao
      */

@@ -32,7 +32,7 @@ public class CustomLoginModule extends UsernamePasswordLoginModule {
         UsuarioEntity usuario = usuarioService.findUsuarioByLogin(this.getIdentity().getName());
         SimpleGroup group = new SimpleGroup("Roles");
         usuario.getRoles().forEach(role->{
-            group.addMember(new SimplePrincipal(role.getRole()));
+            group.addMember(new SimplePrincipal(role.getPerfil().name()));
         });
         return new Group[] { group };
     }

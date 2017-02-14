@@ -8,12 +8,9 @@ package br.com.incode.regenerari.util;
  */
 public interface AppConstants {
 
-    String FRONTEND_URL= "http://localhost:3000/regenerari";
+    String FIELD_USU_ALT= "usuarioUltimaAlteracao";
+    String FIELD_DATE_ALT= "dataUltimaAlteracao";
     String ANONIMO= "Anônimo";
 
-    interface  ROLES {
-        String VENDEDOR = "VENDEDOR";
-        String GERENTE = "GERENTE";
-        String ADMIN = "ADMIN";
-    }
+
 }

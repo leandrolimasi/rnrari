@@ -17,8 +17,6 @@ gulp.task('scripts-replace', function(){
 
   if (argv.dev !== undefined){
     constantPath = path.join(conf.paths.templates, '/app.constants.dev.js');
-  }else if (argv.tst !== undefined){
-    constantPath = path.join(conf.paths.templates, '/app.constants.tst.js');
   }else if (argv.prd !== undefined){
     constantPath = path.join(conf.paths.templates, '/app.constants.prd.js');
   }else{

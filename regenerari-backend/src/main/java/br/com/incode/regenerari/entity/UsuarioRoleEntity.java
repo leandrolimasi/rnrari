@@ -24,21 +24,20 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlAccessorType(XmlAccessType.FIELD)
 @SequenceGenerator(name = "SE_USUARIO_ROLE", sequenceName = "SE_USUARIO_ROLE")
 public class UsuarioRoleEntity extends AppBaseEntity {
+
     /** atributo chave primaria
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SE_USUARIO_ROLE")
     @Column(name = "ID_USUARIO_ROLE", unique = true, nullable = false)
     private Long id;
+
     @ManyToOne
     @NotNull
     @JoinColumn(name = "ID_USUARIO")
     @XmlTransient
     private UsuarioEntity usuario;
-    @Column(name = "ROLE")
-    @Size(max = 255)
-    @NotNull
-    private String role;
+
     @Column(name = "LOGIN")
     @Size(max = 255)
     @NotNull
@@ -48,6 +47,7 @@ public class UsuarioRoleEntity extends AppBaseEntity {
     @Column(name = "TP_PERFIL")
     @NotNull
     private Perfil perfil;
+
     /**
      * @return the id
      */
@@ -73,18 +73,6 @@ public class UsuarioRoleEntity extends AppBaseEntity {
      */
     public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
-    }
-    /**
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
-    /**
-     * @param role the role to set
-     */
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getLogin() {

@@ -26,11 +26,10 @@ public class PerfilConverter implements AttributeConverter<Perfil, String> {
 
         switch (perfil){
             case ADMIN:
-                return "1";
-            case GERENTE:
-                return "2";
-            case VENDEDOR:
-                return "3";
+                return "A";
+            case USUARIO:
+                return "U";
+
             default: return null;
         }
 
@@ -57,12 +56,10 @@ public class PerfilConverter implements AttributeConverter<Perfil, String> {
         }
 
         switch (dbData){
-            case "1":
+            case "A":
                 return Perfil.ADMIN;
-            case "2":
-                return Perfil.GERENTE;
-            case "3":
-                return Perfil.VENDEDOR;
+            case "U":
+                return Perfil.USUARIO;
         }
         return null;
     }

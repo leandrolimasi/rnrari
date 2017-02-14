@@ -17,15 +17,18 @@ import java.util.logging.Logger;
  */
 @ApplicationScoped
 public class AuditListener {
+
     private Logger log = Logger.getLogger( AuditListener.class.getName() );
+
     @PrePersist
     @PreUpdate
     private void auditaEntidade(Object entity){
         UserInfoBean userInfo = CDI.current().select(UserInfoBean.class).get();
         if (entity instanceof AppBaseEntity){
             try {
-                PropertyUtils.setProperty(entity, "dataUltimaAlteracao", new Date());
-                PropertyUtils.setProperty(entity, "usuarioUltimaAlteracao", userInfo.getUsuario() != null && userInfo.getUsuario().getEmail() != null ? userInfo.getUsuario().getEmail() : AppConstants.ANONIMO);
+                PropertyUtils.setProperty(entity, AppConstants.FIELD_DATE_ALT, new Date());
+                PropertyUtils.setProperty(entity, AppConstants.FIELD_USU_ALT, userInfo.getUsuario() != null &&
+                        userInfo.getUsuario().getEmail() != null ? userInfo.getUsuario().getEmail() : AppConstants.ANONIMO);
             } catch (IllegalAccessException e) {
                 log.severe(e.getMessage());
             } catch (InvocationTargetException e) {

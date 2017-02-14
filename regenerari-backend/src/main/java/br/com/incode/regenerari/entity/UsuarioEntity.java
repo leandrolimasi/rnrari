@@ -30,7 +30,7 @@ public class UsuarioEntity extends AppBaseEntity {
     /** atributo chave primaria
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SE_USUARIO")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SE_USUARIO")
     @Column(name = "ID_USUARIO", unique = true, nullable = false)
     private Long id;
 
@@ -57,7 +57,6 @@ public class UsuarioEntity extends AppBaseEntity {
     @Email
     @Column(name = "EMAIL")
     @Size(max = 255)
-    @NotNull
     private String email;
 
     @Convert(converter = StatusConverter.class)

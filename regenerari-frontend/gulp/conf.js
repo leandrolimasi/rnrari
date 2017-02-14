@@ -26,7 +26,8 @@ exports.paths = {
 exports.environment = {
 
   "ENVIRONMENT":{
-    "dev" : "http://localhost:9080/rhdemo"
+    "dev" : "http://localhost:8080/regenerari",
+    "prd" : "http://localhost:8080/regenerari"
   }
 
 };
