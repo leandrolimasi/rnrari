@@ -26,9 +26,9 @@ public class PerfilConverter implements AttributeConverter<Perfil, String> {
 
         switch (perfil){
             case ADMIN:
-                return "A";
+                return "ADMIN";
             case USUARIO:
-                return "U";
+                return "USUARIO";
 
             default: return null;
         }
@@ -56,9 +56,9 @@ public class PerfilConverter implements AttributeConverter<Perfil, String> {
         }
 
         switch (dbData){
-            case "A":
+            case "ADMIN":
                 return Perfil.ADMIN;
-            case "U":
+            case "USUARIO":
                 return Perfil.USUARIO;
         }
         return null;

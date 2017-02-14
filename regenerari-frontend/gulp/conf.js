@@ -28,6 +28,11 @@ exports.environment = {
   "ENVIRONMENT":{
     "dev" : "http://localhost:8080/regenerari",
     "prd" : "http://localhost:8080/regenerari"
+  },
+
+  "CONTEXT":{
+    "dev" : "",
+    "prd" : "/regenerari"
   }
 
 };

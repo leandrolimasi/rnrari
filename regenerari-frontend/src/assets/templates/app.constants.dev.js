@@ -9,6 +9,7 @@
 
   angular
     .module('jcompany-view.commons')
+    .constant('$context', '{{CONTEXT.dev}}')
     .constant('$backendUrl', '{{ENVIRONMENT.dev}}');
 
 })();
