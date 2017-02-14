@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('tour-frontend')
+    .module('regenerari-frontend')
     .config(routerConfig);
 
   /** @ngInject */

@@ -16,7 +16,7 @@ function listFiles() {
     devDependencies: true
   });
 
-  var patterns = wiredep(wiredepOptions).js
+  return wiredep(wiredepOptions).js
     .concat([
       path.join(conf.paths.src, '/app/**/*.module.js'),
       path.join(conf.paths.src, '/app/**/*.js'),
@@ -24,19 +24,6 @@ function listFiles() {
       path.join(conf.paths.src, '/**/*.mock.js'),
     ])
     .concat(pathSrcHtml);
-
-  var files = patterns.map(function(pattern) {
-    return {
-      pattern: pattern
-    };
-  });
-  files.push({
-    pattern: path.join(conf.paths.src, '/assets/**/*'),
-    included: false,
-    served: true,
-    watched: false
-  });
-  return files;
 }
 
 module.exports = function(config) {
@@ -50,12 +37,12 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       stripPrefix: conf.paths.src + '/',
-      moduleName: 'tour-frontend'
+      moduleName: 'rhdemo'
     },
 
     logLevel: 'WARN',
 
-    frameworks: ['phantomjs-shim', 'jasmine', 'angular-filesort'],
+    frameworks: ['jasmine', 'angular-filesort'],
 
     angularFilesort: {
       whitelist: [path.join(conf.paths.src, '/**/!(*.html|*.spec|*.mock).js')]
@@ -66,7 +53,6 @@ module.exports = function(config) {
     plugins : [
       'karma-phantomjs-launcher',
       'karma-angular-filesort',
-      'karma-phantomjs-shim',
       'karma-coverage',
       'karma-jasmine',
       'karma-ng-html2js-preprocessor'
@@ -77,11 +63,7 @@ module.exports = function(config) {
       dir : 'coverage/'
     },
 
-    reporters: ['progress'],
-
-    proxies: {
-      '/assets/': path.join('/base/', conf.paths.src, '/assets/')
-    }
+    reporters: ['progress']
   };
 
   // This is the default preprocessors configuration for a usage with Karma cli

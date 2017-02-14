@@ -33,7 +33,7 @@
         }
 
         vm.verificaLoginAtivo = function(){
-            PlcAuthService.checarSessao().then(function(response) {
+            PlcAuthService.checarSessao().then(function() {
                 if (PlcAuthService.isLogged()) {
                     if ($rootScope.user && $rootScope.user){
                         $state.go('inicial.home');

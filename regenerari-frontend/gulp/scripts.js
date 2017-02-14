@@ -11,39 +11,30 @@ var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-
-gulp.task('scripts-reload', function() {
-  return buildScripts()
-      .pipe(browserSync.stream());
-});
-
 gulp.task('scripts-replace', function(){
 
   var constantPath;
 
   if (argv.dev !== undefined){
-    constantPath = path.join(conf.paths.templates, '/index.constants.dev.js');
+    constantPath = path.join(conf.paths.templates, '/app.constants.dev.js');
   }else if (argv.tst !== undefined){
-    constantPath = path.join(conf.paths.templates, '/index.constants.tst.js');
+    constantPath = path.join(conf.paths.templates, '/app.constants.tst.js');
   }else if (argv.prd !== undefined){
-    constantPath = path.join(conf.paths.templates, '/index.constants.prd.js');
+    constantPath = path.join(conf.paths.templates, '/app.constants.prd.js');
   }else{
-    constantPath = path.join(conf.paths.templates, '/index.constants.dev.js');
+    constantPath = path.join(conf.paths.templates, '/app.constants.dev.js');
   }
 
   return gulp.src([constantPath])
-      .pipe(replace({global:conf.environment}))
-      .pipe(rename('index.constants.js'))
-      .pipe(gulp.dest(path.join(conf.paths.src, '/app')));
+    .pipe(replace({global:conf.environment}))
+    .pipe(rename('app.constants.js'))
+    .pipe(gulp.dest(path.join(conf.paths.src, '/app')));
 });
 
-gulp.task('scripts', ['scripts-replace'], function() {
-  return buildScripts();
-});
-
-function buildScripts() {
+gulp.task('scripts', ['scripts-replace'], function () {
   return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
-      .pipe($.eslint())
-      .pipe($.eslint.format())
-      .pipe($.size())
-};
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe(browserSync.reload({ stream: true }))
+    .pipe($.size())
+});

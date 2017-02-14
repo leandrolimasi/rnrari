@@ -1,5 +1,12 @@
+dist/
+bower_components/
+node_modules/
+.settings/
+coverage/
+.sass-cache/
+.idea/
 *.iml
-node_modules
-dist
-.tmp
-bower_components
+.tmp/
+*.log
+*.prefs
+

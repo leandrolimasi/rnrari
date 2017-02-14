@@ -22,6 +22,7 @@ import java.util.List;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @EntityListeners(AuditListener.class)
+@SequenceGenerator(name = "SE_USUARIO", sequenceName = "SE_USUARIO")
 @NamedQueries(@NamedQuery(name = "UsuarioEntity.findUsuarioByLogin",
         query = "select obj from UsuarioEntity obj " +
                 " where ( obj.login = :login ) "))
@@ -29,7 +30,7 @@ public class UsuarioEntity extends AppBaseEntity {
     /** atributo chave primaria
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SE_USUARIO")
     @Column(name = "ID_USUARIO", unique = true, nullable = false)
     private Long id;
 

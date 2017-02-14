@@ -5,9 +5,9 @@ import br.com.incode.regenerari.enums.Perfil;
 import javax.persistence.AttributeConverter;
 
 /**
- * Created by marcelolimabh on 10/01/17.
+ * Created by leandrolima on 10/01/17.
  */
-public class TipoPerfilConverter implements AttributeConverter<Perfil, String> {
+public class PerfilConverter implements AttributeConverter<Perfil, String> {
     /**
      * Converts the value stored in the entity attribute into the
      * data representation to be stored in the database.

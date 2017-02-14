@@ -1,4 +1,4 @@
-package br.com.incode.tour.model.service;
+package br.com.incode.regenerari.model.service;
 
 
 import com.powerlogic.jcompany.model.test.PlcAbstractArquillianTestCase;

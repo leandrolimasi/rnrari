@@ -1,7 +1,7 @@
 package br.com.incode.regenerari.enums;
 
 /**
- * Created by marcelolimabh on 10/01/17.
+ * Created by leandrolima on 10/01/17.
  */
 public enum Perfil {
 

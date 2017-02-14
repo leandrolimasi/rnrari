@@ -1,7 +1,7 @@
 package br.com.incode.regenerari.entity;
 
 import br.com.incode.regenerari.enums.Perfil;
-import br.com.incode.regenerari.enums.converter.TipoPerfilConverter;
+import br.com.incode.regenerari.enums.converter.PerfilConverter;
 import br.com.incode.regenerari.listener.AuditListener;
 import com.powerlogic.jcompany.commons.validation.Email;
 
@@ -22,11 +22,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @EntityListeners(AuditListener.class)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@SequenceGenerator(name = "SE_USUARIO_ROLE", sequenceName = "SE_USUARIO_ROLE")
 public class UsuarioRoleEntity extends AppBaseEntity {
     /** atributo chave primaria
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SE_USUARIO_ROLE")
     @Column(name = "ID_USUARIO_ROLE", unique = true, nullable = false)
     private Long id;
     @ManyToOne
@@ -43,7 +44,7 @@ public class UsuarioRoleEntity extends AppBaseEntity {
     @NotNull
     private String login;
 
-    @Convert(converter = TipoPerfilConverter.class)
+    @Convert(converter = PerfilConverter.class)
     @Column(name = "TP_PERFIL")
     @NotNull
     private Perfil perfil;

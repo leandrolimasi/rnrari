@@ -12,33 +12,24 @@ var gutil = require('gulp-util');
  *  The main paths of your project handle these with care
  */
 exports.paths = {
-    src: 'src',
-    dist: 'dist/',
-    tmp: '.tmp',
-    e2e: 'e2e',
-    templates: 'src/assets/templates'
+  src: 'src',
+  dist: 'dist',
+  tmp: '.tmp',
+  e2e: 'e2e',
+  templates: 'src/assets/templates'
 };
 
 /** confiration for environment types
  *
- * @type {{ENVIRONMENT: {dev: string, tst: string, prd: string}}}
+ * @type {{AMBIENTE: {dev: string, tst: string, prd: string}}}
  */
 exports.environment = {
 
-    "ENVIRONMENT":{
-        "dev" : "http://localhost:8080/regenerari",
-        "tst" : "http://52.41.22.108:8080/regenerari",
-        "prd" : "http://www.regenerari.com.br/regenerari"
-    },
-
-    "CONTEXT":{
-        "dev" : "",
-        "tst" : "/regenerari",
-        "prd" : "/regenerari"
-    }
+  "ENVIRONMENT":{
+    "dev" : "http://localhost:9080/rhdemo"
+  }
 
 };
-
 
 /**
  *  Wiredep is the lib which inject bower dependencies in your project
@@ -46,18 +37,18 @@ exports.environment = {
  *  to inject css preprocessor deps and js files in karma
  */
 exports.wiredep = {
-    exclude: [/\/bootstrap\.js$/, /\/bootstrap\.css/],
-    directory: 'bower_components'
+  exclude: [/jquery-ui/, /\/bootstrap\.js$/, /\/bootstrap-sass\/.*\.js/, /\/bootstrap\.css/],
+  directory: 'bower_components'
 };
 
 /**
  *  Common implementation for an error handler of a Gulp plugin
  */
 exports.errorHandler = function(title) {
-    'use strict';
+  'use strict';
 
-    return function(err) {
-        gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
-        this.emit('end');
-    };
+  return function(err) {
+    gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
+    this.emit('end');
+  };
 };

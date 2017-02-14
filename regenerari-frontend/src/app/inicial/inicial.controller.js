@@ -11,7 +11,7 @@
 
 
     vm.logout = function(){
-      PlcAuthService.logout().then(function(userInfo) {
+      PlcAuthService.logout().then(function() {
         $state.go('login');
       });
     }
