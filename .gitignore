@@ -3,7 +3,4 @@
 *.classpath
 *.idea
 *.iml
-/.apt_generated/
-/bin/
-/.externalToolBuilders/
-
+/regenerari-frontend/src/app/app.constants.js
