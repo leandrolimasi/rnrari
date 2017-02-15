@@ -6,7 +6,7 @@
     .controller('UsuarioController', UsuarioController);
 
   /** @ngInject */
-  function UsuarioController($scope, UsuarioService, $controller) {
+  function UsuarioController($scope, UsuarioService, $controller, $state) {
     var vm = this;
 
 
@@ -15,15 +15,34 @@
 
 
     vm.detalhes = [{
-      titulo: "label.heading.det1.usuario",
+      title: "Perfil",
       name: "roles",
       template: "app/usuario/usuario-man-perfil.html"
     }];
 
 
+    vm.new = function () {
+      vm[vm.$baseRoute] = new Object();
+      vm.addItemDetail('usuarioController.usuario.roles');
+      $state.go( vm.$baseRoute + '.man' );
+    };
+
+    vm.addItemDetail = function (detail) {
+
+      var attr = detail.getValueFromObject($scope);
+      if(angular.isUndefined(attr)){
+        attr = [];
+      }
+
+      attr.push(new Object());
+      detail.setValueToObject($scope, attr);
+
+
+    };
+
     vm.columnDefs = [
-        { field: 'id', displayName: 'Cod.'},
-       { field: 'login', displayName: 'Login'}
+      { field: 'id', displayName: 'Cod.'},
+      { field: 'login', displayName: 'Login'}
     ];
 
 

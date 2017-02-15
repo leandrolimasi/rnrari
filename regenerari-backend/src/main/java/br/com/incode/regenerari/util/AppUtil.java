@@ -16,20 +16,6 @@ import java.util.regex.Pattern;
 public class AppUtil {
 
     private Logger log = Logger.getLogger( AppUtil.class.getName() );
-    /** Encripta senha do cadastro de usuario.
-     *
-     * @param hash texto a ser criptografada
-     * @return hash criptografada
-     */
-    public String geraHashEmail(String hash){
-        String hashEmail  = encriptaSenha(hash);
-        try {
-            hashEmail =  URLEncoder.encode(hashEmail, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            log.warning(e.getMessage());
-        }
-        return hashEmail;
-    }
 
     /** Encripta senha do cadastro de usuario.
      *
@@ -56,13 +42,13 @@ public class AppUtil {
      * (?=.*[a-z])       # pelo menos uma letra minuscula
      * (?=.*[A-Z])       # pelo menos uma letra maiuscula
      * (?=\S+$)          # sem espacos vazios
-     * .{8,}             # pelo menos 8 caracteres
+     * .{6,}             # pelo menos 6 caracteres
      *
      * @param senha senha a ser validada
      * @return resultado
      */
     public boolean validaSenha(String senha){
-        String pattern =  "^(?=\\S+$).{8,}$";
+        String pattern =  "^(?=\\S+$).{6,}$";
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(senha);
         return m.find();

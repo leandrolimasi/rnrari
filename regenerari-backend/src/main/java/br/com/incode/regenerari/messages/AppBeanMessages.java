@@ -8,11 +8,14 @@ import com.powerlogic.jcompany.core.messages.IPlcMessageKey;
  */
 public enum AppBeanMessages implements IPlcMessageKey {
 
-    GERAL_SENHA_CONFIRMASENHA_INVALIDOS,
+    USUARIO_ERRO_SENHA_OBRIGATORIO,
+    USUARIO_ERRO_SENHA_CONFIRMASENHA_INVALIDOS,
     USUARIO_ERRO_SENHA_INVALIDA,
     USUARIO_ERRO_SENHA_INVALIDA_INFO,
+    USUARIO_ERRO_PERFIL,
     USUARIO_ERRO_JA_CADASTRADO,
     USUARIO_SUCCESS_REGISTER,
+
     ;
     public String getName()
     {

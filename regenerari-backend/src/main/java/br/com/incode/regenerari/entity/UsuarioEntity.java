@@ -4,8 +4,10 @@ import br.com.incode.regenerari.enums.converter.StatusConverter;
 import br.com.incode.regenerari.enums.Status;
 import br.com.incode.regenerari.listener.AuditListener;
 import com.powerlogic.jcompany.commons.validation.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -27,6 +29,7 @@ import java.util.List;
         query = "select obj from UsuarioEntity obj " +
                 " where ( obj.login = :login ) "))
 public class UsuarioEntity extends AppBaseEntity {
+
     /** atributo chave primaria
      */
     @Id
@@ -34,24 +37,23 @@ public class UsuarioEntity extends AppBaseEntity {
     @Column(name = "ID_USUARIO", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "SENHA")
+    @Column(name = "SENHA", nullable = false)
     @Size(max = 255)
-    @NotNull
     private String senha;
 
-    @Column(name = "PRIMEIRO_NOME")
+    @Column(name = "PRIMEIRO_NOME", nullable = false)
     @Size(max = 50)
-    @NotNull
+    @NotBlank(message = "O campo 'PRIMEIRO NOME' é obrigatório!")
     private String primeiroNome;
 
     @Column(name = "ULTIMO_NOME")
-    @Size(max = 255)
-    @NotNull
+    @Size(max = 150)
+    @NotBlank(message = "O campo 'ÚLTIMO NOME' é obrigatório!")
     private String ultimoNome;
 
-    @Column(name = "LOGIN")
-    @Size(max = 255)
-    @NotNull
+    @Column(name = "LOGIN", nullable = false)
+    @Size(max = 25)
+    @NotBlank(message = "O campo 'LOGIN' é obrigatório!")
     private String login;
 
     @Email
@@ -60,10 +62,10 @@ public class UsuarioEntity extends AppBaseEntity {
     private String email;
 
     @Convert(converter = StatusConverter.class)
-    @Column(name = "STATUS")
-    @NotNull
-    private Status status;
+    @Column(name = "STATUS", nullable = false)
+    private Status status = Status.ATIVO;
 
+    @Valid
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario",cascade = CascadeType.ALL)
     private List<UsuarioRoleEntity> roles;
 

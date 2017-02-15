@@ -46,16 +46,34 @@
 
                     </div>
 
+                  <div class="row">
 
-                    <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control border-input" ng-model="usuarioController.usuario.senha">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Confirma Senha</label>
+                        <input type="password" class="form-control border-input" ng-model="usuarioController.usuario.confirmaSenha">
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                    <div class="row" ng-show="usuarioController.usuario.id">
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Status</label>
 
                                 <div class="btn-group">
-                                    <label class="btn btn-primary" ng-model="usuarioController.usuario.status" uib-btn-radio="'Left'">Ativo</label>
-                                    <label class="btn btn-primary" ng-model="usuarioController.usuario.status" uib-btn-radio="'Right'">Inativo</label>
+                                    <label class="btn btn-primary" ng-model="usuarioController.usuario.status" uib-btn-radio="'ATIVO'">Ativo</label>
+                                    <label class="btn btn-primary" ng-model="usuarioController.usuario.status" uib-btn-radio="'INATIVO'">Inativo</label>
                                 </div>
 
                             </div>
@@ -77,8 +95,8 @@
                         <div class="form-group">
 
                             <uib-accordion close-others="usuarioController.oneAtATime"> <uib-accordion-group
-                                    heading="Perfil" ng-repeat="role in usuarioController.detalhes">
-                                <div ng-include="role.template"></div>
+                                    heading="{{detalhe.title}}" ng-repeat="detalhe in usuarioController.detalhes">
+                                <div ng-include="detalhe.template"></div>
                             </uib-accordion-group> </uib-accordion>
 
                         </div>

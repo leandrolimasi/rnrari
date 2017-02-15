@@ -34,8 +34,7 @@ import javax.ws.rs.core.MediaType;
 public class UsuarioRest extends PlcAbstractEntityRest<Long, UsuarioEntity, Object> {
 
 
-    @Inject
-    private UsuarioBO usuarioBO;
+
     @Inject
     private IUsuarioService usuarioService;
     @Inject
@@ -46,7 +45,7 @@ public class UsuarioRest extends PlcAbstractEntityRest<Long, UsuarioEntity, Obje
         return usuarioService;
     }
 
-    /** Gravar empresa
+    /** Gravar usuario
      *
      * @param entity
      * @return
@@ -55,7 +54,6 @@ public class UsuarioRest extends PlcAbstractEntityRest<Long, UsuarioEntity, Obje
     @POST
     @Path("/save")
     public UsuarioEntity save(UsuarioEntity entity) throws PlcException {
-        usuarioBO.configuraNovoUsuario(entity);
         UsuarioEntity usuario =  usuarioService.save(entity);
         msgUtil.clearMensagens();
         msgUtil.msg(AppBeanMessages.USUARIO_SUCCESS_REGISTER, PlcMessageType.SUCCESS);

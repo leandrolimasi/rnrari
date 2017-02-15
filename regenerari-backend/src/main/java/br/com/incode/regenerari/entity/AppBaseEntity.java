@@ -13,17 +13,14 @@ import java.util.Date;
 public abstract class AppBaseEntity extends PlcBaseEntity<Long> {
 
     @Version
-    @Column(name = "versao")
-    @NotNull
+    @Column(name = "versao", nullable = false)
     private Integer versao = new Integer(0);
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "dt_ult_alteracao")
-    @NotNull
+    @Column(name = "dt_ult_alteracao", nullable = false)
     private Date dataUltimaAlteracao;
 
-    @NotNull
-    @Column(name = "usu_ult_alteracao")
+    @Column(name = "usu_ult_alteracao", nullable = false)
     private String usuarioUltimaAlteracao;
 
     /**

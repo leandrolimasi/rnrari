@@ -4,6 +4,7 @@ import br.com.incode.regenerari.enums.Perfil;
 import br.com.incode.regenerari.enums.converter.PerfilConverter;
 import br.com.incode.regenerari.listener.AuditListener;
 import com.powerlogic.jcompany.commons.validation.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -44,8 +45,8 @@ public class UsuarioRoleEntity extends AppBaseEntity {
     private String login;
 
     @Convert(converter = PerfilConverter.class)
-    @Column(name = "TP_PERFIL")
-    @NotNull
+    @Column(name = "PERFIL")
+    @NotNull(message = "campo 'PERFIL' é obrigatório!")
     private Perfil perfil;
 
     /**
