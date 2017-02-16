@@ -1,5 +1,7 @@
 package br.com.incode.regenerari.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.enterprise.context.ApplicationScoped;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -48,9 +50,14 @@ public class AppUtil {
      * @return resultado
      */
     public boolean validaSenha(String senha){
-        String pattern =  "^(?=\\S+$).{6,}$";
-        Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(senha);
-        return m.find();
+        if (StringUtils.isNotBlank(senha)){
+            String pattern =  "^(?=\\S+$).{6,}$";
+            Pattern r = Pattern.compile(pattern);
+            Matcher m = r.matcher(senha);
+            return m.find();
+        }
+
+        return true;
+
     }
 }

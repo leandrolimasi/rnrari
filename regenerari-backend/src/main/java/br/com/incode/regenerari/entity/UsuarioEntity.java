@@ -43,23 +43,18 @@ public class UsuarioEntity extends AppBaseEntity {
 
     @Column(name = "PRIMEIRO_NOME", nullable = false)
     @Size(max = 50)
-    @NotBlank(message = "O campo 'PRIMEIRO NOME' é obrigatório!")
+    @NotBlank(message = "O campo 'Primeiro Nome' é obrigatório.")
     private String primeiroNome;
 
     @Column(name = "ULTIMO_NOME")
     @Size(max = 150)
-    @NotBlank(message = "O campo 'ÚLTIMO NOME' é obrigatório!")
+    @NotBlank(message = "O campo 'Último Nome' é obrigatório.")
     private String ultimoNome;
 
     @Column(name = "LOGIN", nullable = false)
     @Size(max = 25)
-    @NotBlank(message = "O campo 'LOGIN' é obrigatório!")
+    @NotBlank(message = "O campo 'Login' é obrigatório.")
     private String login;
-
-    @Email
-    @Column(name = "EMAIL")
-    @Size(max = 255)
-    private String email;
 
     @Convert(converter = StatusConverter.class)
     @Column(name = "STATUS", nullable = false)
@@ -99,18 +94,6 @@ public class UsuarioEntity extends AppBaseEntity {
      */
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
     }
     /**
      * @return the confirmaSenha

@@ -14,14 +14,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Primeiro Nome</label>
-                                <input type="text" class="form-control border-input" ng-model="usuarioController.usuario.primeiroNome">
+                                <input type="text"  ng-required="true" class="form-control border-input" label="Primeiro Nome" name="usuario.primeiroNome" ng-model="usuarioController.usuario.primeiroNome">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>&Uacute;ltimo Nome</label>
-                                <input type="text" class="form-control border-input" ng-model="usuarioController.usuario.ultimoNome">
+                                <input type="text"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.ultimoNome">
                             </div>
                         </div>
 
@@ -33,39 +33,32 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Login</label>
-                                <input type="text" class="form-control border-input" ng-model="usuarioController.usuario.login">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>E-mail</label>
-                                <input type="text" class="form-control border-input" ng-model="usuarioController.usuario.email">
+                                <input type="text"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.login">
                             </div>
                         </div>
 
                     </div>
 
-                  <div class="row">
+                  <div class="row" ng-if="!usuarioController.usuario.id">
 
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Senha</label>
-                        <input type="password" class="form-control border-input" ng-model="usuarioController.usuario.senha">
+                        <input type="password"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.senha">
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Confirma Senha</label>
-                        <input type="password" class="form-control border-input" ng-model="usuarioController.usuario.confirmaSenha">
+                        <input type="password"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.confirmaSenha">
                       </div>
                     </div>
 
                   </div>
 
 
-                    <div class="row" ng-show="usuarioController.usuario.id">
+                    <div class="row" ng-if="usuarioController.usuario.id">
 
                         <div class="col-md-6">
                             <div class="form-group">

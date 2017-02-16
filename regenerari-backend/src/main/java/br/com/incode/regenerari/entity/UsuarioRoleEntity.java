@@ -34,19 +34,17 @@ public class UsuarioRoleEntity extends AppBaseEntity {
     private Long id;
 
     @ManyToOne
-    @NotNull
-    @JoinColumn(name = "ID_USUARIO")
+    @JoinColumn(name = "ID_USUARIO", nullable = false)
     @XmlTransient
     private UsuarioEntity usuario;
 
-    @Column(name = "LOGIN")
+    @Column(name = "LOGIN", nullable = false)
     @Size(max = 255)
-    @NotNull
     private String login;
 
     @Convert(converter = PerfilConverter.class)
     @Column(name = "PERFIL")
-    @NotNull(message = "campo 'PERFIL' é obrigatório!")
+    @NotNull(message = "O campo 'Perfil' é obrigatório.")
     private Perfil perfil;
 
     /**

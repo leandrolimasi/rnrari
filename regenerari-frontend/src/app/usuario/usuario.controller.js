@@ -24,7 +24,13 @@
     vm.new = function () {
       vm[vm.$baseRoute] = new Object();
       vm.addItemDetail('usuarioController.usuario.roles');
-      $state.go( vm.$baseRoute + '.man' );
+      $state.go( vm.$baseRoute + '.man',  {id: undefined} );
+    };
+
+    vm.afterSave = function (response) {
+      if (response.status == 200 && response.data.entity && response.data.entity.id){
+        $state.go( vm.$baseRoute + '.man', {id: response.data.entity.id} );
+      }
     };
 
     vm.addItemDetail = function (detail) {

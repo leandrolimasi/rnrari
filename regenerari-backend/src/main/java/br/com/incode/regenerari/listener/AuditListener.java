@@ -28,7 +28,7 @@ public class AuditListener {
             try {
                 PropertyUtils.setProperty(entity, AppConstants.FIELD_DATE_ALT, new Date());
                 PropertyUtils.setProperty(entity, AppConstants.FIELD_USU_ALT, userInfo.getUsuario() != null &&
-                        userInfo.getUsuario().getEmail() != null ? userInfo.getUsuario().getEmail() : AppConstants.ANONIMO);
+                        userInfo.getUsuario().getLogin() != null ? userInfo.getUsuario().getLogin() : AppConstants.ANONIMO);
             } catch (IllegalAccessException e) {
                 log.severe(e.getMessage());
             } catch (InvocationTargetException e) {

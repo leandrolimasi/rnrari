@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>powerlogic.jaguar.jcompany</groupId>
 		<artifactId>jcompany-bom</artifactId>
-		<version>1.0.4</version>
+		<version>1.0.5-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>regenerari</artifactId>

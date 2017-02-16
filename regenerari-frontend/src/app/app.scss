@@ -66,38 +66,39 @@ body {
     background-position: right;
 }
 
-.form-validate.ng-dirty.ng-invalid {
+.form-control.border-input.ng-dirty.ng-invalid{
   border-color: #f05050;
 }
-.form-validate.ng-dirty.ng-valid,
-.form-validate.ng-dirty.ng-valid:focus {
+
+.form-control.border-input.ng-dirty.ng-valid,
+.form-control.border-input.ng-dirty.ng-valid:focus {
   border-color: #27c24c;
 }
-.form-validate .has-error {
+.form-control.border-input .has-error {
   border-color: #f05050;
 }
-.form-validate .c-checkbox input.ng-dirty.ng-invalid + span,
-.form-validate .c-radio input.ng-dirty.ng-invalid + span {
+.form-control.border-input .c-checkbox input.ng-dirty.ng-invalid + span,
+.form-control.border-input .c-radio input.ng-dirty.ng-invalid + span {
   border-color: #f05050;
 }
-.form-validate .ui-select-container.ng-dirty.ng-invalid .btn {
+.form-control.border-input .ui-select-container.ng-dirty.ng-invalid .btn {
   border-color: #f05050;
 }
-.form-validate .input-group .ui-select-container.ng-dirty.ng-invalid .btn {
+.form-control.border-input .input-group .ui-select-container.ng-dirty.ng-invalid .btn {
   margin-left: -1px;
 }
-.form-validate .chosen-select.ng-dirty.ng-invalid + .chosen-container > .chosen-choices {
+.form-control.border-input .chosen-select.ng-dirty.ng-invalid + .chosen-container > .chosen-choices {
   border-color: #f05050;
 }
-.form-validate .chosen-select.ng-dirty.ng-valid + .chosen-container > .chosen-choices,
-.form-validate .chosen-select.ng-dirty.ng-valid:focus + .chosen-container > .chosen-choices {
+.form-control.border-input .chosen-select.ng-dirty.ng-valid + .chosen-container > .chosen-choices,
+.form-control.border-input .chosen-select.ng-dirty.ng-valid:focus + .chosen-container > .chosen-choices {
   border-color: #27c24c;
 }
-.form-validate.ng-dirty.ng-invalid + .bootstrap-tagsinput {
+.form-control.border-input.ng-dirty.ng-invalid + .bootstrap-tagsinput {
   border-color: #f05050;
 }
-.form-validate.ng-dirty.ng-valid + .bootstrap-tagsinput,
-.form-validate.ng-dirty.ng-valid:focus + .bootstrap-tagsinput {
+.form-control.border-input.ng-dirty.ng-valid + .bootstrap-tagsinput,
+.form-control.border-input.ng-dirty.ng-valid:focus + .bootstrap-tagsinput {
   border-color: #27c24c;
 }
 

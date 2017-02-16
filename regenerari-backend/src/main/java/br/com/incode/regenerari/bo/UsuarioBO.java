@@ -4,6 +4,7 @@ import br.com.incode.regenerari.entity.UsuarioEntity;
 import br.com.incode.regenerari.entity.UsuarioRoleEntity;
 import br.com.incode.regenerari.enums.Status;
 import br.com.incode.regenerari.util.AppUtil;
+import org.apache.commons.collections.CollectionUtils;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -21,16 +22,17 @@ public class UsuarioBO {
      *
      * @param usuario
      */
-    public void configuraNovoUsuario(UsuarioEntity usuario){
+    public void configuraUsuario(UsuarioEntity usuario){
+
         if (usuario.getId() == null){
             usuario.setSenha(appUtil.encriptaSenha(usuario.getSenha()));
-            usuario.setConfirmaSenha(appUtil.encriptaSenha(usuario.getConfirmaSenha()));
-            usuario.setStatus(Status.ATIVO);
-            List<UsuarioRoleEntity> roles = new ArrayList<>();
-            UsuarioRoleEntity role = new UsuarioRoleEntity();
-            role.setUsuario(usuario);
-            roles.add(role);
-            usuario.setRoles(roles);
+        }
+
+        if (CollectionUtils.isNotEmpty(usuario.getRoles())){
+            for (UsuarioRoleEntity role: usuario.getRoles()){
+                role.setUsuario(usuario);
+                role.setLogin(usuario.getLogin());
+            }
         }
     }
 

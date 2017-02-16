@@ -67,20 +67,26 @@ public class UsuarioServiceImpl extends PlcAbstractServiceEntity<Long, UsuarioEn
             throw  new PlcException(AppBeanMessages.USUARIO_ERRO_PERFIL);
         }
 
-        usuarioBO.configuraNovoUsuario(entity);
+        // recuperando senha
+        if (entity.getId() != null){
+            UsuarioEntity ant = usuarioRepository.get(entity.getId());
+            entity.setSenha(ant.getSenha());
+        }
+
+        usuarioBO.configuraUsuario(entity);
 
         return super.save(entity);
     }
     /**
-     * Recupera usuario por email.
+     * Recupera usuario por login.
      *
-     * @param email login de acesso do usuario (email)
+     * @param login login de acesso do usuario
      *
      * @return usuario
      */
     @Override
-    public UsuarioEntity findUsuarioByLogin(String email) {
-        return usuarioRepository.findUsuarioByLogin(email);
+    public UsuarioEntity findUsuarioByLogin(String login) {
+        return usuarioRepository.findUsuarioByLogin(login);
     }
 
 }
