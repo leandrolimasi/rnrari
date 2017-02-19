@@ -38,7 +38,7 @@ public class UsuarioEntity extends AppBaseEntity {
     private Long id;
 
     @Column(name = "SENHA", nullable = false)
-    @Size(max = 255)
+    @Size(max = 30)
     private String senha;
 
     @Column(name = "PRIMEIRO_NOME", nullable = false)
@@ -52,7 +52,7 @@ public class UsuarioEntity extends AppBaseEntity {
     private String ultimoNome;
 
     @Column(name = "LOGIN", nullable = false)
-    @Size(max = 25)
+    @Size(max = 255)
     @NotBlank(message = "O campo 'Login' é obrigatório.")
     private String login;
 

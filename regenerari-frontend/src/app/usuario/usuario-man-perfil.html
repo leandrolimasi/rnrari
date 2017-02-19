@@ -1,22 +1,17 @@
 <div class="container-fluid">
 
-
-
-
-
     <div class="row" ng-repeat="role in usuarioController.usuario.roles" >
 
         <div class="col-md-6">
 
-            <plc-static-combo ng-model="role.perfil" name="usuario.estadoCivil"  ng-enum="perfil"
+
+
+            <plc-static-combo ng-model="role.perfil" name="usuario.perfil"  ng-enum="perfil"
                               no-selected-value="[Selecione...]" ng-enum-value="perfil" />
 
             <input type="hidden" ng-model="role.id" >
 
         </div>
-
-
-
 
     </div>
 

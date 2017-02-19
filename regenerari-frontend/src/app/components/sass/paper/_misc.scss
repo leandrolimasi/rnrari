@@ -1,19 +1,20 @@
 /*     General overwrite     */
 body{
-    color: $font-color;
-    font-size: $font-size-base;
-    font-family: 'Muli', Arial, sans-serif;
-    .wrapper{
-        min-height: 100vh;
-        position: relative;
-    }
+  color: $font-color;
+  font-size: $font-size-base;
+  font-family: 'Muli', Arial, sans-serif;
+  .wrapper{
+    min-height: 100vh;
+    position: relative;
+    background-color: #fff;
+  }
 }
 a{
   color: $info-color;
 
   &:hover, &:focus{
-     color: $info-states-color;
-     text-decoration: none;
+    color: $info-states-color;
+    text-decoration: none;
   }
 }
 
@@ -22,13 +23,13 @@ button::-moz-focus-inner,
 input::-moz-focus-inner,
 select::-moz-focus-inner,
 input[type="file"] > input[type="button"]::-moz-focus-inner{
-    outline:0 !important;
+  outline:0 !important;
 }
 .ui-slider-handle:focus,
 .navbar-toggle,
 input:focus,
 button:focus {
-    outline : 0 !important;
+  outline : 0 !important;
 }
 
 /*           Animations              */
@@ -37,33 +38,33 @@ button:focus {
 .tagsinput,
 .navbar,
 .navbar .alert{
-    @include transition($general-transition-time, $transition-linear);
+  @include transition($general-transition-time, $transition-linear);
 }
 
 .sidebar .nav a,
 .table > tbody > tr .td-actions .btn{
-    @include transition($fast-transition-time, $transition-ease-in);
+  @include transition($fast-transition-time, $transition-ease-in);
 }
 
 .btn{
-    @include transition($ultra-fast-transition-time, $transition-ease-in);
+  @include transition($ultra-fast-transition-time, $transition-ease-in);
 }
 .fa{
-    width: 21px;
-    text-align: center;
+  width: 21px;
+  text-align: center;
 }
 .fa-base{
-    font-size: 1.25em !important;
+  font-size: 1.25em !important;
 }
 
 .margin-top{
-    margin-top: 50px;
+  margin-top: 50px;
 }
 hr{
-    border-color: $medium-pale-bg;
+  border-color: $medium-pale-bg;
 }
 .wrapper{
-    position: relative;
-    top: 0;
-    height: 100vh;
+  position: relative;
+  top: 0;
+  height: 100vh;
 }

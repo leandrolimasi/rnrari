@@ -1,118 +1,93 @@
 <div class="container-fluid" >
 
-    <form name="form" class="form-validate" novalidate ng-controller="UsuarioController as usuarioController" >
+  <form name="form" class="form-validate" novalidate ng-controller="UsuarioController as usuarioController" >
 
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">Usuário</h4>
-                </div>
-                <div class="content">
-
-                    <div class="row">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Primeiro Nome</label>
-                                <input type="text"  ng-required="true" class="form-control border-input" label="Primeiro Nome" name="usuario.primeiroNome" ng-model="usuarioController.usuario.primeiroNome">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>&Uacute;ltimo Nome</label>
-                                <input type="text"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.ultimoNome">
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="row">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Login</label>
-                                <input type="text"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.login">
-                            </div>
-                        </div>
-
-                    </div>
-
-                  <div class="row" ng-if="!usuarioController.usuario.id">
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Senha</label>
-                        <input type="password"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.senha">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Confirma Senha</label>
-                        <input type="password"  ng-required="true" class="form-control border-input" ng-model="usuarioController.usuario.confirmaSenha">
-                      </div>
-                    </div>
-
-                  </div>
-
-
-                    <div class="row" ng-if="usuarioController.usuario.id">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Status</label>
-
-                                <div class="btn-group">
-                                    <label class="btn btn-primary" ng-model="usuarioController.usuario.status" uib-btn-radio="'ATIVO'">Ativo</label>
-                                    <label class="btn btn-primary" ng-model="usuarioController.usuario.status" uib-btn-radio="'INATIVO'">Inativo</label>
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-                    <div class="row">
-
-
-                        <br />
-
-                        <div class="form-group">
-
-                            <uib-accordion close-others="usuarioController.oneAtATime"> <uib-accordion-group
-                                    heading="{{detalhe.title}}" ng-repeat="detalhe in usuarioController.detalhes">
-                                <div ng-include="detalhe.template"></div>
-                            </uib-accordion-group> </uib-accordion>
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <button type="button" class="btn btn-default" ng-click="usuarioController.new();" >Novo</button>
-                            <button type="submit" class="btn btn-default" ng-click="usuarioController.save();" >Salvar</button>
-                            <button type="button" class="btn btn-default" ng-click="usuarioController.list();" >Listar</button>
-                            <button type="button" class="btn btn-default" ng-click="usuarioController.remove();" >Excluir</button>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Usuário</h4>
         </div>
-    </form>
+        <div class="content">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Primeiro Nome</label>
+                <input type="text"  ng-required="true" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Primeiro Nome" name="usuario.primeiroNome" ng-model="usuarioController.usuario.primeiroNome">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>&Uacute;ltimo Nome</label>
+                <input type="text"  ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Último Nome" name="usuario.ultimoNome" ng-model="usuarioController.usuario.ultimoNome">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Login</label>
+                <input type="text"  ng-required="true" ng-maxlength="25" maxlength="25" class="form-control border-input" label="Login" name="usuario.login" ng-model="usuarioController.usuario.login">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row" ng-if="!usuarioController.usuario.id">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Senha</label>
+                <input type="password"  ng-required="true" class="form-control border-input" ng-maxlength="30" maxlength="30"  label="Senha" name="usuario.senha" ng-model="usuarioController.usuario.senha">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Confirma Senha</label>
+                <input type="password"  ng-required="true" class="form-control border-input" ng-maxlength="30" maxlength="30"  label="Confirma Senha" name="usuario.confirmaSenha" ng-model="usuarioController.usuario.confirmaSenha">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <input type="hidden" ng-model="usuarioController.usuario.status" />
+
+            <br />
+
+            <div class="form-group">
+
+              <uib-accordion close-others="usuarioController.oneAtATime"> <uib-accordion-group
+                heading="{{detalhe.title}}" ng-repeat="detalhe in usuarioController.detalhes">
+                <div ng-include="detalhe.template"></div>
+              </uib-accordion-group> </uib-accordion>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="usuarioController.new();" >Novo</button>
+              <button type="submit" class="btn btn-default" ng-click="usuarioController.save();" >Salvar</button>
+              <button type="button" class="btn btn-default" ng-click="usuarioController.list();" >Listar</button>
+              <button type="button" class="btn btn-default" ng-click="usuarioController.remove();" ng-if="usuarioController.usuario.id" >Excluir</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </form>
 
 </div>

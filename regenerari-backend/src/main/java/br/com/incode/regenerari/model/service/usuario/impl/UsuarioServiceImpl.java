@@ -12,7 +12,6 @@ import com.powerlogic.jcompany.core.messages.PlcMessageType;
 import com.powerlogic.jcompany.core.model.repository.IPlcEntityRepository;
 import com.powerlogic.jcompany.core.model.service.PlcAbstractServiceEntity;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -38,33 +37,28 @@ public class UsuarioServiceImpl extends PlcAbstractServiceEntity<Long, UsuarioEn
     @Override
     public UsuarioEntity save(@Valid UsuarioEntity entity) throws PlcException {
 
-        //verifica senha
-        if (entity.getId() == null && StringUtils.isBlank(entity.getSenha())){
-            throw  new PlcException(AppBeanMessages.USUARIO_ERRO_SENHA_OBRIGATORIO);
+
+        //verifica perfil usuario
+        if (CollectionUtils.isEmpty(entity.getRoles()) ||
+                ( entity.getRoles().get(0) != null && entity.getRoles().get(0).getPerfil() == null)){
+            throw  new PlcException(AppBeanMessages.USUARIO_ERROR_PERFIL);
         }
 
         //verifica os campos senha e confirmaSenha
         if (entity.getId() == null && !entity.getSenha().equals(entity.getConfirmaSenha())){
-            throw  new PlcException(AppBeanMessages.USUARIO_ERRO_SENHA_CONFIRMASENHA_INVALIDOS);
+            throw  new PlcException(AppBeanMessages.USUARIO_ERROR_SENHA_CONFIRMASENHA_INVALIDOS);
         }
 
         //verifica senha valida
         if (!appUtil.validaSenha(entity.getSenha())){
-            PlcException e = new PlcException(AppBeanMessages.USUARIO_ERRO_SENHA_INVALIDA);
-            e.getMessageMap().addMessage(AppBeanMessages.USUARIO_ERRO_SENHA_INVALIDA_INFO, PlcMessageType.ERROR);
+            PlcException e = new PlcException(AppBeanMessages.USUARIO_ERROR_SENHA_INVALIDA);
+            e.getMessageMap().addMessage(AppBeanMessages.USUARIO_ERROR_SENHA_INVALIDA_INFO, PlcMessageType.ERROR);
             throw e;
         }
 
         //verifica usuario ja cadastrado
         if (entity.getId() == null && findUsuarioByLogin(entity.getLogin()) != null){
-            throw  new PlcException(AppBeanMessages.USUARIO_ERRO_JA_CADASTRADO);
-        }
-
-
-        //verifica perfil usuario
-        if (CollectionUtils.isEmpty(entity.getRoles()) ||
-                ( entity.getRoles().get(0) != null && entity.getRoles().get(0).getPerfil() == null)){
-            throw  new PlcException(AppBeanMessages.USUARIO_ERRO_PERFIL);
+            throw  new PlcException(AppBeanMessages.USUARIO_ERROR_JA_CADASTRADO);
         }
 
         // recuperando senha
