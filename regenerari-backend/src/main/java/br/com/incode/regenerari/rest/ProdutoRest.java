@@ -4,8 +4,8 @@ package br.com.incode.regenerari.rest;
  * Created by leandrolimadasilva on 30/01/17.
  */
 
-import br.com.incode.regenerari.entity.InsumoEntity;
-import br.com.incode.regenerari.model.service.insumo.IInsumoService;
+import br.com.incode.regenerari.entity.ProdutoEntity;
+import br.com.incode.regenerari.model.service.produto.IProdutoService;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 import com.powerlogic.jcompany.core.rest.auth.PlcNotAuthenticated;
 import com.powerlogic.jcompany.core.rest.entity.PlcAbstractEntityRest;
@@ -21,18 +21,18 @@ import javax.ws.rs.core.MediaType;
  * Created by leandrolimasi on 20/02/2017.
  */
 @PlcNotAuthenticated
-@Path("/entity/insumo")
+@Path("/entity/produto")
 @Produces({ MediaType.APPLICATION_JSON })
 @Consumes({ MediaType.APPLICATION_JSON })
 @PlcMessageIntercept
-public class InsumoRest extends PlcAbstractEntityRest<Long, InsumoEntity, Object> {
+public class ProdutoRest extends PlcAbstractEntityRest<Long, ProdutoEntity, Object> {
 
     @Inject
-    private IInsumoService insumoService;
+    private IProdutoService produtoService;
 
     @Override
-    protected IPlcEntityService<Long, InsumoEntity> getEntityService() {
-        return insumoService;
+    protected IPlcEntityService<Long, ProdutoEntity> getEntityService() {
+        return produtoService;
     }
 
 }

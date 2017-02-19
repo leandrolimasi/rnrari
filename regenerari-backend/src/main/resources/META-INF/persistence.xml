@@ -19,6 +19,7 @@
 		<class>br.com.incode.regenerari.entity.UsuarioEntity</class>
 		<class>br.com.incode.regenerari.entity.UsuarioRoleEntity</class>
 		<class>br.com.incode.regenerari.entity.InsumoEntity</class>
+		<class>br.com.incode.regenerari.entity.ProdutoEntity</class>
 
 
 		<!-- Entities -->
@@ -34,6 +35,7 @@
             <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+
 		</properties>
 	</persistence-unit>
 </persistence>

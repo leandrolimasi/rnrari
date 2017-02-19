@@ -1,7 +1,6 @@
-package br.com.incode.regenerari.model.service.usuario;
+package br.com.incode.regenerari.model.service.insumo;
 
 import br.com.incode.regenerari.entity.InsumoEntity;
-import br.com.incode.regenerari.entity.UsuarioEntity;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 
 import javax.ejb.Local;

@@ -1,16 +1,23 @@
 package br.com.incode.regenerari.enums;
 
 /**
- * Created by leandrolimadasilva on 21/12/16.
+ * Created by leandrolima on 20/02/17.
  */
-public enum Status {
+public enum ApresentacaoProduto {
 
 
-    ATIVO("Ativo"),
-    INATIVO("Inativo");
+    GARRAFA_VIDRO("Garrafa Vidro"),
+    GARRAFA_PLASTICO("Garrafa Plástico"),
+    POTE_VIDRO("Pote Vidro"),
+    POTE_PLASTICO("Pote Plásticog"),
+    SACO_PLASTICO("Saco Plástico"),
+    CAIXA_PAPEL("Caixa Papel");
+
+
     private String label;
 
-    Status(String label){
+
+    ApresentacaoProduto(String label){
         this.label = label;
     }
 

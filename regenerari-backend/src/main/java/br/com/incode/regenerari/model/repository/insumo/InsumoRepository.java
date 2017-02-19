@@ -1,4 +1,4 @@
-package br.com.incode.regenerari.model.repository.usuario;
+package br.com.incode.regenerari.model.repository.insumo;
 
 import br.com.incode.regenerari.entity.InsumoEntity;
 import br.com.incode.regenerari.entity.UsuarioEntity;

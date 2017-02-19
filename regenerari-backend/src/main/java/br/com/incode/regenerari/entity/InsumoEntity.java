@@ -1,22 +1,19 @@
 package br.com.incode.regenerari.entity;
 
-import br.com.incode.regenerari.enums.Categoria;
+import br.com.incode.regenerari.enums.CategoriaInsumo;
 import br.com.incode.regenerari.enums.UnidadeMedidaInsumo;
-import br.com.incode.regenerari.enums.converter.StatusConverter;
-import br.com.incode.regenerari.enums.Status;
 import br.com.incode.regenerari.listener.AuditListener;
-import com.powerlogic.jcompany.commons.validation.Email;
+import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
+import com.powerlogic.jcompany.core.model.entity.IPlcLogicalExclusion;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by leandrolimadasilva on 20/12/16.
@@ -28,7 +25,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 @EntityListeners(AuditListener.class)
 @SequenceGenerator(name = "SE_INSUMO", sequenceName = "SE_INSUMO")
-public class InsumoEntity extends AppBaseEntity {
+public class InsumoEntity extends AppBaseEntity implements IPlcLogicalExclusion{
 
     /** atributo chave primaria
      */
@@ -39,13 +36,13 @@ public class InsumoEntity extends AppBaseEntity {
 
     @Column(name = "CODIGO", nullable = false)
     @Size(max = 10)
-    @NotBlank(message = "O campo 'Códido' é obrigatório.")
+    @NotBlank(message = "O campo 'Código' é obrigatório.")
     private String codigo;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "CATEGORIA", nullable = false)
+    @Column(name = "CATEGORIA_INSUMO", nullable = false)
     @NotNull(message = "O campo 'Categoria' é obrigatório.")
-    private Categoria categoria;
+    private CategoriaInsumo categoriaInsumo;
 
     @Column(name = "NOME")
     @Size(max = 40)
@@ -53,17 +50,17 @@ public class InsumoEntity extends AppBaseEntity {
     private String nome;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "UNIDADE_MEDIDA", nullable = false)
+    @Column(name = "UNIDADE_MEDIDA_INSUMO", nullable = false)
     @NotNull(message = "O campo 'Unidade Medida' é obrigatório.")
-    private UnidadeMedidaInsumo unidadeMedida;
+    private UnidadeMedidaInsumo unidadeMedidaInsumo;
 
     @Column(name = "VALIDADE", nullable = false)
     @NotNull(message = "O campo 'Validade' é obrigatório.")
     private Integer validadeInsumo;
 
-    @Convert(converter = StatusConverter.class)
+    @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private Status status = Status.ATIVO;
+    private PlcSituacao status = PlcSituacao.A;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INATIVACAO")
@@ -104,17 +101,17 @@ public class InsumoEntity extends AppBaseEntity {
     }
 
     /**
-     * @return the categoria
+     * @return the categoriaInsumo
      */
-    public Categoria getCategoria() {
-        return categoria;
+    public CategoriaInsumo getCategoriaInsumo() {
+        return categoriaInsumo;
     }
 
     /**
-     * @param categoria the categoria to set
+     * @param categoriaInsumo the categoriaInsumo to set
      */
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategoriaInsumo(CategoriaInsumo categoriaInsumo) {
+        this.categoriaInsumo = categoriaInsumo;
     }
 
     /**
@@ -135,14 +132,14 @@ public class InsumoEntity extends AppBaseEntity {
      * @return the unidadeMedida
      */
     public UnidadeMedidaInsumo getUnidadeMedida() {
-        return unidadeMedida;
+        return unidadeMedidaInsumo;
     }
 
     /**
-     * @param unidadeMedida the unidadeMedida to set
+     * @param unidadeMedidaInsumo the unidadeMedidaInsumo to set
      */
-    public void setUnidadeMedida(UnidadeMedidaInsumo unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
+    public void setUnidadeMedida(UnidadeMedidaInsumo unidadeMedidaInsumo) {
+        this.unidadeMedidaInsumo = unidadeMedidaInsumo;
     }
 
     /**
@@ -157,20 +154,6 @@ public class InsumoEntity extends AppBaseEntity {
      */
     public void setValidadeInsumo(Integer validadeInsumo) {
         this.validadeInsumo = validadeInsumo;
-    }
-
-    /**
-     * @return the status
-     */
-    public Status getStatus() {
-        return status;
-    }
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     /**
@@ -199,5 +182,15 @@ public class InsumoEntity extends AppBaseEntity {
      */
     public void setUsuarioInativacao(UsuarioEntity usuarioInativacao) {
         this.usuarioInativacao = usuarioInativacao;
+    }
+
+    @Override
+    public PlcSituacao getSituacao() {
+        return this.status;
+    }
+
+    @Override
+    public void setSituacao(PlcSituacao situacao) {
+        this.status = situacao;
     }
 }

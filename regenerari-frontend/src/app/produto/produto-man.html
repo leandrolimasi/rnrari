@@ -1,0 +1,75 @@
+<div class="container-fluid" >
+
+  <form name="form" class="form-validate" novalidate ng-controller="ProdutoController as produtoController" >
+
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Produto</h4>
+        </div>
+        <div class="content">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Código</label>
+                <input type="text"  ng-required="true" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Código" name="produto.codigo" ng-model="produtoController.produto.codigo">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text"  ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Nome" name="produto.nome" ng-model="produtoController.produto.nome">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <plc-static-combo ng-model="produtoController.produto.categoriaProduto" name="produto.categoriaProduto"  ng-enum="categoriaProduto" label="Categoria"
+                                  no-selected-value="[Selecione...]" ng-enum-value="categoriaProduto" />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <plc-static-combo ng-model="produtoController.produto.unidadeMedidaProduto" name="produto.unidadeMedidaProduto"  ng-enum="unidadeMedidaProduto" label="Unidade Medida"
+                                  no-selected-value="[Selecione...]" ng-enum-value="unidadeMedidaProduto" />
+               </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Validade</label>
+                <input type="number"  ng-required="true" class="form-control border-input" label="Validade" name="produto.validadeProduto" ng-model="produtoController.produto.validadeProduto">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="produtoController.new();" >Novo</button>
+              <button type="submit" class="btn btn-default" ng-click="produtoController.save();" >Salvar</button>
+              <button type="button" class="btn btn-default" ng-click="produtoController.list();" >Listar</button>
+              <button type="button" class="btn btn-default" ng-click="produtoController.remove();" ng-if="produtoController.produto.id" >Excluir</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

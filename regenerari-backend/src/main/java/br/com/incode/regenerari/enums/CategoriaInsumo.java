@@ -3,7 +3,7 @@ package br.com.incode.regenerari.enums;
 /**
  * Created by leandrolima on 10/01/17.
  */
-public enum Categoria {
+public enum CategoriaInsumo {
 
     VASILHAME("Vasilhame"),
     EMBALAGEM("Embalagem"),
@@ -26,7 +26,7 @@ public enum Categoria {
     private String label;
 
 
-    Categoria(String label){
+    CategoriaInsumo(String label){
         this.label = label;
     }
 

@@ -2,13 +2,10 @@ package br.com.incode.regenerari.bo;
 
 import br.com.incode.regenerari.entity.UsuarioEntity;
 import br.com.incode.regenerari.entity.UsuarioRoleEntity;
-import br.com.incode.regenerari.enums.Status;
 import br.com.incode.regenerari.util.AppUtil;
 import org.apache.commons.collections.CollectionUtils;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by leandrolimadasilva on 30/01/17.

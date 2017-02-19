@@ -1,14 +1,11 @@
 package br.com.incode.regenerari.entity;
 
-import br.com.incode.regenerari.enums.converter.StatusConverter;
-import br.com.incode.regenerari.enums.Status;
 import br.com.incode.regenerari.listener.AuditListener;
-import com.powerlogic.jcompany.commons.validation.Email;
+import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -56,9 +53,9 @@ public class UsuarioEntity extends AppBaseEntity {
     @NotBlank(message = "O campo 'Login' é obrigatório.")
     private String login;
 
-    @Convert(converter = StatusConverter.class)
+    @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private Status status = Status.ATIVO;
+    private PlcSituacao status = PlcSituacao.A;
 
     @Valid
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario",cascade = CascadeType.ALL)
@@ -122,13 +119,13 @@ public class UsuarioEntity extends AppBaseEntity {
     /**
      * @return the status
      */
-    public Status getStatus() {
+    public PlcSituacao getStatus() {
         return status;
     }
     /**
      * @param status the status to set
      */
-    public void setStatus(Status status) {
+    public void setStatus(PlcSituacao status) {
         this.status = status;
     }
 
