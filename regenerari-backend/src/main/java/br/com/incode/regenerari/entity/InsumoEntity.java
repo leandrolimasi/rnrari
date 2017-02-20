@@ -60,7 +60,7 @@ public class InsumoEntity extends AppBaseEntity implements IPlcLogicalExclusion{
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private PlcSituacao status = PlcSituacao.A;
+    private PlcSituacao situacao = PlcSituacao.A;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INATIVACAO")
@@ -184,13 +184,33 @@ public class InsumoEntity extends AppBaseEntity implements IPlcLogicalExclusion{
         this.usuarioInativacao = usuarioInativacao;
     }
 
-    @Override
-    public PlcSituacao getSituacao() {
-        return this.status;
+    /**
+     * @return the unidadeMedidaInsumo
+     */
+    public UnidadeMedidaInsumo getUnidadeMedidaInsumo() {
+        return unidadeMedidaInsumo;
     }
 
+    /**
+     * @param unidadeMedidaInsumo the unidadeMedidaInsumo to set
+     */
+    public void setUnidadeMedidaInsumo(UnidadeMedidaInsumo unidadeMedidaInsumo) {
+        this.unidadeMedidaInsumo = unidadeMedidaInsumo;
+    }
+
+    /**
+     * @return the situacao
+     */
+    @Override
+    public PlcSituacao getSituacao() {
+        return situacao;
+    }
+
+    /**
+     * @param situacao the situacao to set
+     */
     @Override
     public void setSituacao(PlcSituacao situacao) {
-        this.status = situacao;
+        this.situacao = situacao;
     }
 }

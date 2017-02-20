@@ -2,6 +2,7 @@ package br.com.incode.regenerari.entity;
 
 import br.com.incode.regenerari.listener.AuditListener;
 import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
+import com.powerlogic.jcompany.core.model.entity.IPlcLogicalExclusion;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ import java.util.List;
 @NamedQueries(@NamedQuery(name = "UsuarioEntity.findUsuarioByLogin",
         query = "select obj from UsuarioEntity obj " +
                 " where ( obj.login = :login ) "))
-public class UsuarioEntity extends AppBaseEntity {
+public class UsuarioEntity extends AppBaseEntity implements IPlcLogicalExclusion {
 
     /** atributo chave primaria
      */
@@ -35,7 +36,7 @@ public class UsuarioEntity extends AppBaseEntity {
     private Long id;
 
     @Column(name = "SENHA", nullable = false)
-    @Size(max = 30)
+    @Size(max = 100)
     private String senha;
 
     @Column(name = "PRIMEIRO_NOME", nullable = false)
@@ -55,7 +56,7 @@ public class UsuarioEntity extends AppBaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private PlcSituacao status = PlcSituacao.A;
+    private PlcSituacao situacao = PlcSituacao.A;
 
     @Valid
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario",cascade = CascadeType.ALL)
@@ -116,18 +117,6 @@ public class UsuarioEntity extends AppBaseEntity {
     public void setRoles(List<UsuarioRoleEntity> roles) {
         this.roles = roles;
     }
-    /**
-     * @return the status
-     */
-    public PlcSituacao getStatus() {
-        return status;
-    }
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(PlcSituacao status) {
-        this.status = status;
-    }
 
     /**
      * @return the primeiroNome
@@ -166,5 +155,21 @@ public class UsuarioEntity extends AppBaseEntity {
      */
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    /**
+     * @return the situacao
+     */
+    @Override
+    public PlcSituacao getSituacao() {
+        return situacao;
+    }
+
+    /**
+     * @param situacao the situacao to set
+     */
+    @Override
+    public void setSituacao(PlcSituacao situacao) {
+        this.situacao = situacao;
     }
 }

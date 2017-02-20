@@ -20,6 +20,7 @@
 		<class>br.com.incode.regenerari.entity.UsuarioRoleEntity</class>
 		<class>br.com.incode.regenerari.entity.InsumoEntity</class>
 		<class>br.com.incode.regenerari.entity.ProdutoEntity</class>
+		<class>br.com.incode.regenerari.entity.ComposicaoProdutoEntity</class>
 
 
 		<!-- Entities -->

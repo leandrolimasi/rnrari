@@ -20,13 +20,13 @@ import java.util.Date;
  * Created by leandrolimadasilva on 20/02/17.
  */
 @Entity
-@Table(name = "PRODUTO")
+@Table(name = "ITEM_COMPOSICAO_PRODUTO")
 @Access(AccessType.FIELD)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @EntityListeners(AuditListener.class)
 @SequenceGenerator(name = "SE_PRODUTO", sequenceName = "SE_PRODUTO")
-public class ProdutoEntity extends AppBaseEntity {
+public class ItemComposicaoProdutoEntity extends AppBaseEntity {
 
     /** atributo chave primaria
      */
@@ -85,7 +85,7 @@ public class ProdutoEntity extends AppBaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private PlcSituacao situacao = PlcSituacao.A;
+    private PlcSituacao status = PlcSituacao.A;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INATIVACAO")
@@ -282,6 +282,20 @@ public class ProdutoEntity extends AppBaseEntity {
     }
 
     /**
+     * @return the status
+     */
+    public PlcSituacao getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(PlcSituacao status) {
+        this.status = status;
+    }
+
+    /**
      * @return the dataInativacao
      */
     public Date getDataInativacao() {
@@ -363,19 +377,5 @@ public class ProdutoEntity extends AppBaseEntity {
      */
     public void setUsuarioHomologacao(UsuarioEntity usuarioHomologacao) {
         this.usuarioHomologacao = usuarioHomologacao;
-    }
-
-    /**
-     * @return the situacao
-     */
-    public PlcSituacao getSituacao() {
-        return situacao;
-    }
-
-    /**
-     * @param situacao the situacao to set
-     */
-    public void setSituacao(PlcSituacao situacao) {
-        this.situacao = situacao;
     }
 }
