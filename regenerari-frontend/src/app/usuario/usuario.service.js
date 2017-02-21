@@ -1,21 +1,25 @@
 (function() {
-    'use strict';
-    angular
-        .module('regenerari-frontend')
-        .factory('UsuarioService', UsuarioService);
+  'use strict';
+  angular
+    .module('regenerari-frontend')
+    .factory('UsuarioService', UsuarioService);
 
-    /** @ngInject */
-    function UsuarioService(PlcEntityService, PlcInherit) {
+  /** @ngInject */
+  function UsuarioService(PlcEntityService, PlcInherit) {
 
-        var Service = PlcInherit.createClass(PlcEntityService, {
-            constructor: function() {
-                PlcEntityService.call(this, {
-                    type: 'usuario',
-                    applyMetadata: false
-                });
-            }
+    var Service = PlcInherit.createClass(PlcEntityService, {
+      constructor: function() {
+        PlcEntityService.call(this, {
+          type: 'usuario',
+          applyMetadata: false
         });
+      },
 
-        return new Service();
-    }
+      alterarSenha : function(obj){
+        return this._post('/alterarSenha', data);
+      }
+    });
+
+    return new Service();
+  }
 })();

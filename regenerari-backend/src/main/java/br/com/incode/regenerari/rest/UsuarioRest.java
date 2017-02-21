@@ -5,6 +5,7 @@ package br.com.incode.regenerari.rest;
  */
 
 import br.com.incode.regenerari.bo.UsuarioBO;
+import br.com.incode.regenerari.dto.AlterarSenhaDTO;
 import br.com.incode.regenerari.entity.UsuarioEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;
 import br.com.incode.regenerari.model.service.usuario.IUsuarioService;
@@ -57,6 +58,23 @@ public class UsuarioRest extends PlcAbstractEntityRest<Long, UsuarioEntity, Obje
         UsuarioEntity usuario =  usuarioService.save(entity);
         msgUtil.clearMensagens();
         msgUtil.msg(AppBeanMessages.USUARIO_SUCCESS_REGISTER, PlcMessageType.SUCCESS);
+        usuario.setSenha(null);
+        usuario.setConfirmaSenha(null);
+        return usuario;
+    }
+
+    /** Gravar usuario
+     *
+     * @param dto
+     * @return
+     * @throws PlcException
+     */
+    @POST
+    @Path("/alterarSenha")
+    public UsuarioEntity alterarSenha(AlterarSenhaDTO dto) throws PlcException {
+        UsuarioEntity usuario =  usuarioService.alteraSenha(dto);
+        msgUtil.clearMensagens();
+        msgUtil.msg(AppBeanMessages.USUARIO_SUCCESS_ALTERAR_SENHA, PlcMessageType.SUCCESS);
         usuario.setSenha(null);
         usuario.setConfirmaSenha(null);
         return usuario;

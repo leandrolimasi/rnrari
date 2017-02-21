@@ -1,5 +1,6 @@
 package br.com.incode.regenerari.model.service.usuario;
 
+import br.com.incode.regenerari.dto.AlterarSenhaDTO;
 import br.com.incode.regenerari.entity.UsuarioEntity;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 
@@ -18,5 +19,15 @@ public  interface IUsuarioService extends IPlcEntityService<Long, UsuarioEntity>
      * @return usuario
      */
     UsuarioEntity findUsuarioByLogin(String login);
+
+
+    /**
+     * Altera a senha de um usuario
+     *
+     * @param dto AlterarSenhaDTO
+     *
+     * @return usuario
+     */
+    UsuarioEntity alteraSenha(AlterarSenhaDTO dto);
 
 }
