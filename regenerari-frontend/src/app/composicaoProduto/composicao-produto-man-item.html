@@ -1,0 +1,40 @@
+<div class="container-fluid">
+
+
+  <div ng-repeat="itemComposicaoProduto in composicaoProdutoController.composicaoProduto.itemComposicaoProduto" >
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Insumo</label>
+          <input type="text"  ng-required="true" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Insumo" name="composicaoProduto.insumo" ng-model="composicaoProdutoController.composicaoProduto.insumo">
+        </div>
+        <input type="hidden" ng-model="itemComposicaoProduto.id" >
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Quantidade Insumo</label>
+          <input type="number"  ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Quantidade Insumo" name="composicaoProduto.quantidadeInsumo" ng-model="composicaoProdutoController.composicaoProduto.quantidadeInsumo">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label>Observação</label>
+          <textarea class="form-control border-input" ng-model="composicaoProdutoController.composicaoProduto.observacao" ></textarea>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+</div>

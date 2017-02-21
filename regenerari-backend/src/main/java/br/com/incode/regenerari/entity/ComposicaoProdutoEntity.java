@@ -9,6 +9,7 @@ import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -16,6 +17,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by leandrolimadasilva on 20/02/17.
@@ -75,6 +77,10 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
     @ManyToOne (targetEntity = UsuarioEntity.class)
     @JoinColumn(name = "USUARIO_INATIVACAO")
     private UsuarioEntity usuarioInativacao;
+
+    @Valid
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "composicaoProduto",cascade = CascadeType.ALL, targetEntity = ItemComposicaoProdutoEntity.class)
+    private List<ItemComposicaoProdutoEntity> itemComposicaoProduto;
 
     /**
      * @return the id
@@ -230,5 +236,19 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
      */
     public void setUsuarioInativacao(UsuarioEntity usuarioInativacao) {
         this.usuarioInativacao = usuarioInativacao;
+    }
+
+    /**
+     * @return the itemComposicaoProduto
+     */
+    public List<ItemComposicaoProdutoEntity> getItemComposicaoProduto() {
+        return itemComposicaoProduto;
+    }
+
+    /**
+     * @param itemComposicaoProduto the itemComposicaoProduto to set
+     */
+    public void setItemComposicaoProduto(List<ItemComposicaoProdutoEntity> itemComposicaoProduto) {
+        this.itemComposicaoProduto = itemComposicaoProduto;
     }
 }

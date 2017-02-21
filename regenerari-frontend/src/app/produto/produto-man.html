@@ -40,7 +40,45 @@
               <div class="form-group">
                 <plc-static-combo ng-model="produtoController.produto.unidadeMedidaProduto" name="produto.unidadeMedidaProduto"  ng-enum="unidadeMedidaProduto" label="Unidade Medida"
                                   no-selected-value="[Selecione...]" ng-enum-value="unidadeMedidaProduto" />
-               </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+
+                <plc-static-combo ng-model="produtoController.produto.apresentacaoProduto" name="produto.apresentacaoProduto"  ng-enum="apresentacaoProduto" label="Apresentação"
+                                  no-selected-value="[Selecione...]" ng-enum-value="apresentacaoProduto" />
+
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Quantidade Apresentação</label>
+                <input type="number"  ng-required="true" ng-maxlength="10" maxlength="10" class="form-control border-input" label="Quantidade Apresentação" name="produto.quantidadeApresentacao" ng-model="produtoController.produto.quantidadeApresentacao">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Preço Mínimo</label>
+                <input type="number"  ng-required="true" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Preço Mínimo" name="produto.precoMinimo" ng-model="produtoController.produto.precoMinimo">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Preço Máximo</label>
+                <input type="number"  ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Preço Máximo" name="produto.precoMaximo" ng-model="produtoController.produto.precoMaximo">
+              </div>
             </div>
 
           </div>
@@ -59,9 +97,9 @@
 
           <div class="row">
             <div class="col-sm-12">
-              <button type="button" class="btn btn-default" ng-click="produtoController.new();" >Novo</button>
-              <button type="submit" class="btn btn-default" ng-click="produtoController.save();" >Salvar</button>
-              <button type="button" class="btn btn-default" ng-click="produtoController.list();" >Listar</button>
+              <button type="button" class="btn btn-default" ng-click="produtoController.new();">Novo</button>
+              <button type="submit" class="btn btn-default" ng-click="produtoController.save();">Salvar</button>
+              <button type="button" class="btn btn-default" ng-click="produtoController.list();">Listar</button>
               <button type="button" class="btn btn-default" ng-click="produtoController.remove();" ng-if="produtoController.produto.id" >Excluir</button>
             </div>
           </div>
