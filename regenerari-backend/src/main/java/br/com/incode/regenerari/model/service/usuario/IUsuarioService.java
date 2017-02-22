@@ -5,6 +5,7 @@ import br.com.incode.regenerari.entity.UsuarioEntity;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 
 import javax.ejb.Local;
+import javax.validation.Valid;
 
 /**
  * Created by leandrolimadasilva on 19/12/16.
@@ -28,6 +29,6 @@ public  interface IUsuarioService extends IPlcEntityService<Long, UsuarioEntity>
      *
      * @return usuario
      */
-    UsuarioEntity alteraSenha(AlterarSenhaDTO dto);
+    UsuarioEntity alteraSenha(@Valid AlterarSenhaDTO dto);
 
 }

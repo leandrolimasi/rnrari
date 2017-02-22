@@ -14,7 +14,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Senha Atual</label>
-                <input type="password"  ng-required="true" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Código" name="alterarSenha.senhaAtual" ng-model="alterarSenhaController.alterarSenha.senhaAtual">
+                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Senha Atual" name="alterarSenha.senhaAtual" ng-model="alterarSenhaController.alterarSenha.senhaAtual">
               </div>
             </div>
 
@@ -25,14 +25,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Nova Senha</label>
-                <input type="password"  ng-required="true" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Código" name="alterarSenha.novaSenha" ng-model="alterarSenhaController.alterarSenha.novaSenha">
+                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Nova Senha" name="alterarSenha.novaSenha" ng-model="alterarSenhaController.alterarSenha.novaSenha">
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Confirma Nova Senha</label>
-                <input type="password"  ng-required="true" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Nome" name="alterarSenha.confirmaNovaSenha" ng-model="alterarSenhaController.alterarSenha.confirmaNovaSenha">
+                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Confirma Nova Senha" name="alterarSenha.confirmaNovaSenha" ng-model="alterarSenhaController.alterarSenha.confirmaNovaSenha">
               </div>
             </div>
 
@@ -41,7 +41,7 @@
 
           <div class="row">
             <div class="col-sm-12">
-              <button type="button" class="btn btn-default" ng-click="alterarSenha();" >Alterar Senha</button>
+              <button type="button" class="btn btn-default" ng-click="alterarSenhaController.alterarSenhaUsuario();" >Alterar Senha</button>
             </div>
           </div>
 

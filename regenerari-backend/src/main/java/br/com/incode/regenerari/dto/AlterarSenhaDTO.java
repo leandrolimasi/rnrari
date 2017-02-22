@@ -1,13 +1,19 @@
 package br.com.incode.regenerari.dto;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by leandro.lima on 21/02/2017.
  */
 public class AlterarSenhaDTO {
 
+
     private Long idUsuario;
+    @NotNull(message = "O Campo 'Senha Atual' é obrigatório.")
     private String senhaAtual;
+    @NotNull(message = "O Campo 'Nova Senha' é obrigatório.")
     private String novaSenha;
+    @NotNull(message = "O Campo 'Confirma Nova Senha' é obrigatório.")
     private String confirmaNovaSenha;
 
     /**

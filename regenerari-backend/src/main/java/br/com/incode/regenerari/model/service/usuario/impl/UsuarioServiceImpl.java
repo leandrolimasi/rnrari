@@ -62,7 +62,7 @@ public class UsuarioServiceImpl extends PlcAbstractServiceEntity<Long, UsuarioEn
         return super.save(entity);
     }
 
-    private void checaSenha(@Valid UsuarioEntity entity) {
+    private void checaSenha(UsuarioEntity entity) {
 
         //verifica os campos senha e confirmaSenha
         if (entity.getId() == null && !entity.getSenha().equals(entity.getConfirmaSenha())){
@@ -99,7 +99,7 @@ public class UsuarioServiceImpl extends PlcAbstractServiceEntity<Long, UsuarioEn
      * @return
      */
     @Override
-    public UsuarioEntity alteraSenha(AlterarSenhaDTO dto) {
+    public UsuarioEntity alteraSenha(@Valid AlterarSenhaDTO dto) {
         UsuarioEntity usuarioAtual = usuarioRepository.get(dto.getIdUsuario());
 
         String senhaCripto = appUtil.encriptaSenha(dto.getSenhaAtual());
