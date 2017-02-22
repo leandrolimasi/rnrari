@@ -67,6 +67,8 @@ public class UsuarioServiceImpl extends PlcAbstractServiceEntity<Long, UsuarioEn
         //verifica os campos senha e confirmaSenha
         if (entity.getId() == null && !entity.getSenha().equals(entity.getConfirmaSenha())){
             throw  new PlcException(AppBeanMessages.USUARIO_ERROR_SENHA_CONFIRMASENHA_INVALIDOS);
+        }else if (entity.getId() != null && !entity.getSenha().equals(entity.getConfirmaSenha())){
+            throw  new PlcException(AppBeanMessages.USUARIO_ERROR_NOVA_SENHA_CONFIRMASENHA_INVALIDOS);
         }
 
         //verifica senha valida
@@ -102,6 +104,7 @@ public class UsuarioServiceImpl extends PlcAbstractServiceEntity<Long, UsuarioEn
 
         String senhaCripto = appUtil.encriptaSenha(dto.getSenhaAtual());
         String novaSenhaCripto = appUtil.encriptaSenha(dto.getNovaSenha());
+        String confirmaNovaSenhaCripto = appUtil.encriptaSenha(dto.getConfirmaNovaSenha());
 
         //confere senha atual
         if (!usuarioAtual.getSenha().equals(senhaCripto)){
@@ -109,7 +112,7 @@ public class UsuarioServiceImpl extends PlcAbstractServiceEntity<Long, UsuarioEn
         }
 
         usuarioAtual.setSenha(novaSenhaCripto);
-        usuarioAtual.setConfirmaSenha(novaSenhaCripto);
+        usuarioAtual.setConfirmaSenha(confirmaNovaSenhaCripto);
         checaSenha(usuarioAtual);
 
         return usuarioRepository.save(usuarioAtual);

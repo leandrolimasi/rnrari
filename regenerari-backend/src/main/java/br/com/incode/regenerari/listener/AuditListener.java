@@ -1,8 +1,8 @@
 package br.com.incode.regenerari.listener;
 
-import br.com.incode.regenerari.util.AppConstants;
-import br.com.incode.regenerari.auth.UserInfoBean;
+import br.com.incode.regenerari.auth.AppAuthenticatedUserInfo;
 import br.com.incode.regenerari.entity.AppBaseEntity;
+import br.com.incode.regenerari.util.AppConstants;
 import org.apache.commons.beanutils.PropertyUtils;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -23,7 +23,7 @@ public class AuditListener {
     @PrePersist
     @PreUpdate
     private void auditaEntidade(Object entity){
-        UserInfoBean userInfo = CDI.current().select(UserInfoBean.class).get();
+        AppAuthenticatedUserInfo userInfo = CDI.current().select(AppAuthenticatedUserInfo.class).get();
         if (entity instanceof AppBaseEntity){
             try {
                 PropertyUtils.setProperty(entity, AppConstants.FIELD_DATE_ALT, new Date());

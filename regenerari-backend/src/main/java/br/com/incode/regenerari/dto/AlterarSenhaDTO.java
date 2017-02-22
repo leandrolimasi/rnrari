@@ -10,35 +10,59 @@ public class AlterarSenhaDTO {
     private String novaSenha;
     private String confirmaNovaSenha;
 
-    public String getSenhaAtual() {
-        return senhaAtual;
-    }
-
-    public void setSenhaAtual(String senhaAtual) {
-        this.senhaAtual = senhaAtual;
-    }
-
-    public String getNovaSenha() {
-        return novaSenha;
-    }
-
-    public void setNovaSenha(String novaSenha) {
-        this.novaSenha = novaSenha;
-    }
-
-    public String getConfirmaNovaSenha() {
-        return confirmaNovaSenha;
-    }
-
-    public void setConfirmaNovaSenha(String confirmaNovaSenha) {
-        this.confirmaNovaSenha = confirmaNovaSenha;
-    }
-
+    /**
+     * @return the idUsuario
+     */
     public Long getIdUsuario() {
         return idUsuario;
     }
 
+    /**
+     * @param idUsuario the idUsuario to set
+     */
     public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    /**
+     * @return the senhaAtual
+     */
+    public String getSenhaAtual() {
+        return senhaAtual;
+    }
+
+    /**
+     * @param senhaAtual the senhaAtual to set
+     */
+    public void setSenhaAtual(String senhaAtual) {
+        this.senhaAtual = senhaAtual;
+    }
+
+    /**
+     * @return the novaSenha
+     */
+    public String getNovaSenha() {
+        return novaSenha;
+    }
+
+    /**
+     * @param novaSenha the novaSenha to set
+     */
+    public void setNovaSenha(String novaSenha) {
+        this.novaSenha = novaSenha;
+    }
+
+    /**
+     * @return the confirmaNovaSenha
+     */
+    public String getConfirmaNovaSenha() {
+        return confirmaNovaSenha;
+    }
+
+    /**
+     * @param confirmaNovaSenha the confirmaNovaSenha to set
+     */
+    public void setConfirmaNovaSenha(String confirmaNovaSenha) {
+        this.confirmaNovaSenha = confirmaNovaSenha;
     }
 }

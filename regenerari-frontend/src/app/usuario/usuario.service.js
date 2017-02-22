@@ -15,7 +15,7 @@
         });
       },
 
-      alterarSenha : function(obj){
+      alterarSenha : function(data){
         return this._post('/alterarSenha', data);
       }
     });
