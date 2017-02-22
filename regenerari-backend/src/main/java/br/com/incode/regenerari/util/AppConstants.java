@@ -10,6 +10,7 @@ public interface AppConstants {
 
     String FIELD_USU_ALT= "usuarioUltimaAlteracao";
     String FIELD_DATE_ALT= "dataUltimaAlteracao";
+    String VERSAO= "versao";
     String ANONIMO= "Anônimo";
 
 
