@@ -70,14 +70,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Preço Mínimo</label>
-                <input type="number"  ng-required="true" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Preço Mínimo" name="produto.precoMinimo" ng-model="produtoController.produto.precoMinimo">
+                <input type="text" ui-money-mask ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" label="Preço Mínimo" name="produto.precoMinimo" ng-model="produtoController.produto.precoMinimo">
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Preço Máximo</label>
-                <input type="number"  ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Preço Máximo" name="produto.precoMaximo" ng-model="produtoController.produto.precoMaximo">
+                <input type="text" ui-money-mask  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" label="Preço Máximo" name="produto.precoMaximo" ng-model="produtoController.produto.precoMaximo">
               </div>
             </div>
 
@@ -89,6 +89,27 @@
               <div class="form-group">
                 <label>Validade</label>
                 <input type="number"  ng-required="true" class="form-control border-input" label="Validade" name="produto.validadeProduto" ng-model="produtoController.produto.validadeProduto">
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="checkbox c-checkbox">
+                <label><checkbox large ng-true-value="true"
+                                 ng-false-value="false" ng-model="produtoController.produto.produtoExperimental" label="Experimental" >Experimental </checkbox>
+                   Experimental </label>
+                </div>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Prescrição</label>
+                <textarea ng-maxlength="120" maxlength="120" rows="3" class="form-control border-input" label="Prescrição" name="produto.prescricao" ng-model="produtoController.produto.prescricao" ></textarea>
               </div>
             </div>
 

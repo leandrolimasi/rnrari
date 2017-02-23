@@ -3,7 +3,7 @@
 
   angular
     .module('regenerari-frontend', [
-        'jcompany-view'
+        'jcompany-view', 'ui.checkbox'
       ]
     );
 

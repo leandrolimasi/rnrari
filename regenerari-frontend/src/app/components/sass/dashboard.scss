@@ -1,0 +1,28 @@
+@import "dashboard/variables";
+@import "dashboard/mixins";
+
+@import "dashboard/typography";
+
+// Core CSS
+@import "dashboard/misc";
+@import "dashboard/sidebar-and-main-panel";
+@import "dashboard/buttons";
+@import "dashboard/inputs";
+
+@import "dashboard/alerts";
+@import "dashboard/tables";
+
+@import "dashboard/checkbox-radio";
+@import "dashboard/navbars";
+@import "dashboard/footers";
+
+// Fancy Stuff
+
+@import "dashboard/dropdown";
+@import "dashboard/cards";
+@import "dashboard/chartist";
+@import "dashboard/responsive";
+
+
+
+

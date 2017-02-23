@@ -2,7 +2,9 @@
 .checkbox,
 .radio {
     margin-bottom: 12px;
-    padding-left: 30px;
+    margin-top: 30px;
+    padding-right: 30px;
+    padding-left: 0px;
     position: relative;
     -webkit-transition: color,opacity 0.25s linear;
     transition: color,opacity 0.25s linear;

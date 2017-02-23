@@ -6,7 +6,7 @@
 	.config(RouterConfig);
 
 	/** @ngInject */
-	function RouterConfig($stateProvider, $urlRouterProvider) {
+	function RouterConfig($stateProvider, $urlRouterProvider, $locationProvider, $contextUrl) {
 
     $stateProvider.state('login',{
       url : '/login',
@@ -16,7 +16,8 @@
       access: 'public'
     })
 
-    $urlRouterProvider.otherwise('/inicial/home');
+    $urlRouterProvider.otherwise($contextUrl+'/inicial/home');
+    $locationProvider.html5Mode(false);
 	}
 
 })();

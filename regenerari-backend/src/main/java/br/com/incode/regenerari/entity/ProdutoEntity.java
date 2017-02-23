@@ -5,6 +5,7 @@ import br.com.incode.regenerari.enums.CategoriaProduto;
 import br.com.incode.regenerari.enums.UnidadeMedidaProduto;
 import br.com.incode.regenerari.listener.AuditListener;
 import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
+import com.powerlogic.jcompany.core.model.entity.IPlcLogicalExclusion;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 @EntityListeners(AuditListener.class)
 @SequenceGenerator(name = "SE_PRODUTO", sequenceName = "SE_PRODUTO")
-public class ProdutoEntity extends AppBaseEntity {
+public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion {
 
     /** atributo chave primaria
      */
@@ -81,7 +82,7 @@ public class ProdutoEntity extends AppBaseEntity {
     private BigDecimal precoMinimo;
 
     @Column(name = "PRODUTO_EXPERIMENTAL")
-    private Boolean produtoExperimental = Boolean.FALSE;
+    private Boolean produtoExperimental;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
