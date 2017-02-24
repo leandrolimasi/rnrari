@@ -15,7 +15,7 @@
 
 
               <div class="form-group">
-                <plc-aggregate-modal label="Produto" ng-entity="produto" ng-required="true"
+                <plc-aggregate-modal label="Produto" ng-entity="produto" ng-required="true" can-modal="true" can-autocomplete="false" name="composicaoProduto.produto"
                                      ng-model="composicaoProdutoController.composicaoProduto.produto" ng-model-lookup="nome" autocomplete-url="/produto/findAll"
                                      template="app/produto/produto-modal.html"  />
 
@@ -35,14 +35,14 @@
           <div class="row">
 
             <div class="col-md-6">
-              <div class="form-group">
-                <label>Experimental</label>
-                <input type="checkbox"  class="form-control border-input" label="Experimental" name="composicaoProduto.composicaoExperimental" ng-model="composicaoProdutoController.composicaoProduto.composicaoExperimental">
+              <div class="checkbox c-checkbox">
+                <label><checkbox large ng-true-value="true"
+                                 ng-false-value="false" ng-model="composicaoProdutoController.composicaoProduto.composicaoExperimental" label="Experimental" ></checkbox>
+                  Experimental </label>
               </div>
             </div>
 
           </div>
-
 
           <div class="row">
 

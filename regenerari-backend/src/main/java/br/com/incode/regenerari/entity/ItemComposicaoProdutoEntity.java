@@ -47,7 +47,6 @@ public class ItemComposicaoProdutoEntity extends AppBaseEntity {
     @XmlTransient
     @ManyToOne (targetEntity = ComposicaoProdutoEntity.class)
     @JoinColumn(name = "ID_COMPOSICAO_PRODUTO")
-    @NotNull
     private ComposicaoProdutoEntity composicaoProduto;
 
     /**

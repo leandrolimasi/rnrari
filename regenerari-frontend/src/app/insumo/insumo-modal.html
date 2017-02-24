@@ -1,0 +1,45 @@
+<div class="container-fluid" >
+
+  <form name="form" class="form-validate" novalidate ng-controller="InsumoController as insumoController" >
+
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Consulta de Insumos</h4>
+        </div>
+        <div class="content">
+
+          <div class="row">
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text" class="form-control border-input" ng-model="insumoController.insumoArg.nome">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <plc-grid sref="insumo.man" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="insumoController.find();" >Pesquisar</button>
+              <button type="button" class="btn btn-default" ng-click="insumoController.clear();" >Limpar</button>
+              <button type="button" class="btn btn-default" ng-click="closeThisDialog('button')">Fechar</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

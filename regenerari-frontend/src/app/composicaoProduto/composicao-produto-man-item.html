@@ -7,8 +7,9 @@
 
       <div class="col-md-4">
         <div class="form-group">
-          <label>Insumo</label>
-          <input type="text"  ng-required="true" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Insumo" name="composicaoProduto.insumo" ng-model="composicaoProdutoController.composicaoProduto.insumo">
+          <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true" can-autocomplete="false"
+                               ng-model="itemComposicaoProduto.insumo" ng-model-lookup="nome" autocomplete-url="/insumo/findAll"
+                               template="app/insumo/insumo-modal.html"  />
         </div>
         <input type="hidden" ng-model="itemComposicaoProduto.id" >
       </div>
@@ -16,7 +17,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Quantidade Insumo</label>
-          <input type="number"  ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Quantidade Insumo" name="composicaoProduto.quantidadeInsumo" ng-model="composicaoProdutoController.composicaoProduto.quantidadeInsumo">
+          <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade Insumo" name="itemComposicaoProduto.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
         </div>
       </div>
 
@@ -26,15 +27,18 @@
       <div class="col-md-8">
         <div class="form-group">
           <label>Observação</label>
-          <textarea class="form-control border-input" ng-model="composicaoProdutoController.composicaoProduto.observacao" ></textarea>
+          <textarea maxlength="80" ng-maxlength="80" class="form-control border-input" ng-model="itemComposicaoProduto.observacao" ></textarea>
         </div>
       </div>
 
     </div>
 
 
-
-
   </div>
+
+  <div class="row">
+    <button type="button" class="btn btn-default" ng-click="composicaoProdutoController.addItemDetail('composicaoProdutoController.composicaoProduto.itemComposicaoProduto');" >{{'label.adicionar' | translate}}</button>
+  </div>
+
 
 </div>

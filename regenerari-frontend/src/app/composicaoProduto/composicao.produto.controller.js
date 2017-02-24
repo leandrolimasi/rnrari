@@ -47,12 +47,7 @@
       { field: 'id', displayName: 'Cod.'}
     ];
 
-
-
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));
-
-
-
 
   }
 })();

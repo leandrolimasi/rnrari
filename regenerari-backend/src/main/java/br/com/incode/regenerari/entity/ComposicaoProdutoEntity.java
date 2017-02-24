@@ -44,7 +44,7 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
     private ProdutoEntity produto;
 
     @Column(name = "COMPOSICAO_EXPERIMENTAL")
-    private Boolean composicaoExperimental = Boolean.FALSE;
+    private Boolean composicaoExperimental;
 
     @NotNull(message = "O campo 'Rendimento' é obrigatório.")
     @Column(name = "RENDIMENTO")
@@ -79,7 +79,8 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
     private UsuarioEntity usuarioInativacao;
 
     @Valid
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "composicaoProduto",cascade = CascadeType.ALL, targetEntity = ItemComposicaoProdutoEntity.class)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "composicaoProduto",cascade = CascadeType.ALL,
+            targetEntity = ItemComposicaoProdutoEntity.class, orphanRemoval=true)
     private List<ItemComposicaoProdutoEntity> itemComposicaoProduto;
 
     /**
