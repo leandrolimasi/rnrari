@@ -1067,13 +1067,6 @@ hr {
   background-color: #E3E3E3;
 }
 
-.input-group .form-control:first-child,
-.input-group-addon:first-child,
-.input-group-btn:first-child > .dropdown-toggle,
-.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
-  border-right: 0 none;
-}
-
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .dropdown-toggle,
