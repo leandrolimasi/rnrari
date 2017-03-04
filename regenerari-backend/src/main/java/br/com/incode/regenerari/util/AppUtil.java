@@ -1,8 +1,12 @@
 package br.com.incode.regenerari.util;
 
+import br.com.incode.regenerari.auth.AppAuthenticatedUserInfo;
+import com.powerlogic.jcompany.core.rest.auth.PlcAuthenticatedUserInfo;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.spi.CDI;
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
@@ -59,5 +63,15 @@ public class AppUtil {
 
         return true;
 
+    }
+
+    /** Recupera usuario logado
+     *
+     * @return
+     */
+    public AppAuthenticatedUserInfo getUsuarioLogado(){
+        HttpServletRequest request = CDI.current().select(HttpServletRequest.class).get();
+        return (AppAuthenticatedUserInfo)
+                request.getSession().getAttribute(PlcAuthenticatedUserInfo.PROPERTY);
     }
 }

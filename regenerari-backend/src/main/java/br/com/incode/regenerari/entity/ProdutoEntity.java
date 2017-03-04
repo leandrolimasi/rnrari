@@ -6,6 +6,8 @@ import br.com.incode.regenerari.enums.UnidadeMedidaProduto;
 import br.com.incode.regenerari.listener.AuditListener;
 import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
 import com.powerlogic.jcompany.core.model.entity.IPlcLogicalExclusion;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -21,6 +23,7 @@ import java.util.Date;
  * Created by leandrolimadasilva on 20/02/17.
  */
 @Entity
+@Audited
 @Table(name = "PRODUTO")
 @Access(AccessType.FIELD)
 @XmlRootElement
@@ -92,6 +95,7 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
     @Column(name = "DATA_INATIVACAO")
     private Date dataInativacao;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     @ManyToOne (targetEntity = UsuarioEntity.class)
     @JoinColumn(name = "USUARIO_INATIVACAO")
     private UsuarioEntity usuarioInativacao;
@@ -100,6 +104,7 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
     @Column(name = "DATA_ULT_PRECO")
     private Date dataUltimoPreco;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     @ManyToOne (targetEntity = UsuarioEntity.class)
     @JoinColumn(name = "USUARIO_ULT_PRECO")
     private UsuarioEntity usuarioUltimoPreco;
@@ -108,6 +113,7 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
     @Column(name = "DATA_HOMOLOGACAO")
     private Date dataHomologacao;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     @ManyToOne (targetEntity = UsuarioEntity.class)
     @JoinColumn(name = "USUARIO_HOMOLOGACAO")
     private UsuarioEntity usuarioHomologacao;

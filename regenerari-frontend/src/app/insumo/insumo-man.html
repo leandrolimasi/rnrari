@@ -1,6 +1,6 @@
 <div class="container-fluid" >
 
-  <form name="form" class="form-validate" novalidate ng-controller="InsumoController as insumoController" >
+  <form name="form" autocomplete="off" class="form-validate" novalidate ng-controller="InsumoController as insumoController" >
 
     <div class="col-lg-12 col-md-12">
       <div class="card">
@@ -14,7 +14,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Código</label>
-                <input type="text"  ng-required="true" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Código" name="insumo.codigo" ng-model="insumoController.insumo.codigo">
+                <input type="text"  ng-required="true" ng-disabled="insumoController.insumo.id" ng-maxlength="50" maxlength="50" class="form-control border-input" label="Código" name="insumo.codigo" ng-model="insumoController.insumo.codigo">
               </div>
             </div>
 
@@ -50,7 +50,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Validade</label>
-                <input type="number"  ng-required="true" class="form-control border-input" label="Validade" name="insumo.validadeInsumo" ng-model="insumoController.insumo.validadeInsumo">
+                <input type="number"  ng-required="true" ng-maxlength="3" maxlength="3" class="form-control border-input" label="Validade" name="insumo.validadeInsumo" ng-model="insumoController.insumo.validadeInsumo">
               </div>
             </div>
 

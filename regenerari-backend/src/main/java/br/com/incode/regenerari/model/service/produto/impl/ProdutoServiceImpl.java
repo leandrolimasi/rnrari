@@ -1,5 +1,6 @@
 package br.com.incode.regenerari.model.service.produto.impl;
 
+import br.com.incode.regenerari.bo.ProdutoBO;
 import br.com.incode.regenerari.entity.ProdutoEntity;
 import br.com.incode.regenerari.model.repository.produto.ProdutoRepository;
 import br.com.incode.regenerari.model.service.produto.IProdutoService;
@@ -21,6 +22,9 @@ import javax.validation.Valid;
 public class ProdutoServiceImpl extends PlcAbstractServiceEntity<Long, ProdutoEntity> implements IProdutoService {
 
     @Inject
+    private ProdutoBO produtoBO;
+
+    @Inject
     private ProdutoRepository produtoRepository;
 
     @Override
@@ -30,6 +34,9 @@ public class ProdutoServiceImpl extends PlcAbstractServiceEntity<Long, ProdutoEn
 
     @Override
     public ProdutoEntity save(@Valid ProdutoEntity entity) throws PlcException {
+        produtoBO.validaAlteracaoCodigo(entity);
+        produtoBO.configuraAlteracaoPreco(entity);
+        produtoBO.validaAlteracaoExperimental(entity);
         return super.save(entity);
     }
 

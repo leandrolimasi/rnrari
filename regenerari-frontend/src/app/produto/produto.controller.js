@@ -28,7 +28,7 @@
 
 
     vm.columnDefs = [
-      { field: 'id', displayName: 'Cod.'},
+      { field: 'codigo', displayName: 'Código'},
       { field: 'nome', displayName: 'Nome'}
     ];
 

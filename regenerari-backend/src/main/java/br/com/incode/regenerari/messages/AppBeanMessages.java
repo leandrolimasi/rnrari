@@ -18,6 +18,9 @@ public enum AppBeanMessages implements IPlcMessageKey {
     USUARIO_ERROR_SENHA_ATUAL,
     USUARIO_SUCCESS_REGISTER,
 
+
+    PRODUTO_ERROR_CODIGO_ALTERADO,
+
     ;
     public String getName()
     {

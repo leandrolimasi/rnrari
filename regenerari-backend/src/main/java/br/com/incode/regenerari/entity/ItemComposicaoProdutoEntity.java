@@ -41,7 +41,6 @@ public class ItemComposicaoProdutoEntity extends AppBaseEntity {
 
     @Column(name = "OBSERVACAO")
     @Size(max = 80)
-    @NotBlank(message = "O campo 'Observação' é obrigatório.")
     private String observacao;
 
     @XmlTransient
