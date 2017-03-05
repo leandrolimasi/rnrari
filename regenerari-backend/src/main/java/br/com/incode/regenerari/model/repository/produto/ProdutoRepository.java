@@ -35,19 +35,27 @@ public class ProdutoRepository extends PlcAbstractRepository<Long, ProdutoEntity
 
         sp.caseInsensitive().anywhere();
 
+        sp.addMultiSelectProperties("id", "codigo", "nome");
+
         return super.find(entity, sp);
     }
 
     @Override
     protected void logicalRemove(ProdutoEntity entity) {
-        HttpServletRequest request = CDI.current().select(HttpServletRequest.class).get();
-        AppAuthenticatedUserInfo userInfo = (AppAuthenticatedUserInfo)
-                request.getSession().getAttribute(PlcAuthenticatedUserInfo.PROPERTY);
 
-        entity.setUsuarioInativacao(userInfo.getUsuario());
-        entity.setDataInativacao(new Date());
+        if (entity.getProdutoExperimental()){
+            physicalRemove(entity);
+        }else{
+            HttpServletRequest request = CDI.current().select(HttpServletRequest.class).get();
+            AppAuthenticatedUserInfo userInfo = (AppAuthenticatedUserInfo)
+                    request.getSession().getAttribute(PlcAuthenticatedUserInfo.PROPERTY);
 
-        super.logicalRemove(entity);
+            entity.setUsuarioInativacao(userInfo.getUsuario());
+            entity.setDataInativacao(new Date());
+
+            super.logicalRemove(entity);
+        }
+
     }
 
 

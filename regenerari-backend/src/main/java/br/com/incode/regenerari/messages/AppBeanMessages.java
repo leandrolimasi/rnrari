@@ -20,6 +20,10 @@ public enum AppBeanMessages implements IPlcMessageKey {
 
 
     PRODUTO_ERROR_CODIGO_ALTERADO,
+    PRODUTO_ERROR_VINCULO_COMPOSICAO,
+
+
+    INSUMO_ERROR_VINCULO_COMPOSICAO,
 
     ;
     public String getName()

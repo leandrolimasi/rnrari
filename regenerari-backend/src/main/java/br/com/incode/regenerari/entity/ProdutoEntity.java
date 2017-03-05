@@ -119,6 +119,24 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
     private UsuarioEntity usuarioHomologacao;
 
     /**
+     * Default
+     */
+    public ProdutoEntity(){}
+
+
+    /** Constructor for sel
+     *
+     * @param id
+     * @param codigo
+     * @param nome
+     */
+    public ProdutoEntity(Long id, String codigo, String nome){
+        this.id = id;
+        this.codigo = codigo;
+        this.nome = nome;
+    }
+
+    /**
      * @return the id
      */
     @Override
