@@ -32,7 +32,7 @@ import javax.ws.rs.core.MediaType;
 @Produces({ MediaType.APPLICATION_JSON })
 @Consumes({ MediaType.APPLICATION_JSON })
 @PlcMessageIntercept
-public class UsuarioRest extends PlcAbstractEntityRest<Long, UsuarioEntity, Object> {
+public class UsuarioRest extends PlcAbstractEntityRest<Long, UsuarioEntity> {
 
 
 

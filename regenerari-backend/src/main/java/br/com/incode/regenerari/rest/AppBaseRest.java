@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * Created by leandrolimadasilva on 05/03/17.
  */
-public abstract class AppBaseRest <PK extends Serializable, E extends IPlcEntityModel<PK>, A> extends PlcAbstractEntityRest<PK, E, A> {
+public abstract class AppBaseRest <PK extends Serializable, E extends IPlcEntityModel<PK>> extends PlcAbstractEntityRest<PK, E> {
 
     protected ConstraintViolationException findConstraintViolationException(Throwable throwable){
 

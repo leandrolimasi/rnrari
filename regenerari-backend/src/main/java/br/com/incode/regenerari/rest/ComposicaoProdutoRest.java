@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
 @Produces({ MediaType.APPLICATION_JSON })
 @Consumes({ MediaType.APPLICATION_JSON })
 @PlcMessageIntercept
-public class ComposicaoProdutoRest extends PlcAbstractEntityRest<Long, ComposicaoProdutoEntity, Object> {
+public class ComposicaoProdutoRest extends PlcAbstractEntityRest<Long, ComposicaoProdutoEntity> {
 
     @Inject
     private IComposicaoProdutoService composicaoProdutoService;

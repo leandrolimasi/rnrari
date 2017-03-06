@@ -3,7 +3,7 @@
 
   angular
     .module('regenerari-frontend', [
-        'jcompany-view', 'ui.checkbox'
+        'jcompany-view', 'ui.checkbox', 'mp.autoFocus'
       ]
     );
 

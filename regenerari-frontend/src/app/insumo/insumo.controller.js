@@ -6,7 +6,7 @@
     .controller('InsumoController', InsumoController);
 
   /** @ngInject */
-  function InsumoController($scope, InsumoService, $controller, $state) {
+  function InsumoController($scope, InsumoService, $controller, $state, $document) {
     var vm = this;
 
 
@@ -25,6 +25,23 @@
         $state.go( vm.$baseRoute + '.man', {id: response.data.entity.id} );
       }
     };
+
+    vm.afterInitialize = function(){
+
+      if ($state.current.name == 'insumo.man'){
+        if (vm[vm.$baseRoute] && vm[vm.$baseRoute]['id']){
+          var elem1 =  angular.element( $document[0].querySelector( "[name='insumo.nome']" ))[0];
+          elem1.focus();
+        }else{
+          var elem2 =  angular.element( $document[0].querySelector( "[name='insumo.codigo']" ))[0];
+          elem2.focus();
+        }
+      }else{
+        vm.find();
+      }
+
+
+    }
 
 
     vm.columnDefs = [

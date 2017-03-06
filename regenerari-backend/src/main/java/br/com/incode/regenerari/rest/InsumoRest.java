@@ -30,7 +30,7 @@ import javax.ws.rs.core.MediaType;
 @Produces({ MediaType.APPLICATION_JSON })
 @Consumes({ MediaType.APPLICATION_JSON })
 @PlcMessageIntercept
-public class InsumoRest extends AppBaseRest<Long, InsumoEntity, Object> {
+public class InsumoRest extends AppBaseRest<Long, InsumoEntity> {
 
     @Inject
     private IInsumoService insumoService;

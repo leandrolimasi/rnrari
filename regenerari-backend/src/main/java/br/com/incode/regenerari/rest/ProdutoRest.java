@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
 @Produces({ MediaType.APPLICATION_JSON })
 @Consumes({ MediaType.APPLICATION_JSON })
 @PlcMessageIntercept
-public class ProdutoRest extends AppBaseRest<Long, ProdutoEntity, Object> {
+public class ProdutoRest extends AppBaseRest<Long, ProdutoEntity> {
 
     @Inject
     private IProdutoService produtoService;

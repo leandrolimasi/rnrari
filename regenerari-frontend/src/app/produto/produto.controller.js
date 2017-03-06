@@ -6,7 +6,7 @@
     .controller('ProdutoController', ProdutoController);
 
   /** @ngInject */
-  function ProdutoController($scope, ProdutoService, $controller, $state) {
+  function ProdutoController($scope, ProdutoService, $controller, $state, $document) {
     var vm = this;
 
 
@@ -25,6 +25,25 @@
         $state.go( vm.$baseRoute + '.man', {id: response.data.entity.id} );
       }
     };
+
+
+    vm.afterInitialize = function(){
+
+      if ($state.current.name == 'produto.man'){
+        if (vm[vm.$baseRoute] && vm[vm.$baseRoute]['id']){
+          var elem1 =  angular.element( $document[0].querySelector( "[name='produto.nome']" ))[0];
+          elem1.focus();
+        }else{
+          var elem2 =  angular.element( $document[0].querySelector( "[name='produto.codigo']" ))[0];
+          elem2.focus();
+        }
+      }else{
+        vm.find();
+      }
+
+
+    }
+
 
 
     vm.columnDefs = [
