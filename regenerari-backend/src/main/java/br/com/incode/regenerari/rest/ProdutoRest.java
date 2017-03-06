@@ -10,7 +10,6 @@ import br.com.incode.regenerari.model.service.produto.IProdutoService;
 import com.powerlogic.jcompany.core.exception.PlcException;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 import com.powerlogic.jcompany.core.rest.auth.PlcNotAuthenticated;
-import com.powerlogic.jcompany.core.rest.entity.PlcAbstractEntityRest;
 import com.powerlogic.jcompany.core.rest.messages.PlcMessageIntercept;
 import org.hibernate.exception.ConstraintViolationException;
 

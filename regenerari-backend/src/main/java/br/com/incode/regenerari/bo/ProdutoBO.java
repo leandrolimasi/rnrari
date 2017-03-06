@@ -39,6 +39,30 @@ public class ProdutoBO extends AppBO {
                 throw new PlcException(AppBeanMessages.PRODUTO_ERROR_CODIGO_ALTERADO);
             }
 
+            if (!produto.getNome().equals(produtoAnterior.getNome())) {
+                throw new PlcException(AppBeanMessages.PRODUTO_ERROR_NOME_ALTERADO);
+            }
+
+            if (!produto.getCategoriaProduto().equals(produtoAnterior.getCategoriaProduto())) {
+                throw new PlcException(AppBeanMessages.PRODUTO_ERROR_CATEGORIA_ALTERADO);
+            }
+
+            if (!produto.getApresentacaoProduto().equals(produtoAnterior.getApresentacaoProduto())) {
+                throw new PlcException(AppBeanMessages.PRODUTO_ERROR_APRESENTACAO_ALTERADO);
+            }
+
+            if (!produto.getUnidadeMedidaProduto().equals(produtoAnterior.getUnidadeMedidaProduto())) {
+                throw new PlcException(AppBeanMessages.PRODUTO_ERROR_UNIDADE_MEDIDA_ALTERADO);
+            }
+
+            if (!produto.getPrescricao().equals(produtoAnterior.getPrescricao())) {
+                throw new PlcException(AppBeanMessages.PRODUTO_ERROR_PRESCRICAO_ALTERADO);
+            }
+
+            if (!produto.getQuantidadeApresentacao().equals(produtoAnterior.getQuantidadeApresentacao())) {
+                throw new PlcException(AppBeanMessages.PRODUTO_ERROR_QUANTIDADE_ALTERADO);
+            }
+
         }
     }
 

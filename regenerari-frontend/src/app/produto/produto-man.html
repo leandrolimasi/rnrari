@@ -21,7 +21,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Nome</label>
-                <input type="text"  ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Nome" name="produto.nome" ng-model="produtoController.produto.nome">
+                <input type="text"  ng-required="true" ng-maxlength="150" ng-disabled="produtoController.produto.id" maxlength="150" class="form-control border-input" label="Nome" name="produto.nome" ng-model="produtoController.produto.nome">
               </div>
             </div>
 
@@ -31,14 +31,14 @@
 
             <div class="col-md-6">
               <div class="form-group">
-                <plc-static-combo ng-model="produtoController.produto.categoriaProduto" name="produto.categoriaProduto"  ng-enum="categoriaProduto" label="Categoria"
+                <plc-static-combo ng-model="produtoController.produto.categoriaProduto" ng-disabled="produtoController.produto.id" name="produto.categoriaProduto"  ng-enum="categoriaProduto" label="Categoria"
                                   no-selected-value="[Selecione...]" ng-enum-value="categoriaProduto" />
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
-                <plc-static-combo ng-model="produtoController.produto.unidadeMedidaProduto" name="produto.unidadeMedidaProduto"  ng-enum="unidadeMedidaProduto" label="Unidade Medida"
+                <plc-static-combo ng-model="produtoController.produto.unidadeMedidaProduto" ng-disabled="produtoController.produto.id" name="produto.unidadeMedidaProduto"  ng-enum="unidadeMedidaProduto" label="Unidade Medida"
                                   no-selected-value="[Selecione...]" ng-enum-value="unidadeMedidaProduto" />
               </div>
             </div>
@@ -50,7 +50,7 @@
             <div class="col-md-6">
               <div class="form-group">
 
-                <plc-static-combo ng-model="produtoController.produto.apresentacaoProduto" name="produto.apresentacaoProduto"  ng-enum="apresentacaoProduto" label="Apresentação"
+                <plc-static-combo ng-model="produtoController.produto.apresentacaoProduto" ng-disabled="produtoController.produto.id" name="produto.apresentacaoProduto"  ng-enum="apresentacaoProduto" label="Apresentação"
                                   no-selected-value="[Selecione...]" ng-enum-value="apresentacaoProduto" />
 
               </div>
@@ -59,7 +59,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Quantidade Apresentação</label>
-                <input type="number"  ng-required="true" ng-maxlength="10" maxlength="10" class="form-control border-input" label="Quantidade Apresentação" name="produto.quantidadeApresentacao" ng-model="produtoController.produto.quantidadeApresentacao">
+                <input type="number"  ng-required="true" ng-maxlength="10" ng-disabled="produtoController.produto.id" maxlength="10" class="form-control border-input" label="Quantidade Apresentação" name="produto.quantidadeApresentacao" ng-model="produtoController.produto.quantidadeApresentacao">
               </div>
             </div>
 
@@ -108,7 +108,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Prescrição</label>
-                <textarea ng-maxlength="120" maxlength="120" rows="3" class="form-control border-input" label="Prescrição" name="produto.prescricao" ng-model="produtoController.produto.prescricao" ></textarea>
+                <textarea ng-maxlength="120" maxlength="120" rows="3" ng-disabled="produtoController.produto.id" class="form-control border-input" label="Prescrição" name="produto.prescricao" ng-model="produtoController.produto.prescricao" ></textarea>
               </div>
             </div>
 
