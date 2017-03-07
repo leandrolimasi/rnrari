@@ -29,6 +29,13 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 @EntityListeners(AuditListener.class)
 @SequenceGenerator(name = "SE_COMPOSICAO_PRODUTO", sequenceName = "SE_COMPOSICAO_PRODUTO")
+@NamedQueries({@NamedQuery(
+        name = "ComposicaoProdutoEntity.findComposicaoByInsumo",
+        query = "SELECT c from ComposicaoProdutoEntity c " +
+                "left join c.itemComposicaoProduto itemComposicaoProduto " +
+                "where itemComposicaoProduto.insumo.id = :idInsumo " +
+                "order by c.id asc"
+)})
 public class ComposicaoProdutoEntity extends AppBaseEntity {
 
     /** atributo chave primaria
@@ -52,11 +59,11 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_CRIACAO")
-    private Date dataCriacao = new Date();
+    private Date dataCriacao;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private PlcSituacao situacao = PlcSituacao.A;
+    private PlcSituacao situacao;
 
     @ManyToOne (targetEntity = UsuarioEntity.class)
     @JoinColumn(name = "USUARIO_CRIACAO")

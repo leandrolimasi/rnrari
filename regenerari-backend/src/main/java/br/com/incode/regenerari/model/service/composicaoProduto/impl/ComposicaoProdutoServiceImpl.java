@@ -5,6 +5,7 @@ import br.com.incode.regenerari.model.repository.composicaoProduto.ComposicaoPro
 import br.com.incode.regenerari.model.service.composicaoProduto.IComposicaoProdutoService;
 import com.powerlogic.jcompany.commons.interceptor.validation.PlcValidationInterceptor;
 import com.powerlogic.jcompany.core.exception.PlcException;
+import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
 import com.powerlogic.jcompany.core.model.repository.IPlcEntityRepository;
 import com.powerlogic.jcompany.core.model.service.PlcAbstractServiceEntity;
 
@@ -12,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.validation.Valid;
+import java.util.Date;
 
 /**
  * Created by leandrolimadasilva on 20/12/16.
@@ -30,6 +32,10 @@ public class ComposicaoProdutoServiceImpl extends PlcAbstractServiceEntity<Long,
 
     @Override
     public ComposicaoProdutoEntity save(@Valid ComposicaoProdutoEntity entity) throws PlcException {
+        if (entity.getId() == null){
+            entity.setDataCriacao(new Date());
+            entity.setSituacao(PlcSituacao.A);
+        }
         return super.save(entity);
     }
 
