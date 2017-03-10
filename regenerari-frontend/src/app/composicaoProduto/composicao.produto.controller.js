@@ -6,7 +6,7 @@
     .controller('ComposicaoProdutoController', ComposicaoProdutoController);
 
   /** @ngInject */
-  function ComposicaoProdutoController($scope, ComposicaoProdutoService, $controller, $state) {
+  function ComposicaoProdutoController($scope, ComposicaoProdutoService, $controller, $state, $window) {
     var vm = this;
 
     vm.$baseService = ComposicaoProdutoService;
@@ -42,6 +42,30 @@
 
 
     };
+
+    vm.getEnumUnidadeMedidaProduto = function(simbol){
+
+      if ($window.localStorage.getItem('unidadeMedidaProduto') != null){
+        var unidadeMedidaProduto = angular.fromJson($window.localStorage.getItem('unidadeMedidaProduto'));
+        var ret = _.filter(unidadeMedidaProduto, {unidadeMedidaProduto: simbol});
+        if (ret && ret[0]){
+          return ret[0].descricao;
+        }
+      }
+
+    }
+
+    vm.getEnumUnidadeMedidaInsumo = function(simbol){
+
+      if ($window.localStorage.getItem('unidadeMedidaInsumo') != null){
+        var unidadeMedidaInsumo = angular.fromJson($window.localStorage.getItem('unidadeMedidaInsumo'));
+        var ret = _.filter(unidadeMedidaInsumo, {unidadeMedidaInsumo: simbol});
+        if (ret && ret[0]){
+          return ret[0].descricao;
+        }
+      }
+
+    }
 
     vm.columnDefs = [
       { field: 'id', displayName: 'Cod.'}

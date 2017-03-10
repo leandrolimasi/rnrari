@@ -17,7 +17,14 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Quantidade Insumo</label>
-          <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade Insumo" name="itemComposicaoProduto.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
+
+
+
+          <div class="input-group">
+            <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade Insumo" name="itemComposicaoProduto.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
+            <span class="input-group-addon" id="basic-addon2">{{composicaoProdutoController.getEnumUnidadeMedidaInsumo(itemComposicaoProduto.insumo.unidadeMedidaInsumo)}}</span>
+          </div>
+
         </div>
       </div>
 

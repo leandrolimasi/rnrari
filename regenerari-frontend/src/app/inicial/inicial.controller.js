@@ -6,9 +6,30 @@
     .controller('InicialController', InicialController);
 
   /** @ngInject */
-  function InicialController($state, PlcAuthService) {
+  function InicialController($state, PlcAuthService, PlcRestService, $window) {
     var vm = this;
 
+
+    vm.loadEnums = function(){
+      var service = new PlcRestService({
+        path: "/rest/entity/lookup"
+      });
+
+
+      if ($window.localStorage.getItem('unidadeMedidaProduto') == null){
+        service.get('/unidadeMedidaProduto').then(function (response) {
+          $window.localStorage.setItem('unidadeMedidaProduto', angular.toJson(response.data));
+        });
+      }
+
+      if ($window.localStorage.getItem('unidadeMedidaInsumo') == null){
+        service.get('/unidadeMedidaInsumo').then(function (response) {
+          $window.localStorage.setItem('unidadeMedidaInsumo', angular.toJson(response.data));
+        });
+      }
+
+
+    }
 
     vm.logout = function(){
       PlcAuthService.logout().then(function() {
@@ -17,6 +38,7 @@
     }
 
 
+    vm.loadEnums();
 
 
   }

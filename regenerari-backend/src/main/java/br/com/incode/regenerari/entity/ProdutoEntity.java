@@ -136,6 +136,9 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
         this.nome = nome;
     }
 
+    @Transient
+    private String unidadeMedidaDescricao;
+
     /**
      * @return the id
      */
@@ -402,5 +405,19 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
      */
     public void setSituacao(PlcSituacao situacao) {
         this.situacao = situacao;
+    }
+
+    /**
+     * @return the unidadeMedidaDescricao
+     */
+    public String getUnidadeMedidaDescricao() {
+        return unidadeMedidaProduto.getLabel();
+    }
+
+    /**
+     * @param unidadeMedidaDescricao the unidadeMedidaDescricao to set
+     */
+    public void setUnidadeMedidaDescricao(String unidadeMedidaDescricao) {
+        this.unidadeMedidaDescricao = unidadeMedidaDescricao;
     }
 }
