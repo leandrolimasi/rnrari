@@ -59,41 +59,40 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 
 
 
-.form-control.border-input.ng-dirty.ng-invalid{
+.form-control.ng-dirty.ng-invalid{
   border-color: #f05050;
 }
 
-.form-control.border-input.ng-dirty.ng-valid,
-.form-control.border-input.ng-dirty.ng-valid:focus {
+.form-control.ng-dirty.ng-valid,
+.form-control.ng-dirty.ng-valid:focus {
   border-color: #27c24c;
 }
-.form-control.border-input .has-error {
+.form-control .c-checkbox input.ng-dirty.ng-invalid + span,
+.form-control .c-radio input.ng-dirty.ng-invalid + span {
   border-color: #f05050;
 }
-.form-control.border-input .c-checkbox input.ng-dirty.ng-invalid + span,
-.form-control.border-input .c-radio input.ng-dirty.ng-invalid + span {
+.form-control .ui-select-container.ng-dirty.ng-invalid .btn {
   border-color: #f05050;
 }
-.form-control.border-input .ui-select-container.ng-dirty.ng-invalid .btn {
-  border-color: #f05050;
-}
-.form-control.border-input .input-group .ui-select-container.ng-dirty.ng-invalid .btn {
+.form-control .input-group .ui-select-container.ng-dirty.ng-invalid .btn {
   margin-left: -1px;
 }
-.form-control.border-input .chosen-select.ng-dirty.ng-invalid + .chosen-container > .chosen-choices {
+.form-control .chosen-select.ng-dirty.ng-invalid + .chosen-container > .chosen-choices {
   border-color: #f05050;
 }
-.form-control.border-input .chosen-select.ng-dirty.ng-valid + .chosen-container > .chosen-choices,
-.form-control.border-input .chosen-select.ng-dirty.ng-valid:focus + .chosen-container > .chosen-choices {
+.form-control .chosen-select.ng-dirty.ng-valid + .chosen-container > .chosen-choices,
+.form-control .chosen-select.ng-dirty.ng-valid:focus + .chosen-container > .chosen-choices {
   border-color: #27c24c;
 }
-.form-control.border-input.ng-dirty.ng-invalid + .bootstrap-tagsinput {
+.form-control.ng-dirty.ng-invalid + .bootstrap-tagsinput {
   border-color: #f05050;
 }
-.form-control.border-input.ng-dirty.ng-valid + .bootstrap-tagsinput,
-.form-control.border-input.ng-dirty.ng-valid:focus + .bootstrap-tagsinput {
+.form-control.ng-dirty.ng-valid + .bootstrap-tagsinput,
+.form-control.ng-dirty.ng-valid:focus + .bootstrap-tagsinput {
   border-color: #27c24c;
 }
+
+
 
 
 [uib-typeahead-popup].dropdown-menu {
@@ -105,6 +104,14 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
   background-color: #f5f9e9 !important;
   color: #8d8d8d;
+}
+
+.ui-grid-render-container-body .ui-grid-viewport {
+  height: 180px !important;
+}
+
+.ui-grid{
+  height: 250px !important;
 }
 
 /**

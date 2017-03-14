@@ -31,14 +31,14 @@
 
             <div class="col-md-6">
               <div class="form-group">
-                <plc-static-combo ng-model="insumoController.insumo.categoriaInsumo" name="insumo.categoriaInsumo"  ng-enum="categoriaInsumo" label="Categoria"
+                <plc-static-combo ng-required="true" ng-model="insumoController.insumo.categoriaInsumo" name="insumo.categoriaInsumo"  ng-enum="categoriaInsumo" label="Categoria"
                                   no-selected-value="[Selecione...]" ng-enum-value="categoriaInsumo" />
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
-                <plc-static-combo ng-model="insumoController.insumo.unidadeMedidaInsumo" name="insumo.unidadeMedidaInsumo"  ng-enum="unidadeMedidaInsumo" label="Unidade Medida"
+                <plc-static-combo ng-required="true" ng-model="insumoController.insumo.unidadeMedidaInsumo" name="insumo.unidadeMedidaInsumo"  ng-enum="unidadeMedidaInsumo" label="Unidade Medida"
                                   no-selected-value="[Selecione...]" ng-enum-value="unidadeMedidaInsumo" />
                </div>
             </div>
