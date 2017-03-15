@@ -7,7 +7,8 @@
 
       <div class="col-md-4">
         <div class="form-group">
-          <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true" can-autocomplete="true"
+          <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true" master-label="'Item Composição'"
+                               can-autocomplete="true" name="itemComposicaoProduto.{{$index}}.insumo"
                                ng-model="itemComposicaoProduto.insumo" ng-model-lookup="nome" autocomplete-url="/insumo/findAll"
                                template="app/insumo/insumo-modal.html"  />
         </div>
@@ -17,11 +18,9 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Quantidade Insumo</label>
-
-
-
           <div class="input-group">
-            <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade Insumo" name="itemComposicaoProduto.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
+            <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" master-label="'Item Composição'"
+                   label="Quantidade Insumo" name="itemComposicaoProduto.{{$index}}.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
             <span class="input-group-addon" id="basic-addon2">{{composicaoProdutoController.getEnumUnidadeMedidaInsumo(itemComposicaoProduto.insumo.unidadeMedidaInsumo)}}</span>
           </div>
 
