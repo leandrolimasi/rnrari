@@ -36,8 +36,6 @@
           var elem2 =  angular.element( $document[0].querySelector( "[name='insumo.codigo']" ))[0];
           elem2.focus();
         }
-      }else{
-        vm.find();
       }
 
 

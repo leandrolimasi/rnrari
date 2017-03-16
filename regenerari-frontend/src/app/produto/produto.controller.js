@@ -37,8 +37,6 @@
           var elem2 =  angular.element( $document[0].querySelector( "[name='produto.codigo']" ))[0];
           elem2.focus();
         }
-      }else{
-        vm.find();
       }
 
 
