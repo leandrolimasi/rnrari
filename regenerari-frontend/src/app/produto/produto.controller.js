@@ -9,11 +9,8 @@
   function ProdutoController($scope, ProdutoService, $controller, $state, $document) {
     var vm = this;
 
-
     vm.$baseService = ProdutoService;
     vm.$baseRoute = 'produto';
-
-
 
     vm.new = function () {
       vm[vm.$baseRoute] = new Object();
@@ -46,7 +43,8 @@
 
     vm.columnDefs = [
       { field: 'codigo', displayName: 'Código'},
-      { field: 'nome', displayName: 'Nome'}
+      { field: 'nome', displayName: 'Nome' },
+      { field: 'statusDescricao', displayName: 'Status' }
     ];
 
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));

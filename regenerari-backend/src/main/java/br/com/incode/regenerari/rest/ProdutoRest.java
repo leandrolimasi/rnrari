@@ -7,7 +7,9 @@ package br.com.incode.regenerari.rest;
 import br.com.incode.regenerari.entity.ProdutoEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;
 import br.com.incode.regenerari.model.service.produto.IProdutoService;
+import com.powerlogic.jcompany.core.commons.search.PlcPagedResult;
 import com.powerlogic.jcompany.core.exception.PlcException;
+import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 import com.powerlogic.jcompany.core.rest.auth.PlcNotAuthenticated;
 import com.powerlogic.jcompany.core.rest.messages.PlcMessageIntercept;
@@ -38,6 +40,23 @@ public class ProdutoRest extends AppBaseRest<Long, ProdutoEntity> {
         return produtoService;
     }
 
+
+    @Override
+    public PlcPagedResult<ProdutoEntity> findPaged() throws PlcException {
+        PlcPagedResult<ProdutoEntity> result = super.findPaged();
+
+        for (ProdutoEntity produto: result.getList()){
+
+            if (PlcSituacao.A.equals(produto.getSituacao())){
+                produto.setStatusDescricao("Ativo");
+            }else{
+                produto.setStatusDescricao("Inativo");
+            }
+
+        }
+
+        return result;
+    }
 
     @Override
     public boolean remove(ProdutoEntity entity) throws PlcException {

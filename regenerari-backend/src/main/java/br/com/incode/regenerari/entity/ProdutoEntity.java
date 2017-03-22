@@ -5,7 +5,6 @@ import br.com.incode.regenerari.enums.CategoriaProduto;
 import br.com.incode.regenerari.enums.UnidadeMedidaProduto;
 import br.com.incode.regenerari.listener.AuditListener;
 import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
-import com.powerlogic.jcompany.core.model.entity.IPlcLogicalExclusion;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 import org.hibernate.validator.constraints.NotBlank;
@@ -30,7 +29,7 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 @EntityListeners(AuditListener.class)
 @SequenceGenerator(name = "SE_PRODUTO", sequenceName = "SE_PRODUTO")
-public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion {
+public class ProdutoEntity extends AppBaseEntity {
 
     /** atributo chave primaria
      */
@@ -89,7 +88,7 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private PlcSituacao situacao = PlcSituacao.A;
+    private PlcSituacao situacao;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INATIVACAO")
@@ -138,6 +137,9 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
 
     @Transient
     private String unidadeMedidaDescricao;
+
+    @Transient
+    private String statusDescricao;
 
     /**
      * @return the id
@@ -419,5 +421,19 @@ public class ProdutoEntity extends AppBaseEntity implements IPlcLogicalExclusion
      */
     public void setUnidadeMedidaDescricao(String unidadeMedidaDescricao) {
         this.unidadeMedidaDescricao = unidadeMedidaDescricao;
+    }
+
+    /**
+     * @return the statusDescricao
+     */
+    public String getStatusDescricao() {
+        return statusDescricao;
+    }
+
+    /**
+     * @param statusDescricao the statusDescricao to set
+     */
+    public void setStatusDescricao(String statusDescricao) {
+        this.statusDescricao = statusDescricao;
     }
 }
