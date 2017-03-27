@@ -6,6 +6,9 @@ import com.powerlogic.jcompany.core.rest.auth.PlcAuthenticatedUserInfo;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Specializes;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.security.Principal;
 import java.util.List;
 

@@ -6,8 +6,10 @@
     .controller('InicialController', InicialController);
 
   /** @ngInject */
-  function InicialController($state, PlcAuthService, PlcRestService, $window) {
+  function InicialController($state, PlcAuthService, PlcRestService, $window, $rootScope) {
     var vm = this;
+
+    vm.isAdmin = _.findIndex($rootScope.user, 'ADMIN');
 
 
     vm.loadEnums = function(){

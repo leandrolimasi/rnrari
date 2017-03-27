@@ -9,6 +9,7 @@ import com.powerlogic.jcompany.core.rest.auth.PlcAuthenticationProvider;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Specializes;
 import javax.enterprise.inject.spi.CDI;
+import javax.inject.Inject;
 import java.security.Principal;
 import java.util.List;
 
@@ -19,11 +20,14 @@ import java.util.List;
 @Specializes
 public class AppAuthenticationProvider extends PlcAuthenticationProvider{
 
+    @Inject
+    private AppAuthenticatedUserInfo userInfo;
+
     @Override
     public PlcAuthenticatedUserInfo createUser(Principal userPrincipal, String host, List<String> roles) throws PlcException {
         IUsuarioService usuarioService = CDI.current().select(IUsuarioService.class).get();
         UsuarioEntity usuario = usuarioService.findUsuarioByLogin(userPrincipal.getName());
-        AppAuthenticatedUserInfo userInfo =  new AppAuthenticatedUserInfo(userPrincipal, host, roles, usuario);
+        userInfo =  new AppAuthenticatedUserInfo(userPrincipal, host, roles, usuario);
         userInfo.setUsuario(usuario);
         return userInfo;
     }
