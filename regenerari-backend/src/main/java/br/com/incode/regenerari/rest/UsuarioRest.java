@@ -48,14 +48,10 @@ public class UsuarioRest extends AppBaseRest<Long, UsuarioEntity>{
     @Context
     private UriInfo uriInfo;
 
-
-
     @Override
     protected IPlcEntityService<Long, UsuarioEntity> getEntityService() {
         return usuarioService;
     }
-
-
 
 
     @Override

@@ -1,0 +1,53 @@
+<div class="container-fluid" >
+
+  <form name="formAlterarSenha" class="form-validate" novalidate ng-controller="AlterarSenhaController as alterarSenhaController" >
+
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Alterar Senha</h4>
+        </div>
+        <div class="content">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Senha Atual</label>
+                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Senha Atual" name="alterarSenha.senhaAtual" ng-model="alterarSenhaController.alterarSenha.senhaAtual">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Nova Senha</label>
+                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Nova Senha" name="alterarSenha.novaSenha" ng-model="alterarSenhaController.alterarSenha.novaSenha">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Confirma Nova Senha</label>
+                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Confirma Nova Senha" name="alterarSenha.confirmaNovaSenha" ng-model="alterarSenhaController.alterarSenha.confirmaNovaSenha">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="alterarSenhaController.alterarSenhaUsuario();" >Alterar Senha</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
