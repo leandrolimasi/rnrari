@@ -23,6 +23,7 @@
 		<class>br.com.incode.regenerari.entity.ComposicaoProdutoEntity</class>
 		<class>br.com.incode.regenerari.entity.ItemComposicaoProdutoEntity</class>
 
+		<class>br.com.incode.regenerari.entity.EstoqueInsumoEntity</class>
 
 		<!-- Entities -->
 		<!-- GENERATOR INSERTS HERE  -->
@@ -36,7 +37,7 @@
 			<property name="format_sql" value="true" />
             <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
-			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 			<!-- Configuração do Hibernate Envers -->
 			<property name="post-insert" value="org.hibernate.ejb.event.EJB3PostInsertEventListener, org.hibernate.envers.event.EnversListener" />

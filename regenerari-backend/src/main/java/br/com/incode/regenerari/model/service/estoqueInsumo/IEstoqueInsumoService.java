@@ -5,11 +5,20 @@ import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
 import br.com.incode.regenerari.entity.InsumoEntity;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 
+import javax.ejb.Local;
+import javax.validation.Valid;
+
 /**
  * Created by leandrolimadasilva on 12/04/17.
  */
+@Local
 public interface IEstoqueInsumoService extends IPlcEntityService<Long, EstoqueInsumoEntity> {
 
-    EstoqueInsumoEntity entrada(EntradaEstoqueInsumoDTO dto);
+    /** Entrada de Estoque de insumo
+     *
+     * @param dto
+     * @return
+     */
+    EstoqueInsumoEntity entrada(@Valid EntradaEstoqueInsumoDTO dto);
 
 }

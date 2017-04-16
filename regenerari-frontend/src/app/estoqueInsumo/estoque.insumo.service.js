@@ -13,6 +13,9 @@
                     type: 'estoque-insumo',
                     applyMetadata: false
                 });
+            },
+            entrada : function(data){
+              return this._post('/entrada', data);
             }
         });
 

@@ -1,6 +1,6 @@
 <div class="container-fluid" >
 
-  <form name="formAlterarSenha" class="form-validate" novalidate ng-controller="AlterarSenhaController as alterarSenhaController" >
+  <form name="entradaInsumo" class="form-validate" novalidate ng-controller="EntradaInsumoController as entradaInsumoController" >
 
     <div class="col-lg-12 col-md-12">
       <div class="card">
@@ -13,8 +13,10 @@
 
             <div class="col-md-6">
               <div class="form-group">
-                <label>Senha Atual</label>
-                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Senha Atual" name="alterarSenha.senhaAtual" ng-model="alterarSenhaController.alterarSenha.senhaAtual">
+                <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true"
+                                     can-autocomplete="true" name="entradaInsumo.insumo"
+                                     ng-model="entradaInsumoController.entradaInsumo.insumo" ng-model-lookup="nome" autocomplete-url="/insumo/findAll"
+                                     template="app/insumo/insumo-modal.html"  />
               </div>
             </div>
 
@@ -24,15 +26,15 @@
 
             <div class="col-md-6">
               <div class="form-group">
-                <label>Nova Senha</label>
-                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Nova Senha" name="alterarSenha.novaSenha" ng-model="alterarSenhaController.alterarSenha.novaSenha">
+                <label>Quantidade</label>
+                <input type="text"  ng-required="true" ui-number-mask="3" ui-hide-group-sep ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade" name="entradaInsumo.quantidade" ng-model="entradaInsumoController.entradaInsumo.quantidade">
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
-                <label>Confirma Nova Senha</label>
-                <input type="password"  ng-required="true" ng-minlength="6" ng-maxlength="100" maxlength="100" class="form-control border-input" label="Confirma Nova Senha" name="alterarSenha.confirmaNovaSenha" ng-model="alterarSenhaController.alterarSenha.confirmaNovaSenha">
+                <label>Valor Compra Total</label>
+                <input type="text"  ng-required="true" ui-money-mask  ng-maxlength="15" maxlength="15" class="form-control border-input" label="Valor Compra Total" name="entradaInsumo.valorCompraTotal" ng-model="entradaInsumoController.entradaInsumo.valorCompraTotal">
               </div>
             </div>
 
@@ -41,7 +43,7 @@
 
           <div class="row">
             <div class="col-sm-12">
-              <button type="button" class="btn btn-default" ng-click="alterarSenhaController.alterarSenhaUsuario();" >Alterar Senha</button>
+              <button type="button" class="btn btn-default" ng-click="entradaInsumoController.entradaEstoqueInsumo();" >Salvar</button>
             </div>
           </div>
 

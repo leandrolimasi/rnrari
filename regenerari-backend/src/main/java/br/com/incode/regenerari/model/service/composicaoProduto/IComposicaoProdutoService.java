@@ -11,5 +11,4 @@ import javax.ejb.Local;
 @Local
 public  interface IComposicaoProdutoService extends IPlcEntityService<Long, ComposicaoProdutoEntity> {
 
-
 }

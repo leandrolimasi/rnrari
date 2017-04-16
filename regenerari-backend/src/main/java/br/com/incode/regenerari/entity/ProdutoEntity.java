@@ -75,11 +75,11 @@ public class ProdutoEntity extends AppBaseEntity {
     @NotNull(message = "O campo 'Validade' é obrigatório.")
     private Integer validadeProduto;
 
-    @Column(name = "PRECO_MAXIMO", nullable = false)
+    @Column(name = "PRECO_MAXIMO", nullable = false, precision = 15, scale = 2)
     @NotNull(message = "O campo 'Preço Máximo' é obrigatório.")
     private BigDecimal precoMaximo;
 
-    @Column(name = "PRECO_MINIMO", nullable = false)
+    @Column(name = "PRECO_MINIMO", nullable = false, precision = 15, scale = 2)
     @NotNull(message = "O campo 'Preço Mínimo' é obrigatório.")
     private BigDecimal precoMinimo;
 

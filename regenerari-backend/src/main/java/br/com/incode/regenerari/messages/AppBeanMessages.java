@@ -31,6 +31,10 @@ public enum AppBeanMessages implements IPlcMessageKey {
 
     INSUMO_ERROR_VINCULO_COMPOSICAO,
 
+    ESTOQUE_INSUMO_SUCCESS_ENTRADA,
+    ESTOQUE_INSUMO_QUANTIDADE_ZERO,
+    ESTOQUE_INSUMO_VALORCOMPRATOTAL_ZERO,
+
     ;
     public String getName()
     {

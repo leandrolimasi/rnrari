@@ -39,7 +39,14 @@
           <p>Composição Produto</p>
         </a>
       </li>
-      <li ng-show="inicialController.isAdmin">
+      <li>
+        <a ui-sref="entradaInsumo.man">
+          <i class="ti-user"></i>
+          <p>Entrada Insumo</p>
+        </a>
+
+      </li>
+      <li ng-show="inicialController.isAdmin && false">
         <a ui-sref="usuario.sel">
           <i class="ti-user"></i>
           <p>Usu&aacute;rio</p>

@@ -37,17 +37,21 @@ public class EstoqueInsumoEntity extends AppBaseEntity {
     @Column(name = "ID_ESTOQUE_INSUMO", unique = true, nullable = false)
     private Long id;
 
+    @NotNull
     @ManyToOne (targetEntity = InsumoEntity.class)
     @JoinColumn(name = "ID_INSUMO")
-    private InsumoEntity insumoEntity;
+    private InsumoEntity insumo;
 
-    @Column(name = "QUANTIDADE")
+    @NotNull
+    @Column(name = "QUANTIDADE", precision = 15, scale = 3)
     private BigDecimal quantidade;
 
-    @Column(name = "VALOR_COMPRA_TOTAL")
+    @NotNull
+    @Column(name = "VALOR_COMPRA_TOTAL", precision = 15, scale = 2)
     private BigDecimal valorCompraTotal;
 
-    @Column(name = "VALOR_COMPRA_UNITARIO")
+    @NotNull
+    @Column(name = "VALOR_COMPRA_UNITARIO", precision = 15, scale = 2)
     private BigDecimal valorCompraUnitario;
 
 
@@ -73,17 +77,17 @@ public class EstoqueInsumoEntity extends AppBaseEntity {
     }
 
     /**
-     * @return the insumoEntity
+     * @return the insumo
      */
-    public InsumoEntity getInsumoEntity() {
-        return insumoEntity;
+    public InsumoEntity getInsumo() {
+        return insumo;
     }
 
     /**
-     * @param insumoEntity the insumoEntity to set
+     * @param insumo the insumo to set
      */
-    public void setInsumoEntity(InsumoEntity insumoEntity) {
-        this.insumoEntity = insumoEntity;
+    public void setInsumo(InsumoEntity insumo) {
+        this.insumo = insumo;
     }
 
     /**
