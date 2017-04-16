@@ -1,6 +1,5 @@
 package br.com.incode.regenerari.rest;
 
-import br.com.incode.regenerari.bo.EstoqueInsumoBO;
 import br.com.incode.regenerari.dto.EntradaEstoqueInsumoDTO;
 import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;

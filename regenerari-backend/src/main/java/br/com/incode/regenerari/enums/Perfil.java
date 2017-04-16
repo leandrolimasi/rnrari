@@ -5,7 +5,8 @@ package br.com.incode.regenerari.enums;
  */
 public enum Perfil {
 
-    ADMIN("Admin"), USUARIO("Usuário");
+    ADMIN("Admin"),
+    USUARIO("Usuário");
 
     private String label;
 

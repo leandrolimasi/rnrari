@@ -13,7 +13,7 @@
     vm.$baseRoute = 'composicaoProduto';
 
     vm.detalhes = [{
-      title: "Itens",
+      title: "Insumos",
       name: "itemComposicaoProduto",
       template: "app/composicaoProduto/composicao-produto-man-item.html"
     }];

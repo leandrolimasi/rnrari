@@ -5,22 +5,22 @@ package br.com.incode.regenerari.enums;
  */
 public enum CategoriaInsumo {
 
-    VASILHAME("Vasilhame"),
+    CASTANHA("Castanha"),
     EMBALAGEM("Embalagem"),
-    TAMPA("Tampa"),
-    LACRE("Lacre"),
-    ROTULO("Rotulo"),
-    TAG_FLYER("Tag ou Flyer"),
-    VERDURA("Verdume"),
     ERVA("Erva"),
-    LEGUME("Legume"),
+    EXTRATO("Extrato"),
     FRUTA_FRESCA("Fruta Fresca"),
     FRUTA_SECA("Fruta Seca"),
-    CASTANHA("Castanha"),
-    SEMENTE("Semente"),
+    LACRE("Lacre"),
+    LEGUME("Legume"),
     POLPA("Polpa"),
+    ROTULO("Rotulo"),
+    SEMENTE("Semente"),
+    TAMPA("Tampa"),
     TEMPERO("Tempero"),
-    EXTRATO("Extrato");
+    TAG_FLYER("Tag ou Flyer"),
+    VERDURA("Verdume"),
+    VASILHAME("Vasilhame");
 
 
     private String label;

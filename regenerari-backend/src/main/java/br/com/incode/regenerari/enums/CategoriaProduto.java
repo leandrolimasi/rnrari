@@ -5,19 +5,19 @@ package br.com.incode.regenerari.enums;
  */
 public enum CategoriaProduto {
 
-    SUCO_FUNC("Suco Func"),
-    SUCO_FUNC_ORG("Suco Func Org"),
-    SUCO_RECR("Suco Recr"),
-    SUCO_RECR_ORG("Suco Recr Org"),
-    BEBIDA_FERM("Bebida Ferm"),
-    BEBIDA_FERM_ORG("Bebida Ferm Org"),
-    SHOT("Shot"),
+    BEBIDA_FERM("Bebida Fermentada"),
+    BEBIDA_FERM_ORG("Bebida Fermentada Orgânico"),
     ELIXIR("Elixir"),
     EXTRATO("Extrato"),
+    PASTOSO_FERM("Pastoso Fermentada"),
+    PASTOSO_FERM_ORG("Pastoso Fermentada Orgânico"),
+    PRESCRITO("Prescrito"),
     SHAKE("Shake"),
-    PASTOSO_FERM("Pastoso Ferm"),
-    PASTOSO_FERM_ORG("Pastoso Ferm Org"),
-    PRESCRITO("Prescrito");
+    SHOT("Shot"),
+    SUCO_FUNC("Suco Funcional"),
+    SUCO_FUNC_ORG("Suco Funcional Orgânico"),
+    SUCO_RECR("Suco Recr"),
+    SUCO_RECR_ORG("Suco Recr Orgânico");
 
 
     private String label;

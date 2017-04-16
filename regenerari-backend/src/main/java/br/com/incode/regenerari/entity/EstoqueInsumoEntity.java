@@ -47,6 +47,11 @@ public class EstoqueInsumoEntity extends AppBaseEntity {
     private BigDecimal quantidade;
 
     @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "DATA")
+    private Date data;
+
+    @NotNull
     @Column(name = "VALOR_COMPRA_TOTAL", precision = 15, scale = 2)
     private BigDecimal valorCompraTotal;
 
@@ -130,5 +135,19 @@ public class EstoqueInsumoEntity extends AppBaseEntity {
      */
     public void setValorCompraUnitario(BigDecimal valorCompraUnitario) {
         this.valorCompraUnitario = valorCompraUnitario;
+    }
+
+    /**
+     * @return the data
+     */
+    public Date getData() {
+        return data;
+    }
+
+    /**
+     * @param data the data to set
+     */
+    public void setData(Date data) {
+        this.data = data;
     }
 }

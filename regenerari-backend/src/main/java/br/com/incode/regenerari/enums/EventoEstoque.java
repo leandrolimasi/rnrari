@@ -1,22 +1,18 @@
 package br.com.incode.regenerari.enums;
 
 /**
- * Created by leandrolima on 20/02/17.
+ * Created by leandrolima on 16/04/17.
  */
-public enum ApresentacaoProduto {
+public enum EventoEstoque {
 
-    CAIXA_PAPEL("Caixa Papel"),
-    GARRAFA_PLASTICO("Garrafa Plástico"),
-    GARRAFA_VIDRO("Garrafa Vidro"),
-    POTE_PLASTICO("Pote Plásticog"),
-    POTE_VIDRO("Pote Vidro"),
-    SACO_PLASTICO("Saco Plástico");
-
+    AJUSTE("Ajuste"),
+    ENTRADA("Entrada"),
+    PRODUCAO("Produção");
 
     private String label;
 
 
-    ApresentacaoProduto(String label){
+    EventoEstoque(String label){
         this.label = label;
     }
 
