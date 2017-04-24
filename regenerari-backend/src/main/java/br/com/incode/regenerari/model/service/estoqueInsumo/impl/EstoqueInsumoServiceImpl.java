@@ -96,10 +96,9 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
 
         }
 
-
         posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
 
-        return   estoqueInsumo;
+        return estoqueInsumo;
 
     }
 }

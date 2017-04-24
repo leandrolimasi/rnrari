@@ -16,6 +16,9 @@
             },
             entrada : function(data){
               return this._post('/entrada', data);
+            },
+            baixaExcepcional : function(data){
+              return this._post('/baixa-excepcional', data);
             }
         });
 

@@ -1,0 +1,63 @@
+<div class="container-fluid" >
+
+  <form name="baixaInsumoExcepcional" class="form-validate" novalidate ng-controller="BaixaInsumoExcepcionalController as baixaInsumoExcepcionalController" >
+
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Baixa de Insumo Por Evento Excepcional</h4>
+        </div>
+        <div class="content">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true"
+                                     can-autocomplete="true" name="baixaInsumoExcepcional.insumo"
+                                     ng-model="baixaInsumoExcepcionalController.baixaInsumoExcepcional.insumo" ng-model-lookup="nome" autocomplete-url="/insumo/findAll"
+                                     template="app/insumo/insumo-modal.html"  />
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Quantidade</label>
+                <input type="text"  ng-required="true" ui-number-mask="3" ui-hide-group-sep ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade" name="baixaInsumoExcepcional.quantidade" ng-model="baixaInsumoExcepcionalController.baixaInsumoExcepcional.quantidade">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <plc-static-combo ng-required="true" ng-model="baixaInsumoExcepcionalController.baixaInsumoExcepcional.motivoBaixaExcepcional" name="baixaInsumoExcepcional.motivoBaixaExcepcional"  ng-enum="motivoBaixaExcepcional" label="Motivo"
+                                  no-selected-value="[Selecione...]" ng-enum-value="motivoBaixaExcepcional" />
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label>Observação</label>
+                <textarea maxlength="80" ng-maxlength="80" class="form-control border-input"  ng-model="baixaInsumoExcepcionalController.baixaInsumoExcepcional.observacao" ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="baixaInsumoExcepcionalController.baixaInsumo();" >Salvar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

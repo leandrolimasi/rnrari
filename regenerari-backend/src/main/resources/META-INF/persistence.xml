@@ -25,6 +25,7 @@
 
 		<class>br.com.incode.regenerari.entity.EstoqueInsumoEntity</class>
 		<class>br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity</class>
+		<class>br.com.incode.regenerari.entity.BaixaInsumoExcepcionalEntity</class>
 
 		<!-- Entities -->
 		<!-- GENERATOR INSERTS HERE  -->
