@@ -52,17 +52,6 @@
       }
     });
 
-    vm.getEnumUnidadeMedidaInsumo = function(simbol){
-
-      if ($window.localStorage.getItem('unidadeMedidaInsumo') != null){
-        var unidadeMedidaInsumo = angular.fromJson($window.localStorage.getItem('unidadeMedidaInsumo'));
-        var ret = _.filter(unidadeMedidaInsumo, {unidadeMedidaInsumo: simbol});
-        if (ret && ret[0]){
-          return ret[0].descricao;
-        }
-      }
-
-    }
 
     vm.columnDefs = [
       { field: 'id', displayName: 'Cód.'},

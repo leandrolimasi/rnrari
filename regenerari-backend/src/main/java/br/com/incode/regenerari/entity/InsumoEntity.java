@@ -71,6 +71,19 @@ public class InsumoEntity extends AppBaseEntity implements IPlcLogicalExclusion{
     private UsuarioEntity usuarioInativacao;
 
     /**
+     * Default Constructor
+     */
+    public InsumoEntity() {}
+
+    /**
+     * Constructor
+     * @param idInsumo
+     */
+    public InsumoEntity(Long idInsumo) {
+        setId(idInsumo);
+    }
+
+    /**
      * @return the id
      */
     @Override

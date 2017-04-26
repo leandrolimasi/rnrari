@@ -19,6 +19,9 @@
             },
             baixaExcepcional : function(data){
               return this._post('/baixa-excepcional', data);
+            },
+            getPosicaoEstoque : function(idInsumo){
+              return this._get('/posicao-estoque/'+idInsumo);
             }
         });
 

@@ -14,7 +14,6 @@
 
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));
 
-
     vm.baixaInsumo = function(){
       if ($scope.baixaInsumoExcepcional.$invalid){
         vm.processValidation($scope.baixaInsumoExcepcional.$error);
@@ -28,6 +27,16 @@
         }
       });
     };
+
+    $scope.$watch("baixaInsumoExcepcionalController.baixaInsumoExcepcional.insumo", function(newObj, oldObj) {
+      if  ((newObj && !oldObj) || (newObj && oldObj && newObj.id !== oldObj.id)){
+        EstoqueInsumoService.getPosicaoEstoque(newObj.id).then( function (response) {
+          if (response.status == 200){
+            vm.estoqueAtualInsumo = response.data.entity.quantidade;
+          }
+        });
+      }
+    });
 
   }
 })();

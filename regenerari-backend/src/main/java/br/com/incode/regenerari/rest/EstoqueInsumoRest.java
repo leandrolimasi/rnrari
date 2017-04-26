@@ -4,10 +4,12 @@ import br.com.incode.regenerari.dto.BaixaInsumoExcepcionalDTO;
 import br.com.incode.regenerari.dto.EntradaEstoqueInsumoDTO;
 import br.com.incode.regenerari.entity.BaixaInsumoExcepcionalEntity;
 import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
+import br.com.incode.regenerari.entity.InsumoEntity;
 import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;
 import br.com.incode.regenerari.model.service.baixaInsumoExcepcional.IBaixaInsumoExcepcionalService;
 import br.com.incode.regenerari.model.service.estoqueInsumo.IEstoqueInsumoService;
+import br.com.incode.regenerari.model.service.posicaoEstoqueInsumo.IPosicaoEstoqueInsumoService;
 import com.powerlogic.jcompany.commons.util.message.PlcMsgUtil;
 import com.powerlogic.jcompany.core.exception.PlcException;
 import com.powerlogic.jcompany.core.messages.PlcMessageType;
@@ -16,10 +18,7 @@ import com.powerlogic.jcompany.core.rest.auth.PlcAuthenticated;
 import com.powerlogic.jcompany.core.rest.messages.PlcMessageIntercept;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -37,6 +36,9 @@ public class EstoqueInsumoRest extends PlcAbstractRest {
 
     @Inject
     private IBaixaInsumoExcepcionalService baixaInsumoExcepcionalService;
+
+    @Inject
+    private IPosicaoEstoqueInsumoService posicaoEstoqueInsumoService;
 
     @Inject
     private PlcMsgUtil msgUtil;
@@ -67,6 +69,19 @@ public class EstoqueInsumoRest extends PlcAbstractRest {
         PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo =  baixaInsumoExcepcionalService.baixa(dto);
         msgUtil.msg(AppBeanMessages.ESTOQUE_INSUMO_SUCCESS_BAIXA_EXCEPCIONAL, PlcMessageType.SUCCESS);
         return posicaoEstoqueInsumo;
+    }
+
+    /** consulta posicao estoque de um insumo
+     *
+     * @param idInsumo
+     * @return
+     * @throws PlcException
+     */
+    @GET
+    @Path("/posicao-estoque/{idInsumo}")
+    public PosicaoEstoqueInsumoEntity getPosicaoEstoque(@PathParam("idInsumo") String idInsumo) throws PlcException {
+        InsumoEntity insumo = new InsumoEntity(Long.parseLong(idInsumo));
+        return posicaoEstoqueInsumoService.recuperaPosicaoEstoqueInsumo(insumo);
     }
 
 
