@@ -5,12 +5,12 @@ package br.com.incode.regenerari.enums;
  */
 public enum UnidadeMedidaInsumo {
 
-    GRAMA("Grama"),
-    QUARTO("Quarto"),
+    GR("Grama"),
     MEIO("Meio"),
     ML("Mililitro"),
+    QUARTO("Quarto"),
     TERCO("Terço"),
-    UNIDADE("Unidade");
+    UN("Unidade");
 
 
     private String label;

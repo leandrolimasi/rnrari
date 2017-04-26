@@ -5,9 +5,9 @@ package br.com.incode.regenerari.enums;
  */
 public enum UnidadeMedidaProduto {
 
-    GRAMA("Grama"),
+    GR("Grama"),
     ML("Mililitro"),
-    UNIDADE("Unidade");
+    UN("Unidade");
 
 
     private String label;
