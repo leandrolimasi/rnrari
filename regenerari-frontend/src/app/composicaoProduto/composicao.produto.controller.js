@@ -69,7 +69,9 @@
     }
 
     vm.columnDefs = [
-      { field: 'id', displayName: 'Cod.'}
+      { field: 'id', displayName: 'Cód.'},
+      { field: 'produto.nome', displayName: 'Produto'},
+      { field: 'composicaoExperimentalDescricao', displayName: 'Experimental'}
     ];
 
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));

@@ -17,6 +17,12 @@ public class ComposicaoProdutoRepository extends PlcAbstractRepository<Long, Com
         return ComposicaoProdutoEntity.class;
     }
 
+    @Override
+    public List<ComposicaoProdutoEntity> find(ComposicaoProdutoEntity entity, SearchParameters sp) {
+        sp.addMultiSelectProperties("id", "produto.nome", "composicaoExperimental");
+        return super.find(entity, sp);
+    }
+
     /** Find  ComposicaoProdutoEntity list by Insumo id.
      *
      * @param idInsumo

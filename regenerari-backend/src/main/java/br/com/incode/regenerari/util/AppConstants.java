@@ -13,5 +13,10 @@ public interface AppConstants {
     String VERSAO= "versao";
     String ANONIMO= "Anônimo";
 
+    String SIM= "Sim";
+    String NAO= "Não";
+    String ATIVO= "Ativo";
+    String INATIVO="Inativo";
+
 
 }

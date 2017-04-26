@@ -7,6 +7,7 @@ package br.com.incode.regenerari.rest;
 import br.com.incode.regenerari.entity.ProdutoEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;
 import br.com.incode.regenerari.model.service.produto.IProdutoService;
+import br.com.incode.regenerari.util.AppConstants;
 import com.powerlogic.jcompany.core.commons.search.PlcPagedResult;
 import com.powerlogic.jcompany.core.exception.PlcException;
 import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
@@ -48,9 +49,9 @@ public class ProdutoRest extends AppBaseRest<Long, ProdutoEntity> {
         for (ProdutoEntity produto: result.getList()){
 
             if (PlcSituacao.A.equals(produto.getSituacao())){
-                produto.setStatusDescricao("Ativo");
+                produto.setStatusDescricao(AppConstants.ATIVO);
             }else{
-                produto.setStatusDescricao("Inativo");
+                produto.setStatusDescricao(AppConstants.INATIVO);
             }
 
         }

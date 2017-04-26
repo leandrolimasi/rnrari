@@ -91,6 +91,28 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
     private List<ItemComposicaoProdutoEntity> itemComposicaoProduto;
 
     /**
+     * Default Constructor
+     */
+    public ComposicaoProdutoEntity(){}
+
+    /** Constructor for query sel
+     *
+     * @param id
+     * @param produtoNome
+     * @param composicaoExperimental
+     */
+    public ComposicaoProdutoEntity(Long id, String produtoNome, Boolean composicaoExperimental) {
+        this.id = id;
+        this.composicaoExperimental = composicaoExperimental;
+        this.produto = new ProdutoEntity();
+        this.produto.setNome(produtoNome);
+    }
+
+    /* trasients */
+    @Transient
+    private String composicaoExperimentalDescricao;
+
+    /**
      * @return the id
      */
     @Override
@@ -258,5 +280,19 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
      */
     public void setItemComposicaoProduto(List<ItemComposicaoProdutoEntity> itemComposicaoProduto) {
         this.itemComposicaoProduto = itemComposicaoProduto;
+    }
+
+    /**
+     * @return the composicaoExperimentalDescricao
+     */
+    public String getComposicaoExperimentalDescricao() {
+        return composicaoExperimentalDescricao;
+    }
+
+    /**
+     * @param composicaoExperimentalDescricao the composicaoExperimentalDescricao to set
+     */
+    public void setComposicaoExperimentalDescricao(String composicaoExperimentalDescricao) {
+        this.composicaoExperimentalDescricao = composicaoExperimentalDescricao;
     }
 }
