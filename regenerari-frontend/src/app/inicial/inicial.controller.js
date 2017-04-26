@@ -8,8 +8,12 @@
   /** @ngInject */
   function InicialController($state, PlcAuthService, PlcRestService, $window, $rootScope) {
     var vm = this;
-
+    vm.dropDownMenuOpened = false;
     vm.isAdmin = _.findIndex($rootScope.user, 'ADMIN');
+
+    vm.toogleDropDownMenu = function(){
+      vm.dropDownMenuOpened = !vm.dropDownMenuOpened;
+    }
 
 
     vm.loadEnums = function(){

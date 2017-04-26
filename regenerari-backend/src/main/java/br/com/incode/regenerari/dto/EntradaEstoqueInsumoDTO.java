@@ -3,7 +3,9 @@ package br.com.incode.regenerari.dto;
 import br.com.incode.regenerari.entity.InsumoEntity;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by leandrolimadasilva on 12/04/17.
@@ -14,6 +16,9 @@ public class EntradaEstoqueInsumoDTO {
     private InsumoEntity insumo;
     @NotNull(message = "O Campo 'Quantidade' é obrigatório.")
     private BigDecimal quantidade;
+    @NotNull(message = "O Campo 'Quantidade' é obrigatório.")
+    @Past
+    private Date data;
     @NotNull(message = "O Campo 'Valor Compra Total' é obrigatório.")
     private BigDecimal valorCompraTotal;
 
@@ -57,5 +62,19 @@ public class EntradaEstoqueInsumoDTO {
      */
     public void setValorCompraTotal(BigDecimal valorCompraTotal) {
         this.valorCompraTotal = valorCompraTotal;
+    }
+
+    /**
+     * @return the data
+     */
+    public Date getData() {
+        return data;
+    }
+
+    /**
+     * @param data the data to set
+     */
+    public void setData(Date data) {
+        this.data = data;
     }
 }

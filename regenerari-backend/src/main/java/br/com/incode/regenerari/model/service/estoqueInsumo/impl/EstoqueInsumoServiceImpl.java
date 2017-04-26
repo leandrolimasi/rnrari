@@ -68,8 +68,6 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
         estoqueInsumo.setValorCompraUnitario(estoqueInsumo.getValorCompraTotal()
                 .divide( estoqueInsumo.getQuantidade(), 2, RoundingMode.DOWN));
 
-        estoqueInsumo.setData(new Date());
-
         estoqueInsumo = estoqueInsumoRepository.save(estoqueInsumo);
 
 

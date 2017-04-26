@@ -36,6 +36,10 @@ public class EstoqueInsumoBO extends AppBO {
             throw new PlcException(AppBeanMessages.ESTOQUE_INSUMO_VALORCOMPRATOTAL_ZERO);
         }
 
+        if (entity.getData().getTime() > new Date().getTime()){
+            throw new PlcException(AppBeanMessages.ESTOQUE_INSUMO_DATA_PASSADO);
+        }
+
     }
 
 

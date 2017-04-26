@@ -14,7 +14,6 @@
 
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));
 
-
     vm.entradaEstoqueInsumo = function(){
       if ($scope.entradaInsumo.$invalid){
         vm.processValidation($scope.entradaInsumo.$error);

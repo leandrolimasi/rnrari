@@ -52,10 +52,6 @@
       }
     });
 
-    vm.changeInsumo = function(index){
-      console.log(index);
-    }
-
     vm.getEnumUnidadeMedidaInsumo = function(simbol){
 
       if ($window.localStorage.getItem('unidadeMedidaInsumo') != null){
