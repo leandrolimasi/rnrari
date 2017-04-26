@@ -27,7 +27,12 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Quantidade</label>
-                <input type="text"  ng-required="true" ui-number-mask="3" ui-hide-group-sep ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade" name="entradaInsumo.quantidade" ng-model="entradaInsumoController.entradaInsumo.quantidade">
+
+                <div class="input-group">
+                  <input type="text"  ng-required="true" ui-number-mask="3" ui-hide-group-sep ng-maxlength="15" maxlength="15" class="form-control border-input" label="Quantidade" name="entradaInsumo.quantidade" ng-model="entradaInsumoController.entradaInsumo.quantidade">
+                  <span class="input-group-addon" id="basic-addon">{{entradaInsumoController.entradaInsumo.insumo.unidadeMedidaInsumo}}</span>
+                </div>
+
               </div>
             </div>
 
@@ -39,7 +44,6 @@
             </div>
 
           </div>
-
 
           <div class="row">
             <div class="col-sm-12">
