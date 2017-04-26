@@ -71,8 +71,8 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
 
 
         PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(estoqueInsumo.getInsumo());
-        BigDecimal valorUnitarioAntetior = posicaoEstoqueInsumo.getValorUnitario();
-        BigDecimal quantidadeEstoqueAnterior = posicaoEstoqueInsumo.getQuantidade();
+        BigDecimal valorUnitarioAntetior = new BigDecimal(0);
+        BigDecimal valorUnitarioAnterior = new BigDecimal(0);
 
         if (posicaoEstoqueInsumo == null){
             posicaoEstoqueInsumo = new PosicaoEstoqueInsumoEntity();
@@ -82,6 +82,9 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
             posicaoEstoqueInsumo.setValorUnitario(estoqueInsumo.getValorCompraUnitario());
 
         }else{
+
+            valorUnitarioAntetior = posicaoEstoqueInsumo.getValorUnitario();
+            valorUnitarioAnterior = posicaoEstoqueInsumo.getQuantidade();
 
             posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()));
             posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.ENTRADA);
@@ -96,7 +99,7 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
         }
 
         posicaoEstoqueInsumo =  posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
-        posicaoEstoqueInsumo.setQuantidadeEstoqueAnterior(quantidadeEstoqueAnterior);
+        posicaoEstoqueInsumo.setQuantidadeEstoqueAnterior(valorUnitarioAnterior);
         posicaoEstoqueInsumo.setValorUnitarioAnterior(valorUnitarioAntetior);
         return posicaoEstoqueInsumo;
 

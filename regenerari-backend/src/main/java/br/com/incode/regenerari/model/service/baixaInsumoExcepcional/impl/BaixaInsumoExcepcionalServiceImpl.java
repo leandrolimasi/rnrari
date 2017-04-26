@@ -22,6 +22,7 @@ import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -72,18 +73,21 @@ public class BaixaInsumoExcepcionalServiceImpl extends PlcAbstractServiceEntity<
         baixaInsumoExcepcional = baixaInsumoExcepcionalRepository.save(baixaInsumoExcepcional);
 
         PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(baixaInsumoExcepcional.getInsumo());
+        BigDecimal valorUnitarioAnterior = posicaoEstoqueInsumo.getValorUnitario();
+        BigDecimal quantidadeEstoqueAnterior = posicaoEstoqueInsumo.getQuantidade();
 
         if (posicaoEstoqueInsumo != null){
-
             posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade().subtract(baixaInsumoExcepcional.getQuantidade()));
             posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.AJUSTE);
-
         }
 
         if (posicaoEstoqueInsumo.getQuantidade().doubleValue() < 0){
             throw new PlcException(AppBeanMessages.POSICAO_ESTOQUE_INSUMO_QUANTIDADE_ZERO);
         }
 
-        return posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
+        posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
+        posicaoEstoqueInsumo.setQuantidadeEstoqueAnterior(quantidadeEstoqueAnterior);
+        posicaoEstoqueInsumo.setValorUnitarioAnterior(valorUnitarioAnterior);
+        return posicaoEstoqueInsumo;
     }
 }

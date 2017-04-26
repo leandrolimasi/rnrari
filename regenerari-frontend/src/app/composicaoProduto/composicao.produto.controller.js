@@ -6,7 +6,7 @@
     .controller('ComposicaoProdutoController', ComposicaoProdutoController);
 
   /** @ngInject */
-  function ComposicaoProdutoController($scope, ComposicaoProdutoService, $controller, $state, $window) {
+  function ComposicaoProdutoController($scope, ComposicaoProdutoService, $controller, $state) {
     var vm = this;
 
     vm.$baseService = ComposicaoProdutoService;

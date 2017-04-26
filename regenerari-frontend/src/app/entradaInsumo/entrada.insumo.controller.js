@@ -42,7 +42,7 @@
           }
         });
 
-        modalInstance.result.then(function (selectedItem) {
+        modalInstance.result.then(function () {
           $window.location.reload();
         }, function () {
           $window.location.reload();

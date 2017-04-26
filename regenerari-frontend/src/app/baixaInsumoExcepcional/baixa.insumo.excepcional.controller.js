@@ -6,7 +6,7 @@
     .controller('BaixaInsumoExcepcionalController', BaixaInsumoExcepcionalController);
 
   /** @ngInject */
-  function BaixaInsumoExcepcionalController($scope, EstoqueInsumoService, $controller, PlcNotificationService) {
+  function BaixaInsumoExcepcionalController($scope, EstoqueInsumoService, $controller, PlcNotificationService, $uibModal, $window) {
     var vm = this;
 
     vm.$baseService = EstoqueInsumoService;
@@ -23,7 +23,7 @@
       var baixaInsumoExcepcional =  vm[vm.$baseRoute];
       EstoqueInsumoService.baixaExcepcional(baixaInsumoExcepcional).then( function (response) {
         if (response.status == 200){
-          vm[vm.$baseRoute] = {};
+          vm.abrirModalEstoque(response.data.entity);
         }
       });
     };
@@ -37,6 +37,30 @@
         });
       }
     });
+
+
+    vm.abrirModalEstoque = function(estoque){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/estoqueInsumo/estoque-insumo-modal.html',
+        controller: 'EstoqueInsumoModalController',
+        controllerAs: 'estoqueInsumoModalController',
+        resolve: {
+          item: function () {
+            return estoque;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $window.location.reload();
+      }, function () {
+        $window.location.reload();
+      });
+
+    }
+
 
   }
 })();
