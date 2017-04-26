@@ -2,8 +2,6 @@ package br.com.incode.regenerari.rest;
 
 import br.com.incode.regenerari.dto.BaixaInsumoExcepcionalDTO;
 import br.com.incode.regenerari.dto.EntradaEstoqueInsumoDTO;
-import br.com.incode.regenerari.entity.BaixaInsumoExcepcionalEntity;
-import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
 import br.com.incode.regenerari.entity.InsumoEntity;
 import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;
