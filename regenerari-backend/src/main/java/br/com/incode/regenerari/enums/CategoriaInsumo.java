@@ -19,7 +19,7 @@ public enum CategoriaInsumo {
     TAMPA("Tampa"),
     TEMPERO("Tempero"),
     TAG_FLYER("Tag ou Flyer"),
-    VERDURA("Verdume"),
+    VERDURA("Verdura"),
     VASILHAME("Vasilhame");
 
 
