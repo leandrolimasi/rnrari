@@ -2,6 +2,7 @@ package br.com.incode.regenerari.model.service.estoqueInsumo;
 
 import br.com.incode.regenerari.dto.EntradaEstoqueInsumoDTO;
 import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
+import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 
 import javax.ejb.Local;
@@ -18,6 +19,6 @@ public interface IEstoqueInsumoService extends IPlcEntityService<Long, EstoqueIn
      * @param dto
      * @return
      */
-    EstoqueInsumoEntity entrada(@Valid EntradaEstoqueInsumoDTO dto);
+    PosicaoEstoqueInsumoEntity entrada(@Valid EntradaEstoqueInsumoDTO dto);
 
 }

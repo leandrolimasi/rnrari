@@ -55,6 +55,14 @@ public class PosicaoEstoqueInsumoEntity extends AppBaseEntity {
      */
     public PosicaoEstoqueInsumoEntity(){}
 
+    /* transients*/
+    @Transient
+    private BigDecimal quantidadeEstoqueAnterior;
+
+    @Transient
+    private BigDecimal valorUnitarioAnterior;
+
+
     /**
      * @return the id
      */
@@ -125,5 +133,33 @@ public class PosicaoEstoqueInsumoEntity extends AppBaseEntity {
      */
     public void setEventoEstoque(EventoEstoque eventoEstoque) {
         this.eventoEstoque = eventoEstoque;
+    }
+
+    /**
+     * @return the quantidadeEstoqueAnterior
+     */
+    public BigDecimal getQuantidadeEstoqueAnterior() {
+        return quantidadeEstoqueAnterior;
+    }
+
+    /**
+     * @param quantidadeEstoqueAnterior the quantidadeEstoqueAnterior to set
+     */
+    public void setQuantidadeEstoqueAnterior(BigDecimal quantidadeEstoqueAnterior) {
+        this.quantidadeEstoqueAnterior = quantidadeEstoqueAnterior;
+    }
+
+    /**
+     * @return the valorUnitarioAnterior
+     */
+    public BigDecimal getValorUnitarioAnterior() {
+        return valorUnitarioAnterior;
+    }
+
+    /**
+     * @param valorUnitarioAnterior the valorUnitarioAnterior to set
+     */
+    public void setValorUnitarioAnterior(BigDecimal valorUnitarioAnterior) {
+        this.valorUnitarioAnterior = valorUnitarioAnterior;
     }
 }

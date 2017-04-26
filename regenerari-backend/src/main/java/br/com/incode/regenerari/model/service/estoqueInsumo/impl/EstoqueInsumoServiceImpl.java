@@ -22,7 +22,6 @@ import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Date;
 
 /**
  * Created by leandrolimadasilva on 12/04/17.
@@ -53,7 +52,7 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
      * @return
      */
     @Override
-    public EstoqueInsumoEntity entrada(@Valid EntradaEstoqueInsumoDTO dto) {
+    public PosicaoEstoqueInsumoEntity entrada(@Valid EntradaEstoqueInsumoDTO dto) {
 
         EstoqueInsumoEntity estoqueInsumo = new EstoqueInsumoEntity();
 
@@ -72,6 +71,8 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
 
 
         PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(estoqueInsumo.getInsumo());
+        BigDecimal valorUnitarioAntetior = posicaoEstoqueInsumo.getValorUnitario();
+        BigDecimal quantidadeEstoqueAnterior = posicaoEstoqueInsumo.getQuantidade();
 
         if (posicaoEstoqueInsumo == null){
             posicaoEstoqueInsumo = new PosicaoEstoqueInsumoEntity();
@@ -83,7 +84,7 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
         }else{
 
             posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()));
-
+            posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.ENTRADA);
             BigDecimal valorTotalAtual = posicaoEstoqueInsumo.getQuantidade()
                     .multiply(posicaoEstoqueInsumo.getValorUnitario());
             BigDecimal valorTotalMedia = valorTotalAtual.add(estoqueInsumo.getValorCompraTotal());
@@ -94,9 +95,10 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
 
         }
 
-        posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
-
-        return estoqueInsumo;
+        posicaoEstoqueInsumo =  posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
+        posicaoEstoqueInsumo.setQuantidadeEstoqueAnterior(quantidadeEstoqueAnterior);
+        posicaoEstoqueInsumo.setValorUnitarioAnterior(valorUnitarioAntetior);
+        return posicaoEstoqueInsumo;
 
     }
 }

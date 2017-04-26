@@ -55,7 +55,7 @@ public class BaixaInsumoExcepcionalServiceImpl extends PlcAbstractServiceEntity<
      * @return
      */
     @Override
-    public BaixaInsumoExcepcionalEntity baixa(@Valid BaixaInsumoExcepcionalDTO dto) {
+    public PosicaoEstoqueInsumoEntity baixa(@Valid BaixaInsumoExcepcionalDTO dto) {
 
         BaixaInsumoExcepcionalEntity baixaInsumoExcepcional = new BaixaInsumoExcepcionalEntity();
 
@@ -84,7 +84,6 @@ public class BaixaInsumoExcepcionalServiceImpl extends PlcAbstractServiceEntity<
             throw new PlcException(AppBeanMessages.POSICAO_ESTOQUE_INSUMO_QUANTIDADE_ZERO);
         }
 
-        posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
-        return baixaInsumoExcepcional;
+        return posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
     }
 }

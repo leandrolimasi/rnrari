@@ -2,6 +2,7 @@ package br.com.incode.regenerari.model.service.baixaInsumoExcepcional;
 
 import br.com.incode.regenerari.dto.BaixaInsumoExcepcionalDTO;
 import br.com.incode.regenerari.entity.BaixaInsumoExcepcionalEntity;
+import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 
 import javax.ejb.Local;
@@ -18,6 +19,6 @@ public interface IBaixaInsumoExcepcionalService  extends IPlcEntityService<Long,
      * @param dto
      * @return
      */
-    BaixaInsumoExcepcionalEntity baixa(@Valid BaixaInsumoExcepcionalDTO dto);
+    PosicaoEstoqueInsumoEntity baixa(@Valid BaixaInsumoExcepcionalDTO dto);
 
 }

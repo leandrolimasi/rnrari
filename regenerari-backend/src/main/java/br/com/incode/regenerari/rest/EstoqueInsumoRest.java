@@ -4,6 +4,7 @@ import br.com.incode.regenerari.dto.BaixaInsumoExcepcionalDTO;
 import br.com.incode.regenerari.dto.EntradaEstoqueInsumoDTO;
 import br.com.incode.regenerari.entity.BaixaInsumoExcepcionalEntity;
 import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
+import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;
 import br.com.incode.regenerari.model.service.baixaInsumoExcepcional.IBaixaInsumoExcepcionalService;
 import br.com.incode.regenerari.model.service.estoqueInsumo.IEstoqueInsumoService;
@@ -48,10 +49,10 @@ public class EstoqueInsumoRest extends PlcAbstractRest {
      */
     @POST
     @Path("/entrada")
-    public EstoqueInsumoEntity entrada(EntradaEstoqueInsumoDTO dto) throws PlcException {
-        EstoqueInsumoEntity estoqueInsumo =  estoqueInsumoService.entrada(dto);
+    public PosicaoEstoqueInsumoEntity entrada(EntradaEstoqueInsumoDTO dto) throws PlcException {
+        PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo =  estoqueInsumoService.entrada(dto);
         msgUtil.msg(AppBeanMessages.ESTOQUE_INSUMO_SUCCESS_ENTRADA, PlcMessageType.SUCCESS);
-        return estoqueInsumo;
+        return posicaoEstoqueInsumo;
     }
 
     /** baixa de estoque de Insumos por evento excepcional
@@ -62,10 +63,10 @@ public class EstoqueInsumoRest extends PlcAbstractRest {
      */
     @POST
     @Path("/baixa-excepcional")
-    public BaixaInsumoExcepcionalEntity entrada(BaixaInsumoExcepcionalDTO dto) throws PlcException {
-        BaixaInsumoExcepcionalEntity estoqueInsumo =  baixaInsumoExcepcionalService.baixa(dto);
+    public PosicaoEstoqueInsumoEntity entrada(BaixaInsumoExcepcionalDTO dto) throws PlcException {
+        PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo =  baixaInsumoExcepcionalService.baixa(dto);
         msgUtil.msg(AppBeanMessages.ESTOQUE_INSUMO_SUCCESS_BAIXA_EXCEPCIONAL, PlcMessageType.SUCCESS);
-        return estoqueInsumo;
+        return posicaoEstoqueInsumo;
     }
 
 
