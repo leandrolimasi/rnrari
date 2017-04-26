@@ -11,6 +11,7 @@
 
     vm.$baseService = ComposicaoProdutoService;
     vm.$baseRoute = 'composicaoProduto';
+    vm.activeProduto = {};
 
     vm.detalhes = [{
       title: "Insumos",
@@ -40,19 +41,19 @@
       attr.push(new Object());
       detail.setValueToObject($scope, attr);
 
-
     };
 
-    vm.getEnumUnidadeMedidaProduto = function(simbol){
-
-      if ($window.localStorage.getItem('unidadeMedidaProduto') != null){
-        var unidadeMedidaProduto = angular.fromJson($window.localStorage.getItem('unidadeMedidaProduto'));
-        var ret = _.filter(unidadeMedidaProduto, {unidadeMedidaProduto: simbol});
-        if (ret && ret[0]){
-          return ret[0].descricao;
+    $scope.$watch("composicaoProdutoController.composicaoProduto.produto", function(newObj, oldObj) {
+      if  ((newObj && !oldObj) || (newObj && oldObj && newObj.id !== oldObj.id)){
+        vm.activeProduto = newObj;
+        if (!vm[vm.$baseRoute].rendimento || (oldObj && newObj.id !== oldObj.id)){
+          vm[vm.$baseRoute].rendimento = newObj.quantidadeApresentacao;
         }
       }
+    });
 
+    vm.changeInsumo = function(index){
+      console.log(index);
     }
 
     vm.getEnumUnidadeMedidaInsumo = function(simbol){

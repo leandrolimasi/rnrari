@@ -28,7 +28,7 @@
 
                 <div class="input-group">
                   <input type="number" ng-required="true" ng-maxlength="150" maxlength="150" class="form-control border-input" label="Rendimento" name="composicaoProduto.rendimento" ng-model="composicaoProdutoController.composicaoProduto.rendimento">
-                  <span class="input-group-addon" id="basic-addon2">{{composicaoProdutoController.getEnumUnidadeMedidaProduto(composicaoProdutoController.composicaoProduto.produto.unidadeMedidaProduto)}}</span>
+                  <span class="input-group-addon" id="basic-addon2">{{composicaoProdutoController.activeProduto.unidadeMedidaProduto}}</span>
                 </div>
 
               </div>

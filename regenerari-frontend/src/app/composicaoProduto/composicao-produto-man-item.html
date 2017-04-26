@@ -3,42 +3,67 @@
 
   <div ng-repeat="itemComposicaoProduto in composicaoProdutoController.composicaoProduto.itemComposicaoProduto" >
 
-    <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
 
-      <div class="col-md-4">
-        <div class="form-group">
-          <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true" master-label="'Item Composição'"
-                               can-autocomplete="true" name="itemComposicaoProduto.{{$index}}.insumo"
-                               ng-model="itemComposicaoProduto.insumo" ng-model-lookup="nome" autocomplete-url="/insumo/findAll"
-                               template="app/insumo/insumo-modal.html"  />
+          <div class="col-md-1" >
+            <div class="form-group">
+              <label>
+                {{$index +1}}.
+              </label>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="form-group">
+              <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true" master-label="'Item Composição'"
+                                   can-autocomplete="true" name="itemComposicaoProduto.{{$index}}.insumo"
+                                   ng-model="itemComposicaoProduto.insumo" ng-model-lookup="nome" autocomplete-url="/insumo/findAll"
+                                   template="app/insumo/insumo-modal.html"  />
+            </div>
+            <input type="hidden" ng-model="itemComposicaoProduto.id" >
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Quantidade Insumo</label>
+              <div class="input-group">
+                <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" master-label="'Item Composição'"
+                       label="Quantidade Insumo" name="itemComposicaoProduto.{{$index}}.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
+                <span class="input-group-addon" id="basic-addon2">{{itemComposicaoProduto.insumo.unidadeMedidaInsumo}}</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <input type="hidden" ng-model="itemComposicaoProduto.id" >
-      </div>
 
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Quantidade Insumo</label>
-          <div class="input-group">
-            <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" master-label="'Item Composição'"
-                   label="Quantidade Insumo" name="itemComposicaoProduto.{{$index}}.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
-            <span class="input-group-addon" id="basic-addon2">{{composicaoProdutoController.getEnumUnidadeMedidaInsumo(itemComposicaoProduto.insumo.unidadeMedidaInsumo)}}</span>
+        <div class="row">
+          <div class="col-md-1" >
+
+          </div>
+
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Observação</label>
+              <textarea maxlength="80" ng-maxlength="80" class="form-control border-input" ng-model="itemComposicaoProduto.observacao" ></textarea>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+
+            <button type="submit" class="btn btn-danger" uib-tooltip="Remover Item" ng-click="composicaoProdutoController.removeItemDetail('composicaoProdutoController.composicaoProduto.itemComposicaoProduto', $index);" >
+              <i class="glyphicon glyphicon-erase"></i>
+            </button>
+
           </div>
 
         </div>
       </div>
-
     </div>
 
-    <div class="row">
-      <div class="col-md-8">
-        <div class="form-group">
-          <label>Observação</label>
-          <textarea maxlength="80" ng-maxlength="80" class="form-control border-input" ng-model="itemComposicaoProduto.observacao" ></textarea>
-        </div>
-      </div>
-
-    </div>
-
+    <hr/>
 
   </div>
 
