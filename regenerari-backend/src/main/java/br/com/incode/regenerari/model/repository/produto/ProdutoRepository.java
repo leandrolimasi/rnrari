@@ -3,6 +3,8 @@ package br.com.incode.regenerari.model.repository.produto;
 import br.com.incode.regenerari.auth.AppAuthenticatedUserInfo;
 import br.com.incode.regenerari.entity.InsumoEntity;
 import br.com.incode.regenerari.entity.ProdutoEntity;
+import com.powerlogic.jcompany.core.commons.search.PlcPagedResult;
+import com.powerlogic.jcompany.core.commons.search.PlcPagination;
 import com.powerlogic.jcompany.core.exception.PlcException;
 import com.powerlogic.jcompany.core.messages.PlcBeanMessages;
 import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
@@ -18,7 +20,6 @@ import javax.enterprise.inject.spi.CDI;
 import javax.persistence.metamodel.ManagedType;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by leandrolimadasilva on 21/12/16.
@@ -33,8 +34,7 @@ public class ProdutoRepository extends PlcAbstractRepository<Long, ProdutoEntity
     }
 
     @Override
-    public List<ProdutoEntity> findAll(ProdutoEntity entity) throws PlcException {
-        SearchParameters sp = new SearchParameters();
+    public PlcPagedResult<ProdutoEntity> findPaged(ProdutoEntity entity, SearchParameters sp, PlcPagination<ProdutoEntity> config) {
 
         ManagedType<InsumoEntity> mt = getEntityManager().getMetamodel().entity(InsumoEntity.class);
         sp.addOrderBy(new OrderBy(OrderByDirection.ASC, mt.getAttribute("nome")));
@@ -43,7 +43,7 @@ public class ProdutoRepository extends PlcAbstractRepository<Long, ProdutoEntity
 
         sp.addMultiSelectProperties("id", "codigo", "nome");
 
-        return super.find(entity, sp);
+        return super.findPaged(entity, sp, config);
     }
 
     @Override
