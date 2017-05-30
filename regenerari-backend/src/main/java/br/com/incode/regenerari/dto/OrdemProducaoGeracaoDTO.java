@@ -23,7 +23,7 @@ public class OrdemProducaoGeracaoDTO {
     @NotNull(message = "O Campo 'Número' é obrigatório.")
     private String numero;
     @NotNull(message = "O Campo 'Motivo' é obrigatório.")
-    private MotivoOrdemProducao motivo;
+    private MotivoOrdemProducao motivoOrdemProducao;
 
     /**
      * @return the produto
@@ -82,16 +82,16 @@ public class OrdemProducaoGeracaoDTO {
     }
 
     /**
-     * @return the motivo
+     * @return the motivoOrdemProducao
      */
-    public MotivoOrdemProducao getMotivo() {
-        return motivo;
+    public MotivoOrdemProducao getMotivoOrdemProducao() {
+        return motivoOrdemProducao;
     }
 
     /**
-     * @param motivo the motivo to set
+     * @param motivoOrdemProducao the motivoOrdemProducao to set
      */
-    public void setMotivo(MotivoOrdemProducao motivo) {
-        this.motivo = motivo;
+    public void setMotivoOrdemProducao(MotivoOrdemProducao motivoOrdemProducao) {
+        this.motivoOrdemProducao = motivoOrdemProducao;
     }
 }

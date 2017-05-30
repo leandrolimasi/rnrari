@@ -1,0 +1,40 @@
+<div class="container-fluid" >
+
+  <form name="form" autocomplete="off" class="form-validate" novalidate ng-controller="OrdemProducaoController as ordemProducaoController" >
+
+    <div class="col-lg-12 col-md-12" ng-init="ordemProducaoController.find()">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Ordens de Produção</h4>
+        </div>
+        <div class="content">
+
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <plc-grid />
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="ordemProducaoController.find();" >Pesquisar</button>
+              <button type="button" class="btn btn-default" ng-click="ordemProducaoController.clear();" >Limpar</button>
+              <button type="button" class="btn btn-default" ng-click="ordemProducaoController.new();" >Novo</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

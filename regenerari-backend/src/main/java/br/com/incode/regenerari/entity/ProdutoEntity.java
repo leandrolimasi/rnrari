@@ -129,10 +129,11 @@ public class ProdutoEntity extends AppBaseEntity {
      * @param codigo
      * @param nome
      */
-    public ProdutoEntity(Long id, String codigo, String nome){
+    public ProdutoEntity(Long id, String codigo, String nome, int versao){
         this.id = id;
         this.codigo = codigo;
         this.nome = nome;
+        this.setVersao(versao);
     }
 
     @Transient

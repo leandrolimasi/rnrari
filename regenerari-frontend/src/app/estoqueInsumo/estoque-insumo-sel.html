@@ -11,17 +11,12 @@
 
           <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-6">
               <div class="form-group">
-                <label>Código</label>
-                <input type="text" class="form-control border-input" auto-focus ng-model="estoqueInsumoController.estoqueInsumoArg.codigo">
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <label>Nome</label>
-                <input type="text" class="form-control border-input" ng-model="estoqueInsumoController.estoqueInsumoArg.nome">
+                <plc-aggregate-modal label="Insumo" ng-entity="insumo" ng-required="true" can-modal="true"
+                                     can-autocomplete="true" name="estoqueInsumoArg.insumo"
+                                     ng-model="estoqueInsumoController.estoqueInsumoArg.insumo" ng-model-lookup="nome" autocomplete-url="/insumo/find"
+                                     template="app/insumo/insumo-modal.html"  />
               </div>
             </div>
 

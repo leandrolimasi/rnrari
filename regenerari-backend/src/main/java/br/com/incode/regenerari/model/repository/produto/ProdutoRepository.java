@@ -1,7 +1,6 @@
 package br.com.incode.regenerari.model.repository.produto;
 
 import br.com.incode.regenerari.auth.AppAuthenticatedUserInfo;
-import br.com.incode.regenerari.entity.InsumoEntity;
 import br.com.incode.regenerari.entity.ProdutoEntity;
 import com.powerlogic.jcompany.core.commons.search.PlcPagedResult;
 import com.powerlogic.jcompany.core.commons.search.PlcPagination;
@@ -36,12 +35,10 @@ public class ProdutoRepository extends PlcAbstractRepository<Long, ProdutoEntity
     @Override
     public PlcPagedResult<ProdutoEntity> findPaged(ProdutoEntity entity, SearchParameters sp, PlcPagination<ProdutoEntity> config) {
 
-        ManagedType<InsumoEntity> mt = getEntityManager().getMetamodel().entity(InsumoEntity.class);
+        ManagedType<ProdutoEntity> mt = getEntityManager().getMetamodel().entity(ProdutoEntity.class);
         sp.addOrderBy(new OrderBy(OrderByDirection.ASC, mt.getAttribute("nome")));
-
-        sp.caseInsensitive().anywhere();
-
-        sp.addMultiSelectProperties("id", "codigo", "nome");
+        sp.anywhere();
+        sp.addMultiSelectProperties("id", "codigo", "nome", "versao");
 
         return super.findPaged(entity, sp, config);
     }

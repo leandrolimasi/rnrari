@@ -19,6 +19,13 @@
       { field: 'valorUnitario', displayName: 'Valor Un.', cellFilter: 'finance:true:3'}
     ];
 
+
+    vm.afterInitialize = function(){
+      if (vm[vm.$baseRoute+'Arg']){
+        vm[vm.$baseRoute+'Arg'].insumo = {};
+      }
+    }
+
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));
   }
 })();

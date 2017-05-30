@@ -1,18 +1,20 @@
 package br.com.incode.regenerari.enums;
 
 /**
- * Created by leandrolima on 26/05/17.
+ * Created by leandrolima on 29/05/17.
  */
-public enum MotivoOrdemProducao {
+public enum StatusOrdemProducao {
 
-    AVALIACAO("Avaliação"),
-    REPOSICAO_ESTOQUE("Reposição Estoque"),
-    VENDA_DIRETA("Venda Direta");
+    CANCELADA("Cancelada"),
+    INICIADA("Iniciada"),
+    FALTA_INSUMO("Venda Direta"),
+    FINALIZADA("Finalizada"),
+    NA_FILA("Na Fila");
 
     private String label;
 
 
-    MotivoOrdemProducao(String label){
+    StatusOrdemProducao(String label){
         this.label = label;
     }
 

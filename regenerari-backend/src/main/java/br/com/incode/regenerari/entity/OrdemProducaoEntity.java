@@ -1,13 +1,8 @@
 package br.com.incode.regenerari.entity;
 
-import br.com.incode.regenerari.enums.ApresentacaoProduto;
-import br.com.incode.regenerari.enums.CategoriaProduto;
 import br.com.incode.regenerari.enums.MotivoOrdemProducao;
-import br.com.incode.regenerari.enums.UnidadeMedidaProduto;
+import br.com.incode.regenerari.enums.StatusOrdemProducao;
 import br.com.incode.regenerari.listener.AuditListener;
-import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -23,7 +18,6 @@ import java.util.Date;
  * Created by leandrolimadasilva on 24/05/17.
  */
 @Entity
-@Audited
 @Table(name = "ORDEM_PRODUCAO")
 @Access(AccessType.FIELD)
 @XmlRootElement
@@ -40,7 +34,7 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     private Long id;
 
     @Column(name = "NUMERO", nullable = false)
-    @Size(max = 10)
+    @Size(max = 18)
     @NotBlank(message = "O campo 'Número' é obrigatório.")
     private String numero;
 
@@ -67,6 +61,11 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     @Column(name = "MOTIVO_ORDEM_PRODUCAO", nullable = false)
     @NotNull(message = "O campo 'Motivo' é obrigatório.")
     private MotivoOrdemProducao motivoOrdemProducao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS_ORDEM_PRODUCAO", nullable = false)
+    @NotNull(message = "O campo 'Status' é obrigatório.")
+    private StatusOrdemProducao statusOrdemProducao;
 
     @ManyToOne (targetEntity = UsuarioEntity.class)
     @JoinColumn(name = "USUARIO_GERACAO")
@@ -221,5 +220,19 @@ public class OrdemProducaoEntity extends AppBaseEntity {
      */
     public void setUsuarioStatus(UsuarioEntity usuarioStatus) {
         this.usuarioStatus = usuarioStatus;
+    }
+
+    /**
+     * @return the statusOrdemProducao
+     */
+    public StatusOrdemProducao getStatusOrdemProducao() {
+        return statusOrdemProducao;
+    }
+
+    /**
+     * @param statusOrdemProducao the statusOrdemProducao to set
+     */
+    public void setStatusOrdemProducao(StatusOrdemProducao statusOrdemProducao) {
+        this.statusOrdemProducao = statusOrdemProducao;
     }
 }

@@ -1,0 +1,76 @@
+<div class="container-fluid" >
+
+  <form name="ordemProducao" autocomplete="off" class="form-validate" novalidate ng-controller="OrdemProducaoController as ordemProducaoController" >
+
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Nova Ordem Produção</h4>
+        </div>
+        <div class="content">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Número</label>
+                <input type="text" ng-required="true" ng-disabled="true"  class="form-control border-input" label="Número" name="ordemProducao.numero" ng-model="ordemProducaoController.ordemProducao.numero">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <plc-date-picker  ng-required="true" name="ordemProducao.dataLimite" ng-model="ordemProducaoController.ordemProducao.dataLimite" label="Data Limite"
+                                invalid-date-alert placeholder="__/__/____"  />
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <plc-aggregate-modal label="Produto" ng-entity="produto" ng-required="true" can-modal="true" can-autocomplete="true" name="ordemProducao.produto"
+                                     ng-model="ordemProducaoController.ordemProducao.produto" ng-model-lookup="nome" autocomplete-url="/produto/find"
+                                     template="app/produto/produto-modal.html"  />
+
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Quantidade</label>
+                <input type="number"  ng-required="true" ng-maxlength="10" maxlength="10" class="form-control border-input" label="Quantidade" name="ordemProducao.quantidade" ng-model="ordemProducaoController.ordemProducao.quantidade">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+
+                <plc-static-combo ng-model="ordemProducaoController.ordemProducao.motivoOrdemProducao" name="ordemProducao.motivoOrdemProducao"  ng-enum="motivoOrdemProducao" label="Motivo"
+                                  no-selected-value="[Selecione...]" ng-enum-value="motivoOrdemProducao" />
+
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="ordemProducaoController.new();" >Novo</button>
+              <button type="button" class="btn btn-default" ng-click="ordemProducaoController.list();" >Listar</button>
+              <button type="submit" class="btn btn-default" ng-click="ordemProducaoController.gerar();" >Gerar</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
