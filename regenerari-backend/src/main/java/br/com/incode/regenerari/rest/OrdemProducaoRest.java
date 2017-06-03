@@ -6,6 +6,7 @@ import br.com.incode.regenerari.entity.OrdemProducaoEntity;
 import br.com.incode.regenerari.messages.AppBeanMessages;
 import br.com.incode.regenerari.model.service.ordemProducao.IOrdemProducaoService;
 import com.powerlogic.jcompany.commons.util.message.PlcMsgUtil;
+import com.powerlogic.jcompany.core.commons.search.PlcPagedResult;
 import com.powerlogic.jcompany.core.exception.PlcException;
 import com.powerlogic.jcompany.core.messages.PlcMessageType;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
@@ -50,7 +51,7 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
     @Path("/gerar")
     public OrdemProducaoEntity gerar(OrdemProducaoGeracaoDTO dto) throws PlcException {
         OrdemProducaoEntity ordemProducao = ordemProducaoService.gerar(dto);
-        msgUtil.msg(AppBeanMessages.ESTOQUE_INSUMO_SUCCESS_ENTRADA, PlcMessageType.SUCCESS);
+        msgUtil.msg(AppBeanMessages.ORDEM_PRODUCAO_SUCCESS, PlcMessageType.SUCCESS);
         return ordemProducao;
     }
 
@@ -62,4 +63,16 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
         return dto;
     }
 
+
+    @Override
+    public PlcPagedResult<OrdemProducaoEntity> findPaged() throws PlcException {
+        PlcPagedResult<OrdemProducaoEntity> result = super.findPaged();
+
+        for (OrdemProducaoEntity ordemProducao: result.getList()){
+            ordemProducao.setMotivoOrdemProducaoDescricao(ordemProducao.getMotivoOrdemProducao().getLabel());
+            ordemProducao.setStatusOrdemProducaoDescricao(ordemProducao.getStatusOrdemProducao().getLabel());
+        }
+
+        return result;
+    }
 }

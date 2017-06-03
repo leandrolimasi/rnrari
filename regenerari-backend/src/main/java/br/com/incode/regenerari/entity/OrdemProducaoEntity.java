@@ -79,6 +79,14 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     @JoinColumn(name = "USUARIO_STATUS")
     private UsuarioEntity usuarioStatus;
 
+    /* Trasients */
+
+    @Transient
+    private String statusOrdemProducaoDescricao;
+
+    @Transient
+    private String motivoOrdemProducaoDescricao;
+
     /**
      * @return the id
      */
@@ -234,5 +242,33 @@ public class OrdemProducaoEntity extends AppBaseEntity {
      */
     public void setStatusOrdemProducao(StatusOrdemProducao statusOrdemProducao) {
         this.statusOrdemProducao = statusOrdemProducao;
+    }
+
+    /**
+     * @return the statusOrdemProducaoDescricao
+     */
+    public String getStatusOrdemProducaoDescricao() {
+        return statusOrdemProducaoDescricao;
+    }
+
+    /**
+     * @param statusOrdemProducaoDescricao the statusOrdemProducaoDescricao to set
+     */
+    public void setStatusOrdemProducaoDescricao(String statusOrdemProducaoDescricao) {
+        this.statusOrdemProducaoDescricao = statusOrdemProducaoDescricao;
+    }
+
+    /**
+     * @return the motivoOrdemProducaoDescricao
+     */
+    public String getMotivoOrdemProducaoDescricao() {
+        return motivoOrdemProducaoDescricao;
+    }
+
+    /**
+     * @param motivoOrdemProducaoDescricao the motivoOrdemProducaoDescricao to set
+     */
+    public void setMotivoOrdemProducaoDescricao(String motivoOrdemProducaoDescricao) {
+        this.motivoOrdemProducaoDescricao = motivoOrdemProducaoDescricao;
     }
 }

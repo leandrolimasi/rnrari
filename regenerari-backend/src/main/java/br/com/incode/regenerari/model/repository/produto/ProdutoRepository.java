@@ -38,7 +38,7 @@ public class ProdutoRepository extends PlcAbstractRepository<Long, ProdutoEntity
         ManagedType<ProdutoEntity> mt = getEntityManager().getMetamodel().entity(ProdutoEntity.class);
         sp.addOrderBy(new OrderBy(OrderByDirection.ASC, mt.getAttribute("nome")));
         sp.anywhere();
-        sp.addMultiSelectProperties("id", "codigo", "nome", "versao");
+        sp.addMultiSelectProperties("id", "codigo", "nome", "versao", "unidadeMedidaProduto");
 
         return super.findPaged(entity, sp, config);
     }

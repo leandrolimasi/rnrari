@@ -1,6 +1,6 @@
 <div class="container-fluid" >
 
-  <form name="ordemProducao" autocomplete="off" class="form-validate" novalidate ng-controller="OrdemProducaoController as ordemProducaoController" >
+  <form name="ordemProducaoForm" autocomplete="off" class="form-validate" novalidate ng-controller="OrdemProducaoController as ordemProducaoController" >
 
     <div class="col-lg-12 col-md-12">
       <div class="card">
@@ -39,7 +39,12 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Quantidade</label>
-                <input type="number"  ng-required="true" ng-maxlength="10" maxlength="10" class="form-control border-input" label="Quantidade" name="ordemProducao.quantidade" ng-model="ordemProducaoController.ordemProducao.quantidade">
+                <div class="input-group">
+
+                  <input type="text"  ng-required="true" ng-maxlength="10" maxlength="10" ui-number-mask="3" ui-hide-group-sep class="form-control border-input" label="Quantidade" name="ordemProducao.quantidade" ng-model="ordemProducaoController.ordemProducao.quantidade">
+                  <span class="input-group-addon" id="basic-addon2">{{ordemProducaoController.ordemProducao.produto.unidadeMedidaProduto}}</span>
+
+                </div>
               </div>
             </div>
 
@@ -50,7 +55,7 @@
             <div class="col-md-6">
               <div class="form-group">
 
-                <plc-static-combo ng-model="ordemProducaoController.ordemProducao.motivoOrdemProducao" name="ordemProducao.motivoOrdemProducao"  ng-enum="motivoOrdemProducao" label="Motivo"
+                <plc-static-combo ng-required="true"  ng-model="ordemProducaoController.ordemProducao.motivoOrdemProducao" name="ordemProducao.motivoOrdemProducao"  ng-enum="motivoOrdemProducao" label="Motivo"
                                   no-selected-value="[Selecione...]" ng-enum-value="motivoOrdemProducao" />
 
               </div>
