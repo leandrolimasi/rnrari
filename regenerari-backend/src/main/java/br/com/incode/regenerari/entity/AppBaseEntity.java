@@ -13,7 +13,7 @@ public abstract class AppBaseEntity extends PlcBaseEntity<Long> {
 
     @Version
     @Column(name = "versao", nullable = false)
-    private Integer versao;
+    private Long versao;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_ult_alteracao", nullable = false)
@@ -25,13 +25,13 @@ public abstract class AppBaseEntity extends PlcBaseEntity<Long> {
     /**
      * @return the versao
      */
-    public Integer getVersao() {
+    public Long getVersao() {
         return versao;
     }
     /**
      * @param versao the versao to set
      */
-    public void setVersao(Integer versao) {
+    public void setVersao(Long versao) {
         this.versao = versao;
     }
     /**

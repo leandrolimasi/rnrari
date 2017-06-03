@@ -1,6 +1,6 @@
 package br.com.incode.regenerari.dto;
 
-import br.com.incode.regenerari.entity.ProdutoEntity;
+import br.com.incode.regenerari.entity.ComposicaoProdutoEntity;
 import br.com.incode.regenerari.enums.MotivoOrdemProducao;
 
 import javax.validation.constraints.Future;
@@ -14,7 +14,7 @@ import java.util.Date;
 public class OrdemProducaoGeracaoDTO {
 
     @NotNull(message = "O Campo 'Produto' é obrigatório.")
-    private ProdutoEntity produto;
+    private ComposicaoProdutoEntity composicaoProduto;
     @NotNull(message = "O Campo 'Quantidade' é obrigatório.")
     private BigDecimal quantidade;
     @NotNull(message = "O Campo 'Data Limite' é obrigatório.")
@@ -26,17 +26,17 @@ public class OrdemProducaoGeracaoDTO {
     private MotivoOrdemProducao motivoOrdemProducao;
 
     /**
-     * @return the produto
+     * @return the composicaoProduto
      */
-    public ProdutoEntity getProduto() {
-        return produto;
+    public ComposicaoProdutoEntity getComposicaoProduto() {
+        return composicaoProduto;
     }
 
     /**
-     * @param produto the produto to set
+     * @param composicaoProduto the composicaoProduto to set
      */
-    public void setProduto(ProdutoEntity produto) {
-        this.produto = produto;
+    public void setComposicaoProduto(ComposicaoProdutoEntity composicaoProduto) {
+        this.composicaoProduto = composicaoProduto;
     }
 
     /**

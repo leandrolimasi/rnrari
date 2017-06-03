@@ -129,7 +129,7 @@ public class ProdutoEntity extends AppBaseEntity {
      * @param codigo
      * @param nome
      */
-    public ProdutoEntity(Long id, String codigo, String nome, int versao, UnidadeMedidaProduto unidadeMedidaProduto){
+    public ProdutoEntity(Long id, String codigo, String nome, Long versao, UnidadeMedidaProduto unidadeMedidaProduto){
         this.id = id;
         this.codigo = codigo;
         this.nome = nome;

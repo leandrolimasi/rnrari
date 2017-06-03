@@ -38,10 +38,10 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     @NotBlank(message = "O campo 'Número' é obrigatório.")
     private String numero;
 
-    @ManyToOne (targetEntity = ProdutoEntity.class)
-    @JoinColumn(name = "PRODUTO", nullable = false)
+    @ManyToOne (targetEntity = ComposicaoProdutoEntity.class)
+    @JoinColumn(name = "COMPOSICAO_PRODUTO", nullable = false)
     @NotNull(message = "O campo 'Produto' é obrigatório.")
-    private ProdutoEntity produto;
+    private ComposicaoProdutoEntity composicaoProduto;
 
     @Column(name = "QUANTIDADE", nullable = false, precision = 15, scale = 2)
     @NotNull(message = "O campo 'Quantidade' é obrigatório.")
@@ -118,19 +118,18 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     }
 
     /**
-     * @return the produto
+     * @return the composicaoProduto
      */
-    public ProdutoEntity getProduto() {
-        return produto;
+    public ComposicaoProdutoEntity getComposicaoProduto() {
+        return composicaoProduto;
     }
 
     /**
-     * @param produto the produto to set
+     * @param composicaoProduto the composicaoProduto to set
      */
-    public void setProduto(ProdutoEntity produto) {
-        this.produto = produto;
+    public void setComposicaoProduto(ComposicaoProdutoEntity composicaoProduto) {
+        this.composicaoProduto = composicaoProduto;
     }
-
 
     /**
      * @return the quantidade

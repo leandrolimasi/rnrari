@@ -16,14 +16,14 @@
 
     vm.columnDefs = [
       { field: 'numero', displayName: 'Número'},
-      { field: 'produto.nome', displayName: 'Produto'},
+      { field: 'composicaoProduto.produto.nome', displayName: 'Produto'},
       { field: 'motivoOrdemProducaoDescricao', displayName: 'Motivo'},
       { field: 'statusOrdemProducaoDescricao', displayName: 'Status'},
       { field: 'quantidade', displayName: 'Quantidade'},
       { field: 'id', displayName: 'Ações', cellTemplate: '<div class="ui-grid-cell-contents" >  <button type="button" class="btn btn-primary btn-xs" ng-click="grid.appScope.iniciarOrdemProducao(row.entity.id)">Iniciar</button>  <button type="button" class="btn btn-danger btn-xs">Cancelar</button> </div>'}
     ];
 
-    vm.rowTemplate = '  <div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></div>';
+    vm.rowTemplate = '<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></div>';
 
     vm.iniciarOrdemProducao = function(idOrdem){
       alert('not implemented yet');
@@ -41,7 +41,9 @@
       }
       var ordemProducaoDTO =  vm[vm.$baseRoute];
       OrdemProducaoService.gerar(ordemProducaoDTO).then( function (response) {
-        $state.go( vm.$baseRoute + '.sel' );
+        if (response.status === 200){
+          $state.go( vm.$baseRoute + '.sel' );
+        }
       });
     }
 

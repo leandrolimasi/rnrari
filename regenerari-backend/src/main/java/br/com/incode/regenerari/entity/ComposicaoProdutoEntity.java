@@ -1,21 +1,14 @@
 package br.com.incode.regenerari.entity;
 
-import br.com.incode.regenerari.enums.ApresentacaoProduto;
-import br.com.incode.regenerari.enums.CategoriaProduto;
-import br.com.incode.regenerari.enums.UnidadeMedidaProduto;
 import br.com.incode.regenerari.listener.AuditListener;
-import br.com.incode.regenerari.model.repository.produto.ProdutoRepository;
 import com.powerlogic.jcompany.core.model.domain.PlcSituacao;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -101,11 +94,12 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
      * @param produtoNome
      * @param composicaoExperimental
      */
-    public ComposicaoProdutoEntity(Long id, String produtoNome, Boolean composicaoExperimental) {
+    public ComposicaoProdutoEntity(Long id, String produtoNome, Boolean composicaoExperimental, Long versao) {
         this.id = id;
         this.composicaoExperimental = composicaoExperimental;
         this.produto = new ProdutoEntity();
         this.produto.setNome(produtoNome);
+        this.setVersao(versao);
     }
 
     /* trasients */

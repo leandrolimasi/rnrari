@@ -19,7 +19,7 @@ public class ComposicaoProdutoRepository extends PlcAbstractRepository<Long, Com
 
     @Override
     public List<ComposicaoProdutoEntity> find(ComposicaoProdutoEntity entity, SearchParameters sp) {
-        sp.addMultiSelectProperties("id", "produto.nome", "composicaoExperimental");
+        sp.addMultiSelectProperties("id", "produto.nome", "composicaoExperimental", "versao");
         return super.find(entity, sp);
     }
 
