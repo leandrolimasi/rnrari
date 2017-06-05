@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.math.BigDecimal;
 
 /**
  * Created by leandrolimadasilva on 20/02/17.
@@ -36,8 +37,8 @@ public class ItemComposicaoProdutoEntity extends AppBaseEntity {
     private InsumoEntity insumo;
 
     @NotNull(message = "O campo 'Quantidade Insumo' é obrigatório.")
-    @Column(name = "QUANTIDADE_INSUMO")
-    private Integer quantidadeInsumo;
+    @Column(name = "QUANTIDADE_INSUMO", precision = 15, scale = 3)
+    private BigDecimal quantidadeInsumo;
 
     @Column(name = "OBSERVACAO")
     @Size(max = 80)
@@ -81,14 +82,14 @@ public class ItemComposicaoProdutoEntity extends AppBaseEntity {
     /**
      * @return the quantidadeInsumo
      */
-    public Integer getQuantidadeInsumo() {
+    public BigDecimal getQuantidadeInsumo() {
         return quantidadeInsumo;
     }
 
     /**
      * @param quantidadeInsumo the quantidadeInsumo to set
      */
-    public void setQuantidadeInsumo(Integer quantidadeInsumo) {
+    public void setQuantidadeInsumo(BigDecimal quantidadeInsumo) {
         this.quantidadeInsumo = quantidadeInsumo;
     }
 

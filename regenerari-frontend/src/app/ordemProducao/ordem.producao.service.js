@@ -17,6 +17,12 @@
             gerar : function(data){
               return this._post('/gerar', data);
             },
+            cancelar : function(data){
+              return this._post('/cancelar', data);
+            },
+            iniciar : function(data){
+              return this._post('/iniciar', data);
+            },
             getNumeroOrdemProducao : function(){
               return this._get('/numeroOrdemProducao');
             }

@@ -7,7 +7,7 @@ public enum StatusOrdemProducao {
 
     CANCELADA("Cancelada"),
     INICIADA("Iniciada"),
-    FALTA_INSUMO("Venda Direta"),
+    FALTA_INSUMO("Falta Insumo"),
     FINALIZADA("Finalizada"),
     NA_FILA("Na Fila");
 

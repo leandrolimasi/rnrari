@@ -62,6 +62,8 @@ public class OrdemProducaoServiceImpl extends PlcAbstractServiceEntity<Long, Ord
         }
 
         ordemProducaoBO.validaGeracaoOrdemProducao(ordemProducao);
+        ordemProducao.setStatusOrdemProducao(StatusOrdemProducao.NA_FILA);
+        ordemProducao.setListaInsumos(ordemProducaoBO.montaListaInsumos(ordemProducao));
 
         HttpServletRequest request = CDI.current().select(HttpServletRequest.class).get();
         AppAuthenticatedUserInfo userInfo = (AppAuthenticatedUserInfo)
@@ -71,9 +73,68 @@ public class OrdemProducaoServiceImpl extends PlcAbstractServiceEntity<Long, Ord
         ordemProducao.setDataGeracao(new Date());
         ordemProducao.setUsuarioGeracao(userInfo.getUsuario());
         ordemProducao.setDataStatus(new Date());
-        ordemProducao.setStatusOrdemProducao(StatusOrdemProducao.NA_FILA);
+
 
         return getEntityRepository().save(ordemProducao);
+    }
+
+    /**
+     * Cancelar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     */
+    @Override
+    public OrdemProducaoEntity cancelar(@Valid OrdemProducaoEntity entity) {
+
+        entity.setStatusOrdemProducao(StatusOrdemProducao.CANCELADA);
+
+        HttpServletRequest request = CDI.current().select(HttpServletRequest.class).get();
+        AppAuthenticatedUserInfo userInfo = (AppAuthenticatedUserInfo)
+                request.getSession().getAttribute(PlcAuthenticatedUserInfo.PROPERTY);
+
+        entity.setUsuarioStatus(userInfo.getUsuario());
+        entity.setDataStatus(new Date());
+
+        return getEntityRepository().save(entity);
+    }
+
+    /**
+     * Finalizar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     */
+    @Override
+    public OrdemProducaoEntity finalizar(@Valid OrdemProducaoEntity entity) {
+        return null;
+    }
+
+    /**
+     * Iniciar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     */
+    @Override
+    public OrdemProducaoEntity iniciar(@Valid OrdemProducaoEntity entity) {
+
+        if (ordemProducaoBO.validaQuantidadeInsumo(entity)){
+            entity.setStatusOrdemProducao(StatusOrdemProducao.INICIADA);
+        }else{
+            entity.setStatusOrdemProducao(StatusOrdemProducao.FALTA_INSUMO);
+        }
+
+        entity.setListaInsumos(ordemProducaoBO.montaListaInsumos(entity));
+
+        HttpServletRequest request = CDI.current().select(HttpServletRequest.class).get();
+        AppAuthenticatedUserInfo userInfo = (AppAuthenticatedUserInfo)
+                request.getSession().getAttribute(PlcAuthenticatedUserInfo.PROPERTY);
+
+        entity.setUsuarioStatus(userInfo.getUsuario());
+        entity.setDataStatus(new Date());
+
+        return getEntityRepository().save(entity);
     }
 
 

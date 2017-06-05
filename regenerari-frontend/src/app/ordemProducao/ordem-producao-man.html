@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-md-6">
-              <plc-date-picker  ng-required="true" name="ordemProducao.dataLimite" ng-model="ordemProducaoController.ordemProducao.dataLimite" label="Data Limite"
+              <plc-date-picker ng-disabled="ordemProducaoController.ordemProducao.id"  ng-required="true" name="ordemProducao.dataLimite" ng-model="ordemProducaoController.ordemProducao.dataLimite" label="Data Limite"
                                 invalid-date-alert placeholder="__/__/____"  />
             </div>
 
@@ -29,7 +29,8 @@
 
             <div class="col-md-6">
               <div class="form-group">
-                <plc-aggregate-modal label="Produto" ng-entity="composicaoProduto" ng-required="true" can-modal="true" can-autocomplete="true" name="ordemProducao.composicaoProduto"
+
+                <plc-aggregate-modal  label="Produto" ng-disabled="ordemProducaoController.ordemProducao.id" ng-entity="composicaoProduto" ng-required="true" can-modal="true" can-autocomplete="true" name="ordemProducao.composicaoProduto"
                                      ng-model="ordemProducaoController.ordemProducao.composicaoProduto" ng-model-lookup="produto.nome" autocomplete-url="/composicao-produto/find"
                                      template="app/composicaoProduto/composicao-produto-modal.html"  />
 
@@ -41,8 +42,8 @@
                 <label>Quantidade</label>
                 <div class="input-group">
 
-                  <input type="text"  ng-required="true" ng-maxlength="10" maxlength="10" ui-number-mask="3" ui-hide-group-sep class="form-control border-input" label="Quantidade" name="ordemProducao.quantidade" ng-model="ordemProducaoController.ordemProducao.quantidade">
-                  <span class="input-group-addon" id="basic-addon2">{{ordemProducaoController.ordemProducao.produto.unidadeMedidaProduto}}</span>
+                  <input type="text"  ng-disabled="ordemProducaoController.ordemProducao.id" ng-required="true" ng-maxlength="10" maxlength="10" ui-number-mask="3" ui-hide-group-sep class="form-control border-input" label="Quantidade" name="ordemProducao.quantidade" ng-model="ordemProducaoController.ordemProducao.quantidade">
+                  <span class="input-group-addon" id="basic-addon2">{{ordemProducaoController.ordemProducao.composicaoProduto.produto.unidadeMedidaProduto}}</span>
 
                 </div>
               </div>
@@ -54,9 +55,16 @@
 
             <div class="col-md-6">
               <div class="form-group">
-
-                <plc-static-combo ng-required="true"  ng-model="ordemProducaoController.ordemProducao.motivoOrdemProducao" name="ordemProducao.motivoOrdemProducao"  ng-enum="motivoOrdemProducao" label="Motivo"
+                <plc-static-combo ng-required="true"  ng-disabled="ordemProducaoController.ordemProducao.id" ng-model="ordemProducaoController.ordemProducao.motivoOrdemProducao" name="ordemProducao.motivoOrdemProducao"  ng-enum="motivoOrdemProducao" label="Motivo"
                                   no-selected-value="[Selecione...]" ng-enum-value="motivoOrdemProducao" />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+
+                <plc-static-combo ng-disabled="true" ng-show="ordemProducaoController.ordemProducao.id" ng-model="ordemProducaoController.ordemProducao.statusOrdemProducao" name="ordemProducao.statusOrdemProducao"  ng-enum="statusOrdemProducao" label="Status"
+                                  no-selected-value="[Selecione...]" ng-enum-value="statusOrdemProducao" />
 
               </div>
             </div>
@@ -68,7 +76,10 @@
             <div class="col-sm-12">
               <button type="button" class="btn btn-default" ng-click="ordemProducaoController.new();" >Novo</button>
               <button type="button" class="btn btn-default" ng-click="ordemProducaoController.list();" >Listar</button>
-              <button type="submit" class="btn btn-default" ng-click="ordemProducaoController.gerar();" >Gerar</button>
+              <button type="submit" ng-show="!ordemProducaoController.ordemProducao.id" class="btn btn-default" ng-click="ordemProducaoController.gerarOrdemProducao();" >Gerar</button>
+              <button type="submit" ng-show="false" class="btn btn-default" ng-click="ordemProducaoController.iniciarOrdemProducao();" >Iniciar</button>
+              <button type="submit" ng-show="ordemProducaoController.ordemProducao.id" class="btn btn-default" ng-click="ordemProducaoController.cancelarOrdemProducao();" >Cancelar</button>
+              <button type="submit" ng-show="false" class="btn btn-default" ng-click="ordemProducaoController.finalizarOrdemProducao();" >Finalizar</button>
             </div>
           </div>
 

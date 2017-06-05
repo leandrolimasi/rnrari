@@ -30,7 +30,7 @@
             <div class="form-group">
               <label>Quantidade Insumo</label>
               <div class="input-group">
-                <input type="number"  ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" master-label="'Item Composição'"
+                <input type="text"  ui-number-mask="3" ui-hide-group-sep ng-required="true" ng-maxlength="15" maxlength="15" class="form-control border-input" master-label="'Item Composição'"
                        label="Quantidade Insumo" name="itemComposicaoProduto.{{$index}}.quantidadeInsumo" ng-model="itemComposicaoProduto.quantidadeInsumo">
                 <span class="input-group-addon" id="basic-addon2">{{itemComposicaoProduto.insumo.unidadeMedidaInsumo}}</span>
               </div>

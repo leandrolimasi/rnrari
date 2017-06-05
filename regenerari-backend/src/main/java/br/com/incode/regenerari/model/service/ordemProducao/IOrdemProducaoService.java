@@ -22,5 +22,26 @@ public  interface IOrdemProducaoService extends IPlcEntityService<Long, OrdemPro
      */
     OrdemProducaoEntity gerar(@Valid OrdemProducaoGeracaoDTO dto);
 
+    /** Cancelar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     */
+    OrdemProducaoEntity cancelar(@Valid OrdemProducaoEntity entity);
+
+    /** Finalizar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     */
+    OrdemProducaoEntity finalizar(@Valid OrdemProducaoEntity entity);
+
+    /** Iniciar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     */
+    OrdemProducaoEntity iniciar(@Valid OrdemProducaoEntity entity);
+
 
 }

@@ -6,7 +6,7 @@
     .controller('OrdemProducaoController', OrdemProducaoController);
 
   /** @ngInject */
-  function OrdemProducaoController($scope, OrdemProducaoService, $controller, PlcNotificationService, $state) {
+  function OrdemProducaoController($scope, OrdemProducaoService, $controller, PlcNotificationService, $state, $uibModal) {
     var vm = this;
     this.formScope = $scope;
 
@@ -19,21 +19,67 @@
       { field: 'composicaoProduto.produto.nome', displayName: 'Produto'},
       { field: 'motivoOrdemProducaoDescricao', displayName: 'Motivo'},
       { field: 'statusOrdemProducaoDescricao', displayName: 'Status'},
-      { field: 'quantidade', displayName: 'Quantidade'},
-      { field: 'id', displayName: 'Ações', cellTemplate: '<div class="ui-grid-cell-contents" >  <button type="button" class="btn btn-primary btn-xs" ng-click="grid.appScope.iniciarOrdemProducao(row.entity.id)">Iniciar</button>  <button type="button" class="btn btn-danger btn-xs">Cancelar</button> </div>'}
+      { field: 'quantidade', displayName: 'Quantidade', cellFilter: 'finance:false:3'}
     ];
-
-    vm.rowTemplate = '<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></div>';
 
     vm.iniciarOrdemProducao = function(idOrdem){
       alert('not implemented yet');
     }
 
     vm.cancelarOrdemProducao = function(idOrdem){
-      alert('not implemented yet');
+      var ordemProducao =  vm[vm.$baseRoute];
+      OrdemProducaoService.cancelar(ordemProducao).then( function (response) {
+        if (response.status === 200){
+          vm.abrirModalOrdemProducaoCancelamento(response.data.entity);
+        }
+      });
     }
 
-    vm.gerar = function(){
+    vm.abrirModalOrdemProducaoCancelamento = function(ordemProducao){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/ordemProducao/ordem-producao-cancelamento-modal.html',
+        controller: 'OrdemProducaoModalController',
+        controllerAs: 'ordemProducaoModalController',
+        resolve: {
+          item: function () {
+            return ordemProducao;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      }, function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      });
+
+    }
+
+    vm.abrirModalOrdemProducaoGeracao = function(ordemProducao){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/ordemProducao/ordem-producao-geracao-modal.html',
+        controller: 'OrdemProducaoModalController',
+        controllerAs: 'ordemProducaoModalController',
+        resolve: {
+          item: function () {
+            return ordemProducao;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      }, function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      });
+
+    }
+
+    vm.gerarOrdemProducao = function(){
       if (this.formScope.ordemProducaoForm.$invalid){
         vm.processValidation(this.formScope.ordemProducaoForm.$error);
         PlcNotificationService.error("CAMPOS_INVALIDOS_TOPICO_027");
@@ -42,7 +88,7 @@
       var ordemProducaoDTO =  vm[vm.$baseRoute];
       OrdemProducaoService.gerar(ordemProducaoDTO).then( function (response) {
         if (response.status === 200){
-          $state.go( vm.$baseRoute + '.sel' );
+          vm.abrirModalOrdemProducaoGeracao(response.data.entity);
         }
       });
     }
@@ -58,67 +104,6 @@
     vm.afterNew = function(){
       vm.getNumeroOrdemProducao();
     }
-
-    var paginationOptions = {
-      page: 1,
-      size: 25,
-      sort: undefined,
-      dir: undefined
-    };
-
-    vm.gridOptions =  {
-        paginationPageSizes: [25, 50, 75],
-        paginationPageSize: 25,
-        useExternalPagination: true,
-        useExternalSorting: true,
-        rowTemplate: vm.getRowTemplate,
-        columnDefs:  vm.columnDefs,
-        appScopeProvider: vm,
-        onRegisterApi: function(gridApi) {
-          vm.gridApi = gridApi;
-          vm.gridApi.core.on.sortChanged(vm, function(grid, sortColumns) {
-
-            paginationOptions.sort = undefined;
-            paginationOptions.dir = undefined;
-
-            if (sortColumns.length > 0) {
-
-              angular.forEach(sortColumns, function (value) {
-                if (value && value.sort) {
-                  if(!paginationOptions.dir){
-                    paginationOptions.dir = value.sort.direction +',';
-                  }else{
-                    paginationOptions.dir += value.sort.direction +',';
-                  }
-
-                  if(!paginationOptions.sort){
-                    paginationOptions.sort = value.name +',';
-                  }else{
-                    paginationOptions.sort += value.name +',';
-                  }
-                }
-              });
-
-            }
-
-            vm.$baseService.find(vm[vm.$baseRoute+'Arg'], paginationOptions).then( function (response) {
-              vm.gridOptions.data = response.data.entity.list;
-              vm.gridOptions.totalItems = response.data.entity.count;
-            });
-
-          });
-          gridApi.pagination.on.paginationChanged(vm, function (newPage, pageSize) {
-
-            paginationOptions.page = newPage;
-            paginationOptions.size = pageSize;
-
-            vm.$baseService.find(vm[vm.$baseRoute+'Arg'], paginationOptions).then( function (response) {
-              vm.gridOptions.data = response.data.entity.list;
-              vm.gridOptions.totalItems = response.data.entity.count;
-            });
-          });
-        }
-    };
 
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));
 

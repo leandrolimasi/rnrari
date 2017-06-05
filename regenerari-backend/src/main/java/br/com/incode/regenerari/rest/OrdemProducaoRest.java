@@ -3,12 +3,10 @@ package br.com.incode.regenerari.rest;
 import br.com.incode.regenerari.dto.OrdemProducaoGeracaoDTO;
 import br.com.incode.regenerari.dto.TimestampDTO;
 import br.com.incode.regenerari.entity.OrdemProducaoEntity;
-import br.com.incode.regenerari.messages.AppBeanMessages;
 import br.com.incode.regenerari.model.service.ordemProducao.IOrdemProducaoService;
 import com.powerlogic.jcompany.commons.util.message.PlcMsgUtil;
 import com.powerlogic.jcompany.core.commons.search.PlcPagedResult;
 import com.powerlogic.jcompany.core.exception.PlcException;
-import com.powerlogic.jcompany.core.messages.PlcMessageType;
 import com.powerlogic.jcompany.core.model.service.IPlcEntityService;
 import com.powerlogic.jcompany.core.rest.auth.PlcAuthenticated;
 import com.powerlogic.jcompany.core.rest.entity.PlcAbstractEntityRest;
@@ -50,9 +48,19 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
     @POST
     @Path("/gerar")
     public OrdemProducaoEntity gerar(OrdemProducaoGeracaoDTO dto) throws PlcException {
-        OrdemProducaoEntity ordemProducao = ordemProducaoService.gerar(dto);
-        msgUtil.msg(AppBeanMessages.ORDEM_PRODUCAO_SUCCESS, PlcMessageType.SUCCESS);
-        return ordemProducao;
+        return ordemProducaoService.gerar(dto);
+    }
+
+    /** Cancelar de producao Geracao
+     *
+     * @param entity
+     * @return
+     * @throws PlcException
+     */
+    @POST
+    @Path("/cancelar")
+    public OrdemProducaoEntity cancelar(OrdemProducaoEntity entity) throws PlcException {
+        return ordemProducaoService.cancelar(entity);
     }
 
     @GET

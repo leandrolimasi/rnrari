@@ -42,6 +42,7 @@ public enum AppBeanMessages implements IPlcMessageKey {
     ESTOQUE_INSUMO_SUCCESS_BAIXA_EXCEPCIONAL,
 
     ORDEM_PRODUCAO_SUCCESS,
+    ORDEM_PRODUCAO_CANCEL,
 
     ;
     public String getName()

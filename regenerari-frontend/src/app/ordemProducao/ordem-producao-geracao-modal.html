@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h3 class="modal-title">Ordem de Produção</h3>
+</div>
+<div class="modal-body">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Produto:</label>
+        <div class="stats">
+          {{ordemProducaoModalController.item.composicaoProduto.produto.nome}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" ng-repeat="listaInsumos in ordemProducaoModalController.item.listaInsumos">
+    <div class="col-md-4">
+      <label>Insumo: </label>
+      <div class="stats">
+        {{listaInsumos.insumo.nome }}
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label>Quantidade Solicitada: </label>
+      <div class="stats">
+        {{listaInsumos.quantidadeSolicitada | finance:false:3}}
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label>Quantidade Estoque: </label>
+      <div class="stats">
+        {{listaInsumos.quantidadeEstoque | finance:false:3 }}
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ordemProducaoModalController.ok()">OK</button>
+</div>
+

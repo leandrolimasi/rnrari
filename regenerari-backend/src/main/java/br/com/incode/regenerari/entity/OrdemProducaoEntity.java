@@ -1,5 +1,6 @@
 package br.com.incode.regenerari.entity;
 
+import br.com.incode.regenerari.dto.InsumosOrdemProducaoDTO;
 import br.com.incode.regenerari.enums.MotivoOrdemProducao;
 import br.com.incode.regenerari.enums.StatusOrdemProducao;
 import br.com.incode.regenerari.listener.AuditListener;
@@ -13,6 +14,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by leandrolimadasilva on 24/05/17.
@@ -43,7 +45,7 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     @NotNull(message = "O campo 'Produto' é obrigatório.")
     private ComposicaoProdutoEntity composicaoProduto;
 
-    @Column(name = "QUANTIDADE", nullable = false, precision = 15, scale = 2)
+    @Column(name = "QUANTIDADE", nullable = false, precision = 15, scale = 3)
     @NotNull(message = "O campo 'Quantidade' é obrigatório.")
     private BigDecimal quantidade;
 
@@ -86,6 +88,10 @@ public class OrdemProducaoEntity extends AppBaseEntity {
 
     @Transient
     private String motivoOrdemProducaoDescricao;
+
+    @Transient
+    private List<InsumosOrdemProducaoDTO> listaInsumos;
+
 
     /**
      * @return the id
@@ -269,5 +275,19 @@ public class OrdemProducaoEntity extends AppBaseEntity {
      */
     public void setMotivoOrdemProducaoDescricao(String motivoOrdemProducaoDescricao) {
         this.motivoOrdemProducaoDescricao = motivoOrdemProducaoDescricao;
+    }
+
+    /**
+     * @return the listaInsumos
+     */
+    public List<InsumosOrdemProducaoDTO> getListaInsumos() {
+        return listaInsumos;
+    }
+
+    /**
+     * @param listaInsumos the listaInsumos to set
+     */
+    public void setListaInsumos(List<InsumosOrdemProducaoDTO> listaInsumos) {
+        this.listaInsumos = listaInsumos;
     }
 }
