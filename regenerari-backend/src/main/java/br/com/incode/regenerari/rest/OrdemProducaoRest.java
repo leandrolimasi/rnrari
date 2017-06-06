@@ -39,7 +39,7 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
         return ordemProducaoService;
     }
 
-    /** Ordem de producao Geracao
+    /** Gerar Ordem de Producao
      *
      * @param dto
      * @return
@@ -51,7 +51,7 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
         return ordemProducaoService.gerar(dto);
     }
 
-    /** Cancelar de producao Geracao
+    /** Cancelar Ordem de  Producao
      *
      * @param entity
      * @return
@@ -61,6 +61,30 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
     @Path("/cancelar")
     public OrdemProducaoEntity cancelar(OrdemProducaoEntity entity) throws PlcException {
         return ordemProducaoService.cancelar(entity);
+    }
+
+    /** Iniciar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     * @throws PlcException
+     */
+    @POST
+    @Path("/iniciar")
+    public OrdemProducaoEntity iniciar(OrdemProducaoEntity entity) throws PlcException {
+        return ordemProducaoService.iniciar(entity);
+    }
+
+    /** Finalizar Ordem de Producao
+     *
+     * @param entity
+     * @return
+     * @throws PlcException
+     */
+    @POST
+    @Path("/finalizar")
+    public OrdemProducaoEntity finalizar(OrdemProducaoEntity entity) throws PlcException {
+        return ordemProducaoService.finalizar(entity);
     }
 
     @GET

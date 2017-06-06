@@ -49,6 +49,15 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     @NotNull(message = "O campo 'Quantidade' é obrigatório.")
     private BigDecimal quantidade;
 
+    @Column(name = "QUANTIDADE_PRODUZIDA", nullable = false, precision = 15, scale = 3)
+    private BigDecimal quantidadeProduzida;
+
+    @Column(name = "CUSTO_TOTAL", nullable = false, precision = 15, scale = 2)
+    private BigDecimal custoTotal;
+
+    @Column(name = "CUSTO_UNITARIO", nullable = false, precision = 15, scale = 2)
+    private BigDecimal custoUnitario;
+
     @Column(name = "DATA_LIMITE", nullable = false)
     @NotNull(message = "O campo 'Data Limite' é obrigatório.")
     @Temporal(TemporalType.TIMESTAMP)
@@ -289,5 +298,47 @@ public class OrdemProducaoEntity extends AppBaseEntity {
      */
     public void setListaInsumos(List<InsumosOrdemProducaoDTO> listaInsumos) {
         this.listaInsumos = listaInsumos;
+    }
+
+    /**
+     * @return the quantidadeProduzida
+     */
+    public BigDecimal getQuantidadeProduzida() {
+        return quantidadeProduzida;
+    }
+
+    /**
+     * @param quantidadeProduzida the quantidadeProduzida to set
+     */
+    public void setQuantidadeProduzida(BigDecimal quantidadeProduzida) {
+        this.quantidadeProduzida = quantidadeProduzida;
+    }
+
+    /**
+     * @return the custoTotal
+     */
+    public BigDecimal getCustoTotal() {
+        return custoTotal;
+    }
+
+    /**
+     * @param custoTotal the custoTotal to set
+     */
+    public void setCustoTotal(BigDecimal custoTotal) {
+        this.custoTotal = custoTotal;
+    }
+
+    /**
+     * @return the custoUnitario
+     */
+    public BigDecimal getCustoUnitario() {
+        return custoUnitario;
+    }
+
+    /**
+     * @param custoUnitario the custoUnitario to set
+     */
+    public void setCustoUnitario(BigDecimal custoUnitario) {
+        this.custoUnitario = custoUnitario;
     }
 }

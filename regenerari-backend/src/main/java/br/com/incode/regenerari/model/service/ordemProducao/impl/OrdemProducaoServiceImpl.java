@@ -3,9 +3,14 @@ package br.com.incode.regenerari.model.service.ordemProducao.impl;
 import br.com.incode.regenerari.auth.AppAuthenticatedUserInfo;
 import br.com.incode.regenerari.bo.OrdemProducaoBO;
 import br.com.incode.regenerari.dto.OrdemProducaoGeracaoDTO;
+import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
 import br.com.incode.regenerari.entity.OrdemProducaoEntity;
+import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
+import br.com.incode.regenerari.enums.EventoEstoque;
 import br.com.incode.regenerari.enums.StatusOrdemProducao;
+import br.com.incode.regenerari.model.repository.estoqueInsumo.EstoqueInsumoRepository;
 import br.com.incode.regenerari.model.repository.ordemProducao.OrdemProducaoRepository;
+import br.com.incode.regenerari.model.repository.posicaoEstoqueInsumo.PosicaoEstoqueInsumoRepository;
 import br.com.incode.regenerari.model.service.ordemProducao.IOrdemProducaoService;
 import com.powerlogic.jcompany.commons.interceptor.validation.PlcValidationInterceptor;
 import com.powerlogic.jcompany.core.model.repository.IPlcEntityRepository;
@@ -22,6 +27,8 @@ import javax.interceptor.Interceptors;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 /**
@@ -38,6 +45,12 @@ public class OrdemProducaoServiceImpl extends PlcAbstractServiceEntity<Long, Ord
 
     @Inject
     private OrdemProducaoBO ordemProducaoBO;
+
+    @Inject
+    private EstoqueInsumoRepository estoqueInsumoRepository;
+
+    @Inject
+    private PosicaoEstoqueInsumoRepository posicaoEstoqueInsumoRepository;
 
     @Override
     protected IPlcEntityRepository<Long, OrdemProducaoEntity> getEntityRepository() {
@@ -107,6 +120,29 @@ public class OrdemProducaoServiceImpl extends PlcAbstractServiceEntity<Long, Ord
      */
     @Override
     public OrdemProducaoEntity finalizar(@Valid OrdemProducaoEntity entity) {
+
+        EstoqueInsumoEntity estoqueInsumo = new EstoqueInsumoEntity();
+
+        estoqueInsumo.setValorCompraUnitario(estoqueInsumo.getValorCompraTotal()
+                .divide( estoqueInsumo.getQuantidade(), 2, RoundingMode.DOWN));
+
+        estoqueInsumo = estoqueInsumoRepository.save(estoqueInsumo);
+
+
+        PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(estoqueInsumo.getInsumo());
+
+        posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()));
+        posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.PRODUCAO);
+        BigDecimal valorTotalAtual = posicaoEstoqueInsumo.getQuantidade()
+                .multiply(posicaoEstoqueInsumo.getValorUnitario());
+        BigDecimal valorTotalMedia = valorTotalAtual.add(estoqueInsumo.getValorCompraTotal());
+
+        posicaoEstoqueInsumo.setValorUnitario(
+                valorTotalMedia.divide(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()),
+                        2, RoundingMode.DOWN));
+
+        posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
+
         return null;
     }
 

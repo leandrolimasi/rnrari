@@ -22,15 +22,29 @@
       { field: 'quantidade', displayName: 'Quantidade', cellFilter: 'finance:false:3'}
     ];
 
-    vm.iniciarOrdemProducao = function(idOrdem){
-      alert('not implemented yet');
+    vm.iniciarOrdemProducao = function(){
+      var ordemProducao =  vm[vm.$baseRoute];
+      OrdemProducaoService.iniciar(ordemProducao).then( function (response) {
+        if (response.status === 200){
+          vm.abrirModalOrdemProducaoIniciar(response.data.entity);
+        }
+      });
     }
 
-    vm.cancelarOrdemProducao = function(idOrdem){
+    vm.cancelarOrdemProducao = function(){
       var ordemProducao =  vm[vm.$baseRoute];
       OrdemProducaoService.cancelar(ordemProducao).then( function (response) {
         if (response.status === 200){
           vm.abrirModalOrdemProducaoCancelamento(response.data.entity);
+        }
+      });
+    }
+
+    vm.finalizarOrdemProducao = function(){
+      var ordemProducao =  vm[vm.$baseRoute];
+      OrdemProducaoService.finalizar(ordemProducao).then( function (response) {
+        if (response.status === 200){
+          vm.abrirModalOrdemProducaoFinalizar(response.data.entity);
         }
       });
     }
@@ -40,6 +54,72 @@
       var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: 'app/ordemProducao/ordem-producao-cancelamento-modal.html',
+        controller: 'OrdemProducaoModalController',
+        controllerAs: 'ordemProducaoModalController',
+        resolve: {
+          item: function () {
+            return ordemProducao;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      }, function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      });
+
+    }
+
+    vm.abrirModalOrdemProducaoIniciar = function(ordemProducao){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/ordemProducao/ordem-producao-iniciar-modal.html',
+        controller: 'OrdemProducaoModalController',
+        controllerAs: 'ordemProducaoModalController',
+        resolve: {
+          item: function () {
+            return ordemProducao;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      }, function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      });
+
+    }
+
+    vm.abrirModalOrdemProducaoCancelamento = function(ordemProducao){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/ordemProducao/ordem-producao-cancelamento-modal.html',
+        controller: 'OrdemProducaoModalController',
+        controllerAs: 'ordemProducaoModalController',
+        resolve: {
+          item: function () {
+            return ordemProducao;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      }, function () {
+        $state.go( vm.$baseRoute + '.sel' );
+      });
+
+    }
+
+    vm.abrirModalOrdemProducaoFinalizar = function(ordemProducao){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/ordemProducao/ordem-producao-finalizar-modal.html',
         controller: 'OrdemProducaoModalController',
         controllerAs: 'ordemProducaoModalController',
         resolve: {

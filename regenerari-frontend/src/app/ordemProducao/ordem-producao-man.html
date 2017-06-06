@@ -71,15 +71,51 @@
 
           </div>
 
+          <div class="row" ng-if="ordemProducaoController.ordemProducao.statusOrdemProducao == 'INICIADA'">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Quantidade Produzida</label>
+                <div class="input-group">
+                  <input type="text" ng-required="true" ng-maxlength="10" maxlength="10" ui-number-mask="3" ui-hide-group-sep class="form-control border-input" label="Quantidade Produzida" name="ordemProducao.quantidadeProduzida" ng-model="ordemProducaoController.ordemProducao.quantidadeProduzida">
+                  <span class="input-group-addon" id="basic-addon3">{{ordemProducaoController.ordemProducao.composicaoProduto.produto.unidadeMedidaProduto}}</span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row" ng-if="ordemProducaoController.ordemProducao.statusOrdemProducao == 'INICIADA'">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Custo Unitário</label>
+                <input type="text" ng-disabled="true"  ng-required="true" ui-money-mask  ng-maxlength="15" maxlength="15" class="form-control border-input" label="Custo Unitário" name="entradaInsumo.valorCompraTotal" ng-model="entradaInsumoController.entradaInsumo.valorCompraTotal">
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Custo Total</label>
+                <input type="text" ng-disabled="true"  ng-required="true" ui-money-mask  ng-maxlength="15" maxlength="15" class="form-control border-input" label="Custo Total" name="entradaInsumo.valorCompraTotal" ng-model="entradaInsumoController.entradaInsumo.valorCompraTotal">
+              </div>
+            </div>
+
+
+
+          </div>
+
 
           <div class="row">
             <div class="col-sm-12">
               <button type="button" class="btn btn-default" ng-click="ordemProducaoController.new();" >Novo</button>
               <button type="button" class="btn btn-default" ng-click="ordemProducaoController.list();" >Listar</button>
               <button type="submit" ng-show="!ordemProducaoController.ordemProducao.id" class="btn btn-default" ng-click="ordemProducaoController.gerarOrdemProducao();" >Gerar</button>
-              <button type="submit" ng-show="false" class="btn btn-default" ng-click="ordemProducaoController.iniciarOrdemProducao();" >Iniciar</button>
               <button type="submit" ng-show="ordemProducaoController.ordemProducao.id" class="btn btn-default" ng-click="ordemProducaoController.cancelarOrdemProducao();" >Cancelar</button>
-              <button type="submit" ng-show="false" class="btn btn-default" ng-click="ordemProducaoController.finalizarOrdemProducao();" >Finalizar</button>
+              <button type="submit" ng-show="ordemProducaoController.ordemProducao.id && (ordemProducaoController.ordemProducao.statusOrdemProducao == 'NA_FILA' || ordemProducaoController.ordemProducao.statusOrdemProducao == 'FALTA_INSUMO')" class="btn btn-default" ng-click="ordemProducaoController.iniciarOrdemProducao();" >Iniciar</button>
+              <button type="submit" ng-show="ordemProducaoController.ordemProducao.id && (ordemProducaoController.ordemProducao.statusOrdemProducao == 'INICIADA')" class="btn btn-default" ng-click="ordemProducaoController.finalizarOrdemProducao();" >Finalizar</button>
             </div>
           </div>
 
