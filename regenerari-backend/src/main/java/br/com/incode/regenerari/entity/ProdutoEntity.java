@@ -122,6 +122,14 @@ public class ProdutoEntity extends AppBaseEntity {
      */
     public ProdutoEntity(){}
 
+    /**
+     *
+     * @param id
+     */
+    public ProdutoEntity(Long id) {
+        setId(id);
+    }
+
 
     /** Constructor for sel
      *
@@ -143,6 +151,8 @@ public class ProdutoEntity extends AppBaseEntity {
 
     @Transient
     private String statusDescricao;
+
+
 
     /**
      * @return the id

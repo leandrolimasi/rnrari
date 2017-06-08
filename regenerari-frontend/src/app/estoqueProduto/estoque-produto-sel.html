@@ -1,0 +1,51 @@
+<div class="container-fluid" >
+
+  <form name="form" autocomplete="off" class="form-validate" novalidate ng-controller="EstoqueProdutoController as estoqueProdutoController" >
+
+    <div class="col-lg-12 col-md-12" ng-init="estoqueProdutoController.find()">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Estoque de Produtos</h4>
+        </div>
+        <div class="content">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <plc-aggregate-modal label="Produto" ng-entity="produto" ng-required="true" can-modal="true"
+                                     can-autocomplete="true" name="estoqueProdutoArg.produto"
+                                     ng-model="estoqueProdutoController.estoqueProdutoArg.produto" ng-model-lookup="nome" autocomplete-url="/produto/find"
+                                     template="app/produto/produto-modal.html"  />
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <plc-grid />
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" class="btn btn-default" ng-click="estoqueProdutoController.find();" >Pesquisar</button>
+              <button type="button" class="btn btn-default" ng-click="estoqueProdutoController.clear();" >Limpar</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
