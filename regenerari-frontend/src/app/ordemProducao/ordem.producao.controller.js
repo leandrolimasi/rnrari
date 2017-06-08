@@ -185,6 +185,10 @@
       vm.getNumeroOrdemProducao();
     }
 
+    vm.calcCustoTotal = function(){
+      vm[vm.$baseRoute].custoTotal = vm[vm.$baseRoute].custoUnitario * vm[vm.$baseRoute].quantidadeProduzida;
+    }
+
     angular.extend(vm, $controller('PlcBaseController', {$scope: $scope, $controllerPlc: vm}));
 
 

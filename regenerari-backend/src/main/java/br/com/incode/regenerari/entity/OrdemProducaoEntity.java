@@ -49,13 +49,13 @@ public class OrdemProducaoEntity extends AppBaseEntity {
     @NotNull(message = "O campo 'Quantidade' é obrigatório.")
     private BigDecimal quantidade;
 
-    @Column(name = "QUANTIDADE_PRODUZIDA", nullable = false, precision = 15, scale = 3)
+    @Column(name = "QUANTIDADE_PRODUZIDA", precision = 15, scale = 3)
     private BigDecimal quantidadeProduzida;
 
-    @Column(name = "CUSTO_TOTAL", nullable = false, precision = 15, scale = 2)
+    @Column(name = "CUSTO_TOTAL", precision = 15, scale = 2)
     private BigDecimal custoTotal;
 
-    @Column(name = "CUSTO_UNITARIO", nullable = false, precision = 15, scale = 2)
+    @Column(name = "CUSTO_UNITARIO", precision = 15, scale = 2)
     private BigDecimal custoUnitario;
 
     @Column(name = "DATA_LIMITE", nullable = false)

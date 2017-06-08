@@ -77,7 +77,7 @@
               <div class="form-group">
                 <label>Quantidade Produzida</label>
                 <div class="input-group">
-                  <input type="text" ng-required="true" ng-maxlength="10" maxlength="10" ui-number-mask="3" ui-hide-group-sep class="form-control border-input" label="Quantidade Produzida" name="ordemProducao.quantidadeProduzida" ng-model="ordemProducaoController.ordemProducao.quantidadeProduzida">
+                  <input type="text" ng-required="true" ng-maxlength="10" maxlength="10" ui-number-mask="3" ng-change="ordemProducaoController.calcCustoTotal()" ui-hide-group-sep class="form-control border-input" label="Quantidade Produzida" name="ordemProducao.quantidadeProduzida" ng-model="ordemProducaoController.ordemProducao.quantidadeProduzida">
                   <span class="input-group-addon" id="basic-addon3">{{ordemProducaoController.ordemProducao.composicaoProduto.produto.unidadeMedidaProduto}}</span>
                 </div>
               </div>
@@ -91,7 +91,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Custo Unitário</label>
-                <input type="text" ng-disabled="true"  ng-required="true" ui-money-mask  ng-maxlength="15" maxlength="15" class="form-control border-input" label="Custo Unitário" name="entradaInsumo.valorCompraTotal" ng-model="entradaInsumoController.entradaInsumo.valorCompraTotal">
+                <input type="text" ng-disabled="true"  ng-required="true" ui-money-mask  ng-maxlength="15" maxlength="15" class="form-control border-input" label="Custo Unitário" name="ordemProducao.custoUnitario" ng-model="ordemProducaoController.ordemProducao.custoUnitario">
               </div>
             </div>
 
@@ -99,7 +99,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Custo Total</label>
-                <input type="text" ng-disabled="true"  ng-required="true" ui-money-mask  ng-maxlength="15" maxlength="15" class="form-control border-input" label="Custo Total" name="entradaInsumo.valorCompraTotal" ng-model="entradaInsumoController.entradaInsumo.valorCompraTotal">
+                <input type="text" ng-disabled="true"  ng-required="true" ui-money-mask  ng-maxlength="15" maxlength="15" class="form-control border-input" label="Custo Total" name="ordemProducao.custoTotal" ng-model="ordemProducaoController.ordemProducao.custoTotal">
               </div>
             </div>
 

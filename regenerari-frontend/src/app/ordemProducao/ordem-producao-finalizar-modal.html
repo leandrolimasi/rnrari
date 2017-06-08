@@ -4,13 +4,9 @@
 <div class="modal-body">
 
   <div class="row">
-    <div class="col-md-12" ng-if="ordemProducaoModalController.item.statusOrdemProducao == 'INICIADA'">
+    <div class="col-md-12">
       <p>Ordem de Produção {{ordemProducaoModalController.item.numero}} para o produto
-        {{ordemProducaoModalController.item.composicaoProduto.produto.nome}} iniciada com sucesso! </p>
-    </div>
-    <div class="col-md-12" ng-if="ordemProducaoModalController.item.statusOrdemProducao != 'INICIADA'">
-      <p>Ordem de Produção {{ordemProducaoModalController.item.numero}} para o produto
-        {{ordemProducaoModalController.item.composicaoProduto.produto.nome}} pendente por falta de insumo! </p>
+        {{ordemProducaoModalController.item.composicaoProduto.produto.nome}} finalizada! </p>
     </div>
   </div>
 

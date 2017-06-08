@@ -3,20 +3,20 @@ package br.com.incode.regenerari.model.service.ordemProducao.impl;
 import br.com.incode.regenerari.auth.AppAuthenticatedUserInfo;
 import br.com.incode.regenerari.bo.OrdemProducaoBO;
 import br.com.incode.regenerari.dto.OrdemProducaoGeracaoDTO;
-import br.com.incode.regenerari.entity.EstoqueInsumoEntity;
-import br.com.incode.regenerari.entity.OrdemProducaoEntity;
-import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
+import br.com.incode.regenerari.entity.*;
 import br.com.incode.regenerari.enums.EventoEstoque;
 import br.com.incode.regenerari.enums.StatusOrdemProducao;
 import br.com.incode.regenerari.model.repository.estoqueInsumo.EstoqueInsumoRepository;
 import br.com.incode.regenerari.model.repository.ordemProducao.OrdemProducaoRepository;
 import br.com.incode.regenerari.model.repository.posicaoEstoqueInsumo.PosicaoEstoqueInsumoRepository;
+import br.com.incode.regenerari.model.repository.posicaoEstoqueProduto.PosicaoEstoqueProdutoRepository;
 import br.com.incode.regenerari.model.service.ordemProducao.IOrdemProducaoService;
 import com.powerlogic.jcompany.commons.interceptor.validation.PlcValidationInterceptor;
 import com.powerlogic.jcompany.core.model.repository.IPlcEntityRepository;
 import com.powerlogic.jcompany.core.model.service.PlcAbstractServiceEntity;
 import com.powerlogic.jcompany.core.rest.auth.PlcAuthenticatedUserInfo;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,9 +52,29 @@ public class OrdemProducaoServiceImpl extends PlcAbstractServiceEntity<Long, Ord
     @Inject
     private PosicaoEstoqueInsumoRepository posicaoEstoqueInsumoRepository;
 
+    @Inject
+    private PosicaoEstoqueProdutoRepository posicaoEstoqueProdutoRepository;
+
     @Override
     protected IPlcEntityRepository<Long, OrdemProducaoEntity> getEntityRepository() {
         return ordemProducaoRepository;
+    }
+
+    @Override
+    public OrdemProducaoEntity get(Long id) {
+        OrdemProducaoEntity ordemProducao = super.get(id);
+        if (StatusOrdemProducao.INICIADA.equals(ordemProducao.getStatusOrdemProducao())){
+            BigDecimal valorUnitarioProducao = BigDecimal.ZERO;
+            if (ordemProducao.getComposicaoProduto() != null &&
+                    CollectionUtils.isNotEmpty(ordemProducao.getComposicaoProduto().getItemComposicaoProduto())){
+                for (ItemComposicaoProdutoEntity itemComposicao: ordemProducao.getComposicaoProduto().getItemComposicaoProduto()){
+                    PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(itemComposicao.getInsumo());
+                    valorUnitarioProducao = valorUnitarioProducao.add(posicaoEstoqueInsumo.getValorUnitario());
+                }
+            }
+            ordemProducao.setCustoUnitario(valorUnitarioProducao);
+        }
+        return ordemProducao;
     }
 
     /**
@@ -121,29 +141,44 @@ public class OrdemProducaoServiceImpl extends PlcAbstractServiceEntity<Long, Ord
     @Override
     public OrdemProducaoEntity finalizar(@Valid OrdemProducaoEntity entity) {
 
-        EstoqueInsumoEntity estoqueInsumo = new EstoqueInsumoEntity();
+        if (entity.getComposicaoProduto() != null &&
+                CollectionUtils.isNotEmpty(entity.getComposicaoProduto().getItemComposicaoProduto())){
+            for (ItemComposicaoProdutoEntity itemComposicao: entity.getComposicaoProduto().getItemComposicaoProduto()){
+                PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo =
+                        posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(itemComposicao.getInsumo());
+                posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade()
+                        .subtract(itemComposicao.getQuantidadeInsumo().multiply(entity.getQuantidadeProduzida())));
+                posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.PRODUCAO);
+                posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
+            }
+        }
 
-        estoqueInsumo.setValorCompraUnitario(estoqueInsumo.getValorCompraTotal()
-                .divide( estoqueInsumo.getQuantidade(), 2, RoundingMode.DOWN));
+        PosicaoEstoqueProdutoEntity posicaoEstoqueProduto =
+                posicaoEstoqueProdutoRepository.recuperaPosicaoAtual(entity.getComposicaoProduto().getProduto());
 
-        estoqueInsumo = estoqueInsumoRepository.save(estoqueInsumo);
+        if (posicaoEstoqueProduto == null){
+            posicaoEstoqueProduto = new PosicaoEstoqueProdutoEntity();
+            posicaoEstoqueProduto.setProduto(entity.getComposicaoProduto().getProduto());
+            posicaoEstoqueProduto.setEventoEstoque(EventoEstoque.ENTRADA);
+            posicaoEstoqueProduto.setQuantidade(entity.getQuantidadeProduzida());
 
+        }else{
+            posicaoEstoqueProduto.setQuantidade(posicaoEstoqueProduto.getQuantidade().add(entity.getQuantidadeProduzida()));
+            posicaoEstoqueProduto.setEventoEstoque(EventoEstoque.ENTRADA);
+        }
 
-        PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(estoqueInsumo.getInsumo());
+        posicaoEstoqueProdutoRepository.save(posicaoEstoqueProduto);
 
-        posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()));
-        posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.PRODUCAO);
-        BigDecimal valorTotalAtual = posicaoEstoqueInsumo.getQuantidade()
-                .multiply(posicaoEstoqueInsumo.getValorUnitario());
-        BigDecimal valorTotalMedia = valorTotalAtual.add(estoqueInsumo.getValorCompraTotal());
+        entity.setStatusOrdemProducao(StatusOrdemProducao.FINALIZADA);
 
-        posicaoEstoqueInsumo.setValorUnitario(
-                valorTotalMedia.divide(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()),
-                        2, RoundingMode.DOWN));
+        HttpServletRequest request = CDI.current().select(HttpServletRequest.class).get();
+        AppAuthenticatedUserInfo userInfo = (AppAuthenticatedUserInfo)
+                request.getSession().getAttribute(PlcAuthenticatedUserInfo.PROPERTY);
 
-        posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
+        entity.setUsuarioStatus(userInfo.getUsuario());
+        entity.setDataStatus(new Date());
 
-        return null;
+        return entity;
     }
 
     /**

@@ -23,6 +23,9 @@
             iniciar : function(data){
               return this._post('/iniciar', data);
             },
+            finalizar : function(data){
+              return this._post('/finalizar', data);
+            },
             getNumeroOrdemProducao : function(){
               return this._get('/numeroOrdemProducao');
             }
