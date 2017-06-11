@@ -16,8 +16,10 @@
       { field: 'produto.codigo', displayName: 'Cód.'},
       { field: 'produto.nome', displayName: 'Nome'},
       { field: 'quantidade', displayName: 'Quantidade', cellFilter: 'finance:false:3'},
-      { field: 'valorUnitario', displayName: 'Valor Un.', cellFilter: 'finance:true:3'}
+      { field: 'eventoEstoque', displayName: 'Evento'},
+      { field: 'dataUltimaAlteracao', displayName: 'Data', cellFilter: 'date'}
     ];
+
 
 
     vm.afterInitialize = function(){
