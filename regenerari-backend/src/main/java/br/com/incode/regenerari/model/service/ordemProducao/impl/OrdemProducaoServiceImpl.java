@@ -3,7 +3,10 @@ package br.com.incode.regenerari.model.service.ordemProducao.impl;
 import br.com.incode.regenerari.auth.AppAuthenticatedUserInfo;
 import br.com.incode.regenerari.bo.OrdemProducaoBO;
 import br.com.incode.regenerari.dto.OrdemProducaoGeracaoDTO;
-import br.com.incode.regenerari.entity.*;
+import br.com.incode.regenerari.entity.ItemComposicaoProdutoEntity;
+import br.com.incode.regenerari.entity.OrdemProducaoEntity;
+import br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity;
+import br.com.incode.regenerari.entity.PosicaoEstoqueProdutoEntity;
 import br.com.incode.regenerari.enums.EventoEstoque;
 import br.com.incode.regenerari.enums.StatusOrdemProducao;
 import br.com.incode.regenerari.model.repository.estoqueInsumo.EstoqueInsumoRepository;
@@ -28,7 +31,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Date;
 
 /**
@@ -178,7 +180,7 @@ public class OrdemProducaoServiceImpl extends PlcAbstractServiceEntity<Long, Ord
         entity.setUsuarioStatus(userInfo.getUsuario());
         entity.setDataStatus(new Date());
 
-        return entity;
+        return save(entity);
     }
 
     /**
