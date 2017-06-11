@@ -21,7 +21,6 @@
     ];
 
 
-
     vm.afterInitialize = function(){
       if (vm[vm.$baseRoute+'Arg']){
         vm[vm.$baseRoute+'Arg'].insumo = {};

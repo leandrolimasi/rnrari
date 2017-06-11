@@ -9,6 +9,26 @@
         </div>
         <div class="content">
 
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <plc-static-combo  ng-model="ordemProducaoController.ordemProducaoArg.motivoOrdemProducao" name="ordemProducao.motivoOrdemProducao"  ng-enum="motivoOrdemProducao" label="Motivo"
+                                  no-selected-value="[Selecione...]" ng-enum-value="motivoOrdemProducao" />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+
+                <plc-static-combo ng-model="ordemProducaoController.ordemProducaoArg.statusOrdemProducao" name="ordemProducao.statusOrdemProducao"  ng-enum="statusOrdemProducao" label="Status"
+                                  no-selected-value="[Selecione...]" ng-enum-value="statusOrdemProducao" />
+
+              </div>
+            </div>
+
+          </div>
+
 
           <div class="row">
 
