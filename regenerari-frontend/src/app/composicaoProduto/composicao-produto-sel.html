@@ -11,9 +11,12 @@
 
           <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-6">
               <div class="form-group">
-
+                <plc-aggregate-modal label="Produto" ng-entity="produto" can-modal="true"
+                                     can-autocomplete="true" name="composicaoProdutoArg.produto"
+                                     ng-model="composicaoProdutoController.composicaoProdutoArg.produto" ng-model-lookup="nome" autocomplete-url="/produto/find"
+                                     template="app/produto/produto-modal.html"  />
               </div>
             </div>
 
