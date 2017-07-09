@@ -3,6 +3,7 @@ package br.com.incode.regenerari.rest;
 import br.com.incode.regenerari.dto.OrdemProducaoGeracaoDTO;
 import br.com.incode.regenerari.dto.TimestampDTO;
 import br.com.incode.regenerari.entity.OrdemProducaoEntity;
+import br.com.incode.regenerari.model.service.ordemProducao.INumeroOrdemProducaoService;
 import br.com.incode.regenerari.model.service.ordemProducao.IOrdemProducaoService;
 import com.powerlogic.jcompany.commons.util.message.PlcMsgUtil;
 import com.powerlogic.jcompany.core.commons.search.PlcPagedResult;
@@ -30,6 +31,9 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
 
     @Inject
     private IOrdemProducaoService ordemProducaoService;
+
+    @Inject
+    private INumeroOrdemProducaoService numeroOrdemProducaoService;
 
     @Inject
     private PlcMsgUtil msgUtil;
@@ -91,7 +95,7 @@ public class OrdemProducaoRest extends PlcAbstractEntityRest<Long, OrdemProducao
     @Path("/numeroOrdemProducao")
     public TimestampDTO getNumeroOrdemProducao(){
         TimestampDTO dto = new TimestampDTO();
-        dto.setTimestamp(new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()));
+        dto.setTimestamp(numeroOrdemProducaoService.getNumeroOrdemProducao(new SimpleDateFormat("yyMMdd").format(new Date())));
         return dto;
     }
 

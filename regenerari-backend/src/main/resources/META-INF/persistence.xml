@@ -22,7 +22,7 @@
 		<class>br.com.incode.regenerari.entity.ProdutoEntity</class>
 		<class>br.com.incode.regenerari.entity.ComposicaoProdutoEntity</class>
 		<class>br.com.incode.regenerari.entity.ItemComposicaoProdutoEntity</class>
-
+		<class>br.com.incode.regenerari.entity.NumeroOrdemProducaoEntity</class>
 		<class>br.com.incode.regenerari.entity.EstoqueInsumoEntity</class>
 		<class>br.com.incode.regenerari.entity.PosicaoEstoqueInsumoEntity</class>
 		<class>br.com.incode.regenerari.entity.PosicaoEstoqueProdutoEntity</class>
