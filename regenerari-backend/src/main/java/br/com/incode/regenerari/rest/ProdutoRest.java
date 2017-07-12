@@ -43,23 +43,6 @@ public class ProdutoRest extends AppBaseRest<Long, ProdutoEntity> {
 
 
     @Override
-    public PlcPagedResult<ProdutoEntity> findPaged() throws PlcException {
-        PlcPagedResult<ProdutoEntity> result = super.findPaged();
-
-        for (ProdutoEntity produto: result.getList()){
-
-            if (PlcSituacao.A.equals(produto.getSituacao())){
-                produto.setStatusDescricao(AppConstants.ATIVO);
-            }else{
-                produto.setStatusDescricao(AppConstants.INATIVO);
-            }
-
-        }
-
-        return result;
-    }
-
-    @Override
     public boolean remove(ProdutoEntity entity) throws PlcException {
         boolean ret = false;
         try {

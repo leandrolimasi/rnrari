@@ -79,6 +79,7 @@ public class ComposicaoProdutoEntity extends AppBaseEntity {
     private UsuarioEntity usuarioInativacao;
 
     @Valid
+    @NotNull
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "composicaoProduto",cascade = CascadeType.ALL,
             targetEntity = ItemComposicaoProdutoEntity.class, orphanRemoval=true)
     private List<ItemComposicaoProdutoEntity> itemComposicaoProduto;

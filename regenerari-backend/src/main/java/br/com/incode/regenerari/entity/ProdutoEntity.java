@@ -137,13 +137,15 @@ public class ProdutoEntity extends AppBaseEntity {
      * @param codigo
      * @param nome
      */
-    public ProdutoEntity(Long id, String codigo, String nome, Long versao, UnidadeMedidaProduto unidadeMedidaProduto){
+    public ProdutoEntity(Long id, String codigo, String nome, Long versao, UnidadeMedidaProduto unidadeMedidaProduto, PlcSituacao situacao){
         this.id = id;
         this.codigo = codigo;
         this.nome = nome;
         this.setVersao(versao);
         this.setUnidadeMedidaProduto(unidadeMedidaProduto);
         this.setUnidadeMedidaDescricao(unidadeMedidaProduto.getLabel());
+        this.setSituacao(situacao);
+        this.setStatusDescricao(PlcSituacao.A.equals(situacao) ? "Ativo" : "Inativo");
     }
 
     @Transient
