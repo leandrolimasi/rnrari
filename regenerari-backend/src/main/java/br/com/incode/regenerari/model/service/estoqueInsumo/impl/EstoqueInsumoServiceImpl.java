@@ -93,8 +93,7 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
             BigDecimal valorTotalMedia = valorTotalAtual.add(estoqueInsumo.getValorCompraTotal());
 
             posicaoEstoqueInsumo.setValorUnitario(
-                    valorTotalMedia.divide(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()),
-                            2, RoundingMode.DOWN));
+                    valorTotalMedia.divide(estoqueInsumo.getQuantidade(), 2, RoundingMode.DOWN));
 
         }
 
