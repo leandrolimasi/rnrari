@@ -38,6 +38,20 @@ public class InsumoServiceImpl extends PlcAbstractServiceEntity<Long, InsumoEnti
 
     @Override
     public InsumoEntity save(@Valid InsumoEntity entity) throws PlcException {
+
+        InsumoEntity filter = new InsumoEntity();
+        filter.setCodigo(entity.getCodigo());
+
+        List<InsumoEntity> listaInsumoCodigo = insumoRepository.find(filter);
+        if (CollectionUtils.isNotEmpty(listaInsumoCodigo)){
+            for(InsumoEntity insumo: listaInsumoCodigo){
+                if (!insumo.getId().equals(entity.getId())){
+                    throw new PlcException(AppBeanMessages.INSUMO_ERROR_CODIGO_REPETIDO);
+                }
+            }
+        }
+
+
         return super.save(entity);
     }
 

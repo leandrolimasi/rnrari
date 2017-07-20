@@ -35,27 +35,27 @@
     //	save a record with required field validation
     vm.save = function () {
 
-          if (vm.beforeSave()){
-            if ($scope.form.$invalid){
-              vm.processValidation($scope.form.$error);
-              PlcNotificationService.error("CAMPOS_INVALIDOS_TOPICO_027");
-              return
-            }
+      if (vm.beforeSave()){
+        if ($scope.form.$invalid){
+          vm.processValidation($scope.form.$error);
+          PlcNotificationService.error("CAMPOS_INVALIDOS_TOPICO_027");
+          return
+        }
 
-            vm.$baseService.save(vm[vm.$baseRoute]).then( function (response) {
+        vm.$baseService.save(vm[vm.$baseRoute]).then( function (response) {
 
-              if (response.status == 200 && response.data.entity && response.data.entity.id){
-                vm[vm.$baseRoute] = response.data.entity;
-                $state.go( vm.$baseRoute + '.man', {id: response.data.entity.id} );
-              }
-
-              vm.afterSave(response);
-
-            }).catch(function (err) {
-              vm.afterSave(err);
-            });
+          if (response.status == 200 && response.data.entity && response.data.entity.id){
+            vm[vm.$baseRoute] = response.data.entity;
+            $state.go( vm.$baseRoute + '.man', {id: response.data.entity.id} );
           }
-        };
+
+          vm.afterSave(response);
+
+        }).catch(function (err) {
+          vm.afterSave(err);
+        });
+      }
+    };
 
     vm.addItemDetail = function (detail) {
 
