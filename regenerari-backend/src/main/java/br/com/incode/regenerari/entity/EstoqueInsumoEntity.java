@@ -56,7 +56,7 @@ public class EstoqueInsumoEntity extends AppBaseEntity {
     private BigDecimal valorCompraTotal;
 
     @NotNull
-    @Column(name = "VALOR_COMPRA_UNITARIO", precision = 15, scale = 2)
+    @Column(name = "VALOR_COMPRA_UNITARIO", precision = 15, scale = 3)
     private BigDecimal valorCompraUnitario;
 
 

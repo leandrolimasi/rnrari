@@ -63,16 +63,13 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
         }
 
         estoqueInsumoBO.validaEntradaEstoque(estoqueInsumo);
-
         estoqueInsumo.setValorCompraUnitario(estoqueInsumo.getValorCompraTotal()
-                .divide( estoqueInsumo.getQuantidade(), 2, RoundingMode.DOWN));
-
+                .divide( estoqueInsumo.getQuantidade(), 3, RoundingMode.DOWN));
         estoqueInsumo = estoqueInsumoRepository.save(estoqueInsumo);
 
-
         PosicaoEstoqueInsumoEntity posicaoEstoqueInsumo = posicaoEstoqueInsumoRepository.recuperaPosicaoAtual(estoqueInsumo.getInsumo());
-        BigDecimal valorUnitarioAntetior = new BigDecimal(0);
         BigDecimal valorUnitarioAnterior = new BigDecimal(0);
+        BigDecimal quantidadeAnterior = new BigDecimal(0);
 
         if (posicaoEstoqueInsumo == null){
             posicaoEstoqueInsumo = new PosicaoEstoqueInsumoEntity();
@@ -83,23 +80,34 @@ public class EstoqueInsumoServiceImpl extends PlcAbstractServiceEntity<Long, Est
 
         }else{
 
-            valorUnitarioAntetior = posicaoEstoqueInsumo.getValorUnitario();
-            valorUnitarioAnterior = posicaoEstoqueInsumo.getQuantidade();
+            valorUnitarioAnterior = posicaoEstoqueInsumo.getValorUnitario();
+            quantidadeAnterior = posicaoEstoqueInsumo.getQuantidade();
+
+           /* Novo Valor Unitario= ((QEA * VUA) + (QNE * VUNE)) / (QEA + QNE)
+            Onde: QEA-Quantidade Estoque Atual (antes da nova entrada);
+
+            VUA-Valor Unitario Atual; QNE-Quantidade Nova Entrada;
+
+            VUNE-Valor Unitario Nova Entrada (esse tem que ser calculado a partir da QNE  e do Valor Total da
+            Nova Entrada informados pelo usuário) */
 
             posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade().add(estoqueInsumo.getQuantidade()));
             posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.ENTRADA);
-            BigDecimal valorTotalAtual = posicaoEstoqueInsumo.getQuantidade()
-                    .multiply(posicaoEstoqueInsumo.getValorUnitario());
-            BigDecimal valorTotalMedia = valorTotalAtual.add(estoqueInsumo.getValorCompraTotal());
 
-            posicaoEstoqueInsumo.setValorUnitario(
-                    valorTotalMedia.divide(estoqueInsumo.getQuantidade(), 2, RoundingMode.DOWN));
+
+            BigDecimal valorTotalAnterior = quantidadeAnterior.multiply(valorUnitarioAnterior);
+
+            BigDecimal valorUnitarioAtual = valorTotalAnterior.add(estoqueInsumo.getValorCompraTotal())
+                    .divide(quantidadeAnterior.add(estoqueInsumo.getQuantidade()),
+                            3, RoundingMode.HALF_UP);
+
+            posicaoEstoqueInsumo.setValorUnitario(valorUnitarioAtual);
 
         }
 
         posicaoEstoqueInsumo =  posicaoEstoqueInsumoRepository.save(posicaoEstoqueInsumo);
-        posicaoEstoqueInsumo.setQuantidadeEstoqueAnterior(valorUnitarioAnterior);
-        posicaoEstoqueInsumo.setValorUnitarioAnterior(valorUnitarioAntetior);
+        posicaoEstoqueInsumo.setQuantidadeEstoqueAnterior(quantidadeAnterior);
+        posicaoEstoqueInsumo.setValorUnitarioAnterior(valorUnitarioAnterior);
         return posicaoEstoqueInsumo;
 
     }

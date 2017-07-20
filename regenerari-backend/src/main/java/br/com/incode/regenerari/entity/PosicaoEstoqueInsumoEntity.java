@@ -43,7 +43,7 @@ public class PosicaoEstoqueInsumoEntity extends AppBaseEntity {
     private BigDecimal quantidade;
 
     @NotNull
-    @Column(name = "VALOR_UNITARIO", precision = 15, scale = 2)
+    @Column(name = "VALOR_UNITARIO", precision = 15, scale = 3)
     private BigDecimal valorUnitario;
 
     @Enumerated(EnumType.STRING)

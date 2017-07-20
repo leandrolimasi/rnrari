@@ -78,8 +78,9 @@ public class BaixaInsumoExcepcionalServiceImpl extends PlcAbstractServiceEntity<
 
         if (posicaoEstoqueInsumo != null){
             posicaoEstoqueInsumo.setQuantidade(posicaoEstoqueInsumo.getQuantidade().subtract(baixaInsumoExcepcional.getQuantidade()));
-            posicaoEstoqueInsumo.setValorUnitario(posicaoEstoqueInsumo.getValorUnitario()
-                    .subtract(valorUnitarioAnterior.multiply(quantidadeEstoqueAnterior).divide(baixaInsumoExcepcional.getQuantidade())));
+            if (posicaoEstoqueInsumo.getQuantidade().doubleValue() == 0){
+                posicaoEstoqueInsumo.setValorUnitario(new BigDecimal(0));
+            }
             posicaoEstoqueInsumo.setEventoEstoque(EventoEstoque.AJUSTE);
         }
 
